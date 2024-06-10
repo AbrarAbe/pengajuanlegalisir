@@ -1,0 +1,132 @@
+/* css untuk tombol
+
+/* Tombol biru */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Tombol hijau */
+.button1 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button1:hover {
+    background-color: #45a049;
+}
+
+/* Tombol merah */
+.button2 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: Tomato;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button2:hover {
+    background-color: Tomato;
+}
+
+/* Tombol orange */
+.button3 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: Orange;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button3:hover {
+    background-color: Orange;
+}
+
+.container {
+    max-width: 700px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #fff;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* container versi lebar */
+.container2 {
+    max-width: 1000px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mgr {
+    float: right;
+    margin-right: 20px;
+}
+
+/*tambahan*/
+
+.login-container {
+    min-height: 100vh;
+}
+
+.apa {
+    background-color: rgba(000, 000, 000, 0.6);
+}
+
+.margin15 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.margin60 {
+    margin-bottom: 60px;
+}
+
+.marginform {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.alabel {
+    color: white;
+}
