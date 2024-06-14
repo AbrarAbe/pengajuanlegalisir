@@ -11,7 +11,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="custom-container">
         <?php
         include 'db_connection.php';
 

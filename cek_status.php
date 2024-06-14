@@ -11,7 +11,7 @@
 
 <body>
     <!-- pemanbahan div -->
-    <div class="container2">
+    <div class="custom-container">
         <h2>Status Pengajuan Legalisir</h2></br></br>
         <table>
             <tr>

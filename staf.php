@@ -11,7 +11,7 @@
 
 <body>
     <!-- pemanbahan div -->
-    <div class="container2">
+    <div class="container-wide">
         <h2>Validasi Pengajuan Legalisir</h2></br></br>
         <table>
             <tr>

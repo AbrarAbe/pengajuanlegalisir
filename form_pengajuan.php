@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="custom-container">
             <h2>Form Pengajuan Legalisir Ijazah dan Transkrip Akademik</h2></br></br>
             <form action="submit_pengajuan.php" method="post" enctype="multipart/form-data">
                 <label for="npm">NPM :</label>
