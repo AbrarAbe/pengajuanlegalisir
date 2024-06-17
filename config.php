@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root"; // ganti dengan username database Anda
 $password = ""; // ganti dengan password database Anda
-$dbname = "test";
+$dbname = "LegalisirDB";
 
 // Membuat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);

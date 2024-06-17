@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS test;
-USE test;
+CREATE DATABASE IF NOT EXISTS LegalisirDB;
+USE LegalisirDB;
 
 CREATE TABLE User (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
@@ -8,7 +8,6 @@ CREATE TABLE User (
     password VARCHAR(255) NOT NULL,
     role ENUM('alumni', 'staf', 'dekan') NOT NULL
 );
-
 
 CREATE TABLE Alumni (
     id_alumni INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,7 +51,6 @@ CREATE TABLE Pengajuan (
     status ENUM('pending', 'divalidasi', 'disahkan', 'selesai', 'dikirim') DEFAULT 'pending',
     FOREIGN KEY (id_user) REFERENCES User(id_user)
 );
-
 
 CREATE TABLE Dokumen (
     id_dokumen INT PRIMARY KEY AUTO_INCREMENT,
