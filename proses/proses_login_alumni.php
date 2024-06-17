@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include '../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -18,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = $user['role'];
         header("Location: ../pages/beranda_alumni.php");
     } else {
-        echo "Username or password incorrect";
+        $_SESSION['error_message'] = "Username atau password salah.";
+        header("Location: ../pages/login_alumni.php");
+        exit();
     }
 }

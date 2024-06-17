@@ -5,6 +5,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Beranda Staf</title>
+    <title>Beranda Alumni</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
         crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Aplikasi Pengajuan Legalisir</a>
+            <a class="navbar-brand" href="../index.php">Aplikasi Pengajuan Legalisir</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -31,13 +32,13 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="beranda_alumni.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="form_pengajuan.php" target="frmmenu">Form Pengajuan</a>
+                        <a class="nav-link" href="form_pengajuan.php">Form Pengajuan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="status_pengajuan.php" target="frmmenu">Status Pengajuan</a>
+                        <a class="nav-link" href="status_pengajuan.php">Status Pengajuan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../proses/logout.php">Logout</a>
@@ -51,7 +52,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
         </div>
     </nav>
     <div class="container mt-5 fa fa-align-justify" aria-hidden="true">
-        <iframe src="" name="frmmenu" width="100%" height="500vh"></iframe>
+        <iframe src="beranda.php" name="frmmenu"></iframe>
     </div>
 </body>
 </html>

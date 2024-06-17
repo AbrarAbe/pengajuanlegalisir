@@ -31,10 +31,10 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'dekan') {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="beranda_dekan.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="daftar_pengajuan.php">Daftar Pengajuan</a>
+                        <a class="nav-link" href="daftar_pengajuan.php" target="frmmenu">Daftar Pengajuan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../proses/logout.php">Logout</a>
@@ -47,8 +47,8 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'dekan') {
             </div>
         </div>
     </nav>
-    <div class="container mt-5">
-        <h2>Selamat datang, <?php echo $_SESSION['username']; ?>!</h2>
+    <div class="container mt-5 fa fa-align-justify" aria-hidden="true">
+        <iframe src="beranda.php" name="frmmenu" width="100%" height="500vh"></iframe>
     </div>
 </body>
 

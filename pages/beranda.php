@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] != true) {
-    header("Location: index.php");
+if (!isset($_SESSION['id_user']) || ($_SESSION['role'] != 'alumni' && $_SESSION['role'] != 'staf' && $_SESSION['role'] != 'dekan')) {
+    header("Location: ../index.php");
     exit;
 }
 ?>

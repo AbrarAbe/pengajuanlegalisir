@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
+        header('Location: pages/beranda_alumni.php');
+} else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
+        header('Location: pages/beranda_staf.php');
+} else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
+        header('Location: pages/beranda_dekan.php');
+        exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +65,7 @@
     </nav>
 
     <div class="container mt-5 fa fa-align-justify" aria-hidden="true">
-        <h2>Selamat datang di Sistem Informasi Manajemen Gudang</h2><br>
+        <h2>Selamat datang</h2><br>
         <h4>Anda harus Daftar atau Login terlebih dahulu</h4>
     </div>
 

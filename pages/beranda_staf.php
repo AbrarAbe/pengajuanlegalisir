@@ -5,6 +5,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
         crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Aplikasi Pengajuan Legalisir</a>
+            <a class="navbar-brand" href="../index.php">Aplikasi Pengajuan Legalisir</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -31,10 +32,10 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="beranda_staf.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="daftar_pengajuan.php">Daftar Pengajuan</a>
+                        <a class="nav-link" href="daftar_pengajuan.php" target="frmmenu">Daftar Pengajuan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../proses/logout.php">Logout</a>
@@ -48,7 +49,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
         </div>
     </nav>
     <div class="container mt-5 fa fa-align-justify" aria-hidden="true">
-        <iframe src="" name="frmmenu" width="100%" height="500vh"></iframe>
+        <iframe src="beranda.php" name="frmmenu" width="100%" height="500vh"></iframe>
     </div>
 </body>
 

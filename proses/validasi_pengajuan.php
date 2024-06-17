@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config.php';
+include '../config.php';
 
 if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
     header("Location: ../pages/login_staf_dekan.php");
@@ -16,4 +16,3 @@ if ($stmt->execute()) {
 } else {
     echo "Error: " . $stmt->error;
 }
-?>

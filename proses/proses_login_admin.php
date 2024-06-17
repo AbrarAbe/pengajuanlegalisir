@@ -22,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../pages/beranda_dekan.php");
         }
     } else {
-        echo "Username or password incorrect";
+        $_SESSION['error_message'] = "Username atau password salah.";
+        header("Location: ../pages/login_alumni.php");
+        exit();
     }
 }

@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
+        header('Location: beranda_alumni.php');
+} else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
+        header('Location: beranda_staf.php');
+} else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
+        header('Location: beranda_dekan.php');
+        exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
