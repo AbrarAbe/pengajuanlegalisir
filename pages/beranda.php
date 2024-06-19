@@ -6,6 +6,9 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] != 'alumni' && $_SESSION[
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,3 +22,5 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] != 'alumni' && $_SESSION[
         crossorigin="anonymous"></script>
     <h2>Selamat datang, <?php echo $_SESSION['username']; ?>!</h2>
 </body>
+
+</html>

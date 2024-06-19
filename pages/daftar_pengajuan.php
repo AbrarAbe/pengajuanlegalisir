@@ -19,7 +19,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">

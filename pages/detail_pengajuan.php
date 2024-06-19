@@ -20,6 +20,10 @@ if ($_SESSION['role'] == 'staf' || $_SESSION['role'] == 'dekan') {
     $is_staf_or_dekan = false;
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,4 +90,5 @@ if ($_SESSION['role'] == 'staf' || $_SESSION['role'] == 'dekan') {
         <?php endif; ?>
     </div>
 </body>
+
 </html>
