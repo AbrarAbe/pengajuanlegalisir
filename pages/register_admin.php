@@ -32,14 +32,14 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
-            <div class="container-fluid">
+            <nav class="container-fluid">
                 <a class="navbar-brand" href="../index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <nav class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
@@ -61,54 +61,58 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                             </ul>
                         </li>
                     </ul>
-                </div>
-            </div>
+                </nav>
+            </nav>
         </nav>
     </header>
 
     <!-- Section: Design Block -->
-    <section class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-        <div id="radius-shape-3" class="position-absolute shadow-5-strong"></div>
-
-        <div class="row gx-lg-5 align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0" style="z-index: 10">
-                <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                    Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
-                </h1>
-                <p class="opacity-70" style="color: hsl(218, 81%, 85%)">
-                    Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
-                    yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
-                    Dapatkan legalisir anda <span style="color: hsl(218, 85%, 62%)">kapanpun dan dimanapun</span>
-                    tanpa keluar rumah!
-                    <br />Tertarik untuk mencoba? Yuk segera daftar!
-                </p>
-            </div>
+    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
+        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
+        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -1"></section>
+        <section class="row gx-lg-5 align-items-center">
+            <section class="col-lg-6 mb-4 mb-lg-0">
+                <header>
+                    <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
+                    </h1>
+                </header>
+                <article>
+                    <p class="opacity-70" style="color: hsl(218, 81%, 85%)">
+                        Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
+                        yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
+                        Dapatkan legalisir anda <span style="color: hsl(218, 85%, 62%)">kapanpun dan dimanapun</span>
+                        tanpa keluar rumah!
+                        <br />Tertarik untuk mencoba? Yuk segera daftar!
+                    </p>
+                </article>
+            </section>
 
             <!--Register Card-->
-            <div class="col-lg-6 mb-5 mb-lg-0 position-relative my-4">
-                <div class="card bg-glass">
-                    <div class="card-body px-4 py-5 px-md-5">
+            <section class="col-lg-6 mb-5 mb-lg-0 position-relative my-4">
+                <article class="card bg-glass">
+                    <article class="card-body px-4 py-5 px-md-5">
                         <form action="" method="post">
-                            <div class="form-outline mb-4">
+                            <header class="form-outline mb-4">
                                 <label class="form-label form-label-white letter-spacing d-flex"><span
                                         style="font-size: 1.5rem;">Daftarkan akun anda</span></label>
-                            </div>
+                            </header>
                             <!-- Username input -->
-                            <div class="form-outline mb-2">
-                                <label class="form-label form-label-white letter-spacing d-flex" for="username">Nama
-                                    Pengguna</label>
+                            <article class="form-outline mb-2">
+                                <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
+                                    :
+                                </label>
                                 <input type="username" id="username" name="username" class="form-control input-glass"
                                     required />
-                            </div>
+                            </article>
                             <!-- Email input -->
-                            <div class="form-outline mb-3">
-                                <label class="form-label form-label-white letter-spacing d-flex"
-                                    for="username">Email</label>
+                            <article class="form-outline mb-3">
+                                <label class="form-label form-label-white letter-spacing d-flex" for="username">Email
+                                    :</label>
                                 <input type="email" id="email" name="email" class="form-control input-glass" required />
-                            </div>
+                            </article>
                             <!-- Role input -->
-                            <div class="form-outline mb-2 d-flex">
+                            <article class="form-outline mb-2 d-flex">
                                 <input type="radio" class="btn-check" name="role" id="option1" autocomplete="off"
                                     checked value="staf">
                                 <label class="btn form-label-white letter-spacing" style="color:white;"
@@ -117,30 +121,30 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                                 <input type="radio" class="btn-check" name="role" id="option2" autocomplete="off"
                                     value="dekan">
                                 <label class="btn" style="color:white;" for="option2">Dekan</label>
-                            </div>
+                            </article>
                             <!-- Password input -->
-                            <div class="form-outline">
-                                <label class="form-label form-label-white letter-spacing d-flex"
-                                    for="password">Password</label>
+                            <article class="form-outline">
+                                <label class="form-label form-label-white letter-spacing d-flex" for="password">Password
+                                    :</label>
                                 <input type="password" id="password" name="password" class="form-control input-glass"
                                     aria-describedby="passwordHelpBlock" required>
-                            </div>
-                            <div id="passwordHelpBlock" class="form-text mb-4" style="color:whitesmoke;">
+                            </article>
+                            <article id="passwordHelpBlock" class="form-text mb-2" style="color:whitesmoke;">
                                 Must be 8-20 characters long.
-                            </div>
+                            </article>
                             <!-- Checkbox -->
-                            <div class="form-check d-flex mb-4">
+                            <article class="form-check d-flex mb-4">
                                 <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" unchecked
                                     required />
                                 <label class="form-check-label form-label-white d-flex" for="checkbox">
                                     Dengan mendaftar anda menyetujui syarat dan ketentuan yang berlaku
                                 </label>
-                            </div>
+                            </article>
                             <!-- Submit button -->
-                            <div class="d-grid gap-2">
+                            <article class="d-grid gap-2">
                                 <button type="submit" name="submit"
                                     class="btn btn-primary btn-block mb-4">Daftar</button>
-                            </div>
+                            </article>
 
                             <?php
                             include '../config.php';
@@ -157,22 +161,22 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                                     $stmt->execute();
                                     $result = $stmt->get_result();
                                     if ($result->num_rows > 0) {
-                                        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Email sudah ada !</strong> <a href="login_admin.php">Masuk</a> atau gunakan email lain.
-                                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                    </div>';
+                                        echo '<article class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Email sudah ada !</strong> <a href="login_admin.php">Masuk</a> atau gunakan email lain.
+                                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </article>';
                                     } else {
                                         $stmt = $conn->prepare("INSERT INTO User (username, email, password, role) VALUES (?, ?, ?, ?)");
                                         $stmt->bind_param("ssss", $username, $email, $password, $role);
                                         if ($stmt->execute()) {
-                                            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                          <strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat <a href="../pages/login_admin.php">login</a> sekarang.
-                                                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </div>';
+                                            echo '<article class="alert alert-success alert-dismissible fade show" role="alert">
+                                                      <strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat <a href="../pages/login_admin.php">login</a> sekarang.
+                                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </article>';
                                         } else {
-                                            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                          <strong>Gagal !</strong> Gagal daftar akun. Harap ulangi lagi.
-                                                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </div>';
+                                            echo '<article class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                      <strong>Gagal !</strong> Gagal daftar akun. Harap ulangi lagi.
+                                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </article>';
                                         }
                                     }
                                 }
@@ -181,11 +185,11 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                             ?>
 
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </article>
+                </article>
+            </section>
+        </section>
+    </main>
 </body>
 
 </html>

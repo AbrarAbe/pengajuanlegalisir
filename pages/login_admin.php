@@ -7,8 +7,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
     header('Location: beranda_dekan.php');
     exit;
-}
-?>
+} ?>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
@@ -32,14 +31,14 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
-            <div class="container-fluid">
+            <nav class="container-fluid">
                 <a class="navbar-brand" href="../index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <nav class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
@@ -61,77 +60,72 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                             </ul>
                         </li>
                     </ul>
-                </div>
-            </div>
+                </nav>
+            </nav>
         </nav>
     </header>
 
     <!-- Section: Design Block -->
-    <section class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-        <div id="radius-shape-3" class="position-absolute shadow-5-strong"></div>
-
-        <div class="card bg-glass mb-3 px-4">
-            <div class="col g-0 d-flex align-items-center">
-                <div class="col-lg-8 d-none d-lg-flex px-2">
-                    <img src="../assets/img/pic.png" alt="Trendy Pants and Shoes"
+    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
+        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
+        <section id="radius-shape-3" class="position-absolute shadow-5-strong"></section>
+        <section class="card bg-glass mb-3 px-4">
+            <article class="col g-0 d-flex align-items-center">
+                <figure class="col-lg-8 d-none d-lg-flex px-2">
+                    <img src="../assets/img/pic2.jpg" alt="Trendy Pants and Shoes"
                         class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-                </div>
-                <div class="col">
-                    <div class="card-body py-5 px-md-5">
-                        <form action="../proses/proses_login_admin.php" method="post">
-                            <div class="form-outline mb-4">
-                                <label class="form-label form-label-white letter-spacing d-flex">
-                                    <span style="font-size: 2rem;">Login Admin</span></label>
-                            </div>
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
-                                    atau
-                                    email :</label>
-                                <input type="text" id="username" name="username" class="form-control input-glass" />
-                            </div>
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <label class="form-label form-label-white letter-spacing d-flex" for="password">Password
-                                    :</label>
-                                <input type="password" id="password" name="password" class="form-control input-glass" />
-                            </div>
-                            <!-- 2 column grid layout for inline styling -->
-                            <div class="row mb-4">
-                                <div class="col d-flex justify-content-center">
-                                    <!-- Checkbox -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox"
-                                            checked />
-                                        <label class="form-check-label " for="checkbox" style="color:whitesmoke;">
-                                            Ingat saya </label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <!-- Simple link -->
-                                    <a href="#!">Lupa password?</a>
-                                </div>
-                            </div>
-                            <!-- Submit button -->
-                            <div class="d-grid gap-2">
-                                <button type="submit" name="submit"
-                                    class="btn btn-primary btn-block mb-4">Login</button>
-                            </div>
+                </figure>
+                <article class="card-body py-5 px-md-5">
+                    <form action="../proses/proses_login_admin.php" method="post">
+                        <header class="form-outline mb-4">
+                            <label class="form-label form-label-white letter-spacing d-flex">
+                                <span style="font-size: 2rem;">Login Admin</span></label>
+                        </header>
+                        <!-- USername / Email input -->
+                        <article class="form-outline mb-4">
+                            <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
+                                atau
+                                email :</label>
+                            <input type="text" id="username" name="username" class="form-control input-glass" autofocus/>
+                        </article>
+                        <!-- Password input -->
+                        <article class="form-outline mb-4">
+                            <label class="form-label form-label-white letter-spacing d-flex" for="password">Password
+                                :</label>
+                            <input type="password" id="password" name="password" class="form-control input-glass" />
+                        </article>
+                        <!-- 2 column grid layout for inline styling -->
+                        <article class="row mb-4">
+                            <article class="col d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <article class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox" checked />
+                                    <label class="form-check-label " for="checkbox" style="color:whitesmoke;">
+                                        Ingat saya </label>
+                                </article>
+                            </article>
+                            <article class="col">
+                                <!-- Simple link -->
+                                <a href="#!">Lupa password?</a>
+                            </article>
+                        </article>
+                        <!-- Submit button -->
+                        <article class="d-grid gap-2">
+                            <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                        </article>
 
-                            <?php
-                            if (isset($_SESSION['error_message'])) {
-                                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">' . $_SESSION['error_message'] . '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">' . '</button>' . '</div>';
-                                unset($_SESSION['error_message']);
-                            }
-                            ?>
+                        <?php
+                        if (isset($_SESSION['error_message'])) {
+                            echo '<article class="alert alert-danger alert-dismissible fade show" role="alert">' . $_SESSION['error_message'] . '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">' . '</button>' . '</div>';
+                            unset($_SESSION['error_message']);
+                        }
+                        ?>
 
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </form>
+                </article>
+            </article>
+        </section>
+    </main>
     <!-- Section: Design Block -->
 </body>
 

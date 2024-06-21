@@ -71,3 +71,8 @@
   background-color: hsla(0, 0%, 0%, 0.5) !important;
   backdrop-filter: saturate(200%) blur(10px);
 }
+
+.bg-transparent {
+  background-color: transparent;
+  border-color: transparent;
+}

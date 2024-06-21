@@ -24,31 +24,33 @@ CREATE TABLE Status (
 );
 
 INSERT INTO Status (keterangan) VALUES
-('Pending'),
+('Menunggu Validasi'),
 ('Divalidasi'),
 ('Disahkan'),
 ('Ditolak'),
-('Silahkan ambil di prodi'),
-('Sedang dikirim ke alamat anda'),
-('Selesai')
+('Selesai'),
+('Ambil'),
+('Dikirim')
 ;
 
 CREATE TABLE Pengajuan (
-    id_pengajuan INT AUTO_INCREMENT PRIMARY KEY,
+    id_pengajuan INT PRIMARY KEY AUTO_INCREMENT,
     id_user INT NOT NULL,
     npm VARCHAR(20) NOT NULL,
     nama VARCHAR(100) NOT NULL,
-    tahun_lulus INT NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    tahun_lulus VARCHAR(5) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     scan_ijazah MEDIUMBLOB NOT NULL,
-    scan_transkrip MEDIUMBLOB,
-    metode_pengambilan ENUM('ambil ditempat', 'dikirim ke alamat') NOT NULL,
-    jumlah_legalisir_ijazah INT NOT NULL,
-    jumlah_legalisir_transkrip INT NOT NULL,
-    ekspedisi VARCHAR(50),
-    total_harga DECIMAL(10, 2),
-    bukti_pembayaran MEDIUMBLOB,
-    status ENUM('pending', 'divalidasi', 'disahkan', 'selesai', 'dikirim') DEFAULT 'pending',
+    scan_transkrip MEDIUMBLOB NOT NULL,
+    metode_pengambilan ENUM('ambil di prodi', 'kirim ke alamat') NOT NULL,
+    alamat_pengiriman TEXT NOT NULL,
+    jumlah_legalisir_ijazah INT,
+    jumlah_legalisir_transkrip INT,
+    ekspedisi_pengiriman VARCHAR(50),
+    total_harga INT,
+    bukti_pembayaran MEDIUMBLOB NOT NULL,
+    id_status INT,
+    FOREIGN KEY (id_status) REFERENCES Status(id_status),
     FOREIGN KEY (id_user) REFERENCES User(id_user)
 );
 

@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
-    header('Location: beranda_alumni.php');
+    header('Location: pages/beranda_alumni.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
-    header('Location: beranda_staf.php');
+    header('Location: pages/beranda_staf.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
-    header('Location: beranda_dekan.php');
+    header('Location: pages/beranda_dekan.php');
     exit;
 }
 ?>
@@ -67,11 +67,15 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
     </header>
 
     <!-- Section: Design Block -->
-    <section class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-        <div class="mb-5 mb-lg-0">
-            <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
-            </h1>
+    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
+        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
+        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -1"></section>
+        <article class="mb-5 mb-lg-0">
+            <header>
+                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                    Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
+                </h1>
+            </header>
             <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
                 Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
                 yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
@@ -80,10 +84,9 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                 <br />Tertarik untuk mencoba? Yuk segera <a style="color: hsl(0, 85%, 62%)"
                     href="pages/register_alumni.php">daftar</a>!
             </p>
-            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-            <div id="radius-shape-3" class="position-absolute shadow-5-strong"></div>
-            <div class="card bg-glass">
-    </section>
+            <div class="card bg-glass"></div>
+        </article>
+    </main>
 </body>
 
 </html>
