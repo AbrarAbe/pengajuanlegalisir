@@ -7,23 +7,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama = $_POST['nama'];
     $tahun_lulus = $_POST['tahun_lulus'];
     $email = $_POST['email'];
+    $alamat_pengiriman = isset($_POST['alamat_pengiriman']) ? $_POST['alamat_pengiriman'] : null; // Handle null value
     $metode_pengambilan = $_POST['metode_pengambilan'];
     $jumlah_legalisir_ijazah = $_POST['jumlah_legalisir_ijazah'];
     $jumlah_legalisir_transkrip = $_POST['jumlah_legalisir_transkrip'];
-    $ekspedisi = $_POST['ekspedisi'];
-    $total_harga = 3000 * $jumlah_legalisir_ijazah + 3000 * $jumlah_legalisir_transkrip; // Contoh perhitungan harga
+    $ekspedisi_pengiriman = isset($_POST['ekspedisi_pengiriman']) ? $_POST['ekspedisi_pengiriman'] : null; // Handle null value
+    $total_harga = $_POST['total_harga'];
+    $id_status = 1; // Default status, misalnya "Menunggu Validasi"
 
-    $scan_ijazah = file_get_contents($_FILES['scan_ijazah']['tmp_name']);
-    $scan_transkrip = isset($_FILES['scan_transkrip']['tmp_name']) ? file_get_contents($_FILES['scan_transkrip']['tmp_name']) : null;
+    // Upload Scan Ijazah
+    $ijazah = file_get_contents($_FILES['ijazah']['tmp_name']);
+    // Upload Scan Transkrip
+    $transkrip = file_get_contents($_FILES['transkrip']['tmp_name']);
+    // Upload Bukti Pembayaran
     $bukti_pembayaran = file_get_contents($_FILES['bukti_pembayaran']['tmp_name']);
 
-    $stmt = $conn->prepare("INSERT INTO Pengajuan (id_user, npm, nama, tahun_lulus, email, scan_ijazah, scan_transkrip, metode_pengambilan, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, ekspedisi, total_harga, bukti_pembayaran, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')");
-    $stmt->bind_param("issssssssisss", $_SESSION['id_user'], $npm, $nama, $tahun_lulus, $email, $scan_ijazah, $scan_transkrip, $metode_pengambilan, $jumlah_legalisir_ijazah, $jumlah_legalisir_transkrip, $ekspedisi, $total_harga, $bukti_pembayaran);
+    $stmt = $conn->prepare("INSERT INTO Pengajuan (id_user, npm, nama, tahun_lulus, email, alamat_pengiriman, scan_ijazah, scan_transkrip, metode_pengambilan, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, ekspedisi_pengiriman, total_harga, bukti_pembayaran, id_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("isssssbbsiisibi", $_SESSION['id_user'], $npm, $nama, $tahun_lulus, $email, $alamat_pengiriman, $ijazah, $transkrip, $metode_pengambilan, $jumlah_legalisir_ijazah, $jumlah_legalisir_transkrip, $ekspedisi_pengiriman, $total_harga, $bukti_pembayaran, $id_status);
 
     if ($stmt->execute()) {
-        header("Location: ../pages/status_pengajuan.php");
+        echo "Pengajuan berhasil diajukan.";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Terjadi kesalahan: " . $stmt->error;
     }
+    
+    $stmt->close();
+    $conn->close();
+
 }
 
