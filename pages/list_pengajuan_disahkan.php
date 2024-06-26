@@ -1,9 +1,9 @@
 <?php
 session_start();
-include '../config.php';
+include '../config.php'; // File ini harus memiliki koneksi database Anda
 
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
-    header("Location: login_alumni.php");
+if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
+    header("Location: login_admin.php");
     exit;
 }
 
@@ -30,9 +30,10 @@ if (isset($_SESSION['role'])) {
     $navbarFile = '../components/navbar_default.html'; // Jika pengguna tidak login, gunakan navbar default
 }
 
-$id_user = $_SESSION['id_user'];
-$query = "SELECT Pengajuan.*, Status.keterangan FROM Pengajuan JOIN Status ON Pengajuan.id_status = Status.id_status 
-            WHERE Pengajuan.id_user = '$id_user'";
+$query = "SELECT p.*, s.keterangan 
+          FROM Pengajuan p 
+          JOIN Status s ON p.id_status = s.id_status 
+          WHERE p.id_status = 3"; // Status 'Disahkan' (3)
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -55,23 +56,26 @@ $result = mysqli_query($conn, $query);
     <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
         <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+
         <section class="card bg-glass d-flex mb-4 py-5">
             <section class="card-body py-1 px-md-4">
-                <header class="form-outline px-3 mb-3">
-                    <label class="form-label">
-                        <span style="font-size: 1.5rem;">Status Pengajuan legalisir</span></label>
+                <header class="form-outline px-3">
+                    <label class="form-label d-flex">
+                        <span style="font-size: 1.5rem;">Daftar Pengajuan legalisir</span></label>
                 </header>
             </section>
             <section class="card-body py-1">
                 <article class="table-responsive px-4">
                     <article class="data_table">
-                        <table id="table-p" class="table display table-custom table-hover table-bordered">
+                        <table id="table-s" class="table display table-custom table-hover table-bordered">
                             <thead class="table-dark">
                                 <tr>
-                                    <th style="width:5%;">ID</th>
+                                    <th width="5%">ID</th>
                                     <th>Nama</th>
+                                    <th>NPM</th>
+                                    <th>Netode Pengambilan</th>
                                     <th>Status</th>
-                                    <th>Detail</th>
+                                    <th width="15%">Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,11 +83,14 @@ $result = mysqli_query($conn, $query);
                                     <tr>
                                         <td><?php echo $row['id_pengajuan']; ?></td>
                                         <td><?php echo $row['nama']; ?></td>
+                                        <td><?php echo $row['npm']; ?></td>
+                                        <td><?php echo $row['metode_pengambilan']; ?></td>
                                         <td><?php echo $row['keterangan']; ?></td>
                                         <td>
-                                            <article class="d-grid gap-2">
-                                                <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                    id="detail" class="button-2">Lihat Detail
+                                            <article>
+                                                <a href="detail_pengajuan_disahkan.php?id=<?php echo $row['id_pengajuan']; ?>"
+                                                    id="detail" class="button-3">Lihat
+                                                    Detail
                                                 </a>
                                             </article>
                                         </td>
@@ -92,10 +99,11 @@ $result = mysqli_query($conn, $query);
                             </tbody>
                         </table>
                     </article>
+                </article>
+                <article class="py-3 px-4">
+                    <a href="beranda_staf.php" class="button-3">Kembali ke Beranda</a>
+                </article>
             </section>
-            <article class="mx-4 my-4 px-3">
-                <a href="beranda_alumni.php" class="button-3">Kembali ke Beranda</a>
-            </article>
         </section>
     </main>
 </body>

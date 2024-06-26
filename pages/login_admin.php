@@ -7,75 +7,56 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
     header('Location: beranda_dekan.php');
     exit;
-} ?>
+}
+
+$navbarFile = '';
+$headFile = '../components/head.html';
+// path ke file navbar berdasarkan role
+if (isset($_SESSION['role'])) {
+    switch ($_SESSION['role']) {
+        case 'alumni':
+            $navbarFile = '../components/navbar_alumni.html';
+            break;
+        case 'staf':
+            $navbarFile = '../components/navbar_staf.html';
+            break;
+        case 'dekan':
+            $navbarFile = '../components/navbar_dekan.html';
+            break;
+        default:
+            $navbarFile = '../components/navbar_default.html';
+            break;
+    }
+} else {
+    $navbarFile = '../components/navbar_default.html'; // Jika pengguna tidak login, gunakan navbar default
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/nav.css">
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <?php @include ($headFile); ?>
     <title>Login Admin</title>
 </head>
 
 <body class="background-radial-gradient">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
     <header>
-
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
-            <nav class="container-fluid">
-                <a class="navbar-brand" href="../index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register_alumni.php">Register</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Login
-                            </a>
-                            <ul class="dropdown-menu bg-nav">
-                                <li><a class="dropdown-item" href="login_alumni.php">Alumni</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="login_admin.php">Admin</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </nav>
-        </nav>
+        <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
     <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
         <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
         <section id="radius-shape-3" class="position-absolute shadow-5-strong"></section>
-        <section class="card bg-glass mb-3 px-4">
+        <section class="card bg-glass mb-3 px-4 py-5">
             <article class="col g-0 d-flex align-items-center">
                 <figure class="col-lg-8 d-none d-lg-flex px-2">
                     <img src="../assets/img/pic2.jpg" alt="Trendy Pants and Shoes"
-                        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+                        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 px-4" />
                 </figure>
-                <article class="card-body py-5 px-md-5">
+                <aside class="card-body py-4 px-md-4">
                     <form action="../proses/proses_login_admin.php" method="post">
                         <header class="form-outline mb-4">
                             <label class="form-label form-label-white letter-spacing d-flex">
@@ -86,7 +67,8 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                             <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
                                 atau
                                 email :</label>
-                            <input type="text" id="username" name="username" class="form-control input-glass" autofocus/>
+                            <input type="text" id="username" name="username" class="form-control input-glass"
+                                autofocus />
                         </article>
                         <!-- Password input -->
                         <article class="form-outline mb-4">
@@ -111,7 +93,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                         </article>
                         <!-- Submit button -->
                         <article class="d-grid gap-2">
-                            <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                            <button type="submit" name="submit" class="button-3 mb-4">Login</button>
                         </article>
 
                         <?php
@@ -122,11 +104,10 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
                         ?>
 
                     </form>
-                </article>
+                </aside>
             </article>
         </section>
     </main>
-    <!-- Section: Design Block -->
 </body>
 
 </html>

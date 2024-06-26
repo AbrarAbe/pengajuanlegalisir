@@ -1,3 +1,8 @@
+html,
+body {
+  font-size: 15px;
+}
+
 .background-radial-gradient {
   background-color: hsl(218, 41%, 15%);
   background-image: radial-gradient(650px circle at 0% 0%,
@@ -12,6 +17,25 @@
       hsl(218, 41%, 20%) 75%,
       hsl(218, 41%, 19%) 80%,
       transparent 100%);
+}
+
+.bg-custom {
+  background-color: hsl(219, 39%, 24%);
+}
+
+.bg-apala {
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23142214' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23284429' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%233c663d' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23508852' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%2364AA66' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#box {
+  --mask:
+    radial-gradient(38.99px at 50% calc(100% + 18px), #0000 calc(99% - 8px), #000 calc(101% - 8px) 99%, #0000 101%) calc(50% - 60px) calc(50% - 19px + .5px)/120px 38px,
+    radial-gradient(38.99px at 50% -18px, #0000 calc(99% - 8px), #000 calc(101% - 8px) 99%, #0000 101%) 50% calc(50% + 19px)/120px 38px;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 }
 
 #radius-shape-1 {
@@ -36,13 +60,12 @@
 #radius-shape-3 {
   border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
   bottom: 0px;
-  right: 0px;
+  right: 50px;
   width: 300px;
   height: 300px;
   background: radial-gradient(#44006b, #ad1fff);
   overflow: hidden;
 }
-
 
 .rounded-t-5 {
   border-top-left-radius: 0.5rem;
@@ -76,3 +99,35 @@
   background-color: transparent;
   border-color: transparent;
 }
+
+.table-custom {
+  --bs-table-color: #fff !important;
+  --bs-table-bg: hsla(0, 0%, 0%, 0.4) !important;
+  --bs-table-border-color: #4d5154 !important;
+  --bs-table-striped-bg: #2c3034 !important;
+  --bs-table-striped-color: #fff !important;
+  --bs-table-active-bg: #373b3e !important;
+  --bs-table-active-color: #fff !important;
+  --bs-table-hover-bg: #323539 !important;
+  --bs-table-hover-color: #fff !important;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+  backdrop-filter: saturate(100px) blur(10px);
+  border-radius: 0px;
+  font-size: 14px;
+}
+
+/* ==== Data table  = Start =====
+
+.data_table {
+  /*padding: 15px;
+  box-shadow: 1px 3px 5px #aaa;
+  border-radius: 5px;
+}
+*/
+.data_table .btn {
+  padding: 5px 10px;
+  margin: 10px 3px 10px 0;
+}
+
+/* ==== Data table  = End  ===== */

@@ -7,17 +7,27 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] != 'staf' && $_SESSION['r
     exit;
 }
 
-$id_pengajuan = $_GET['id'];
-$stmt = $conn->prepare("SELECT * FROM Pengajuan WHERE id_pengajuan = ?");
-$stmt->bind_param("i", $id_pengajuan);
-$stmt->execute();
-$result = $stmt->get_result();
-$pengajuan = $result->fetch_assoc();
-
-if ($_SESSION['role'] == 'staf' || $_SESSION['role'] == 'dekan') {
-    $is_staf_or_dekan = true;
+$navbarFile = '';
+$headFile = '../components/head.html';
+$tableFile = '../components/datatables.html';
+// path ke file navbar berdasarkan role
+if (isset($_SESSION['role'])) {
+    switch ($_SESSION['role']) {
+        case 'alumni':
+            $navbarFile = '../components/navbar_alumni.html';
+            break;
+        case 'staf':
+            $navbarFile = '../components/navbar_staf.html';
+            break;
+        case 'dekan':
+            $navbarFile = '../components/navbar_dekan.html';
+            break;
+        default:
+            $navbarFile = '../components/navbar_default.html';
+            break;
+    }
 } else {
-    $is_staf_or_dekan = false;
+    $navbarFile = '../components/navbar_default.html'; // Jika pengguna tidak login, gunakan navbar default
 }
 ?>
 
@@ -25,78 +35,112 @@ if ($_SESSION['role'] == 'staf' || $_SESSION['role'] == 'dekan') {
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/nav.css">
-    <link rel="stylesheet" href="../assets/css/buttons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Status Pengajuan</title>
+    <?php @include ($headFile); ?>
+    <?php @include ($tableFile); ?>
+    <title>Detail Pengajuan</title>
 </head>
 
-<body class="mt-2 bg-transparent">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <article class="bg-transparent py-1 px-md-5">
-        <header class="form-outline mb-2">
-            <label class="form-label form-label-white d-flex" class="form-label form-label-white d-flex">
-                <span style="font-size: 1.5rem;">Detail Pengajuan</span></label>
-        </header>
-        <div class="table-responsive">
-            <table class="mt-4 table table-bordered">
-                <tr>
-                    <th>NPM</th>
-                    <td><?php echo htmlspecialchars($pengajuan['npm']); ?></td>
-                </tr>
-                <tr>
-                    <th>Nama</th>
-                    <td><?php echo htmlspecialchars($pengajuan['nama']); ?></td>
-                </tr>
-                <tr>
-                    <th>Tahun Lulus</th>
-                    <td><?php echo htmlspecialchars($pengajuan['tahun_lulus']); ?></td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td><?php echo htmlspecialchars($pengajuan['email']); ?></td>
-                </tr>
-                <tr>
-                    <th>Metode Pengambilan</th>
-                    <td><?php echo htmlspecialchars($pengajuan['metode_pengambilan']); ?></td>
-                </tr>
-                <tr>
-                    <th>Jumlah Legalisir Ijazah</th>
-                    <td><?php echo htmlspecialchars($pengajuan['jumlah_legalisir_ijazah']); ?></td>
-                </tr>
-                <tr>
-                    <th>Jumlah Legalisir Transkrip</th>
-                    <td><?php echo htmlspecialchars($pengajuan['jumlah_legalisir_transkrip']); ?></td>
-                </tr>
-                <tr>
-                    <th>Pengiriman</th>
-                    <td><?php echo htmlspecialchars($pengajuan['ekspedisi_pengiriman']); ?></td>
-                </tr>
-                <tr>
-                    <th>Total Harga</th>
-                    <td><?php echo htmlspecialchars($pengajuan['total_harga']); ?></td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td><?php echo htmlspecialchars($pengajuan['id_status']); ?></td>
-                </tr>
-            </table>
+<body class="background-radial-gradient">
+    <header>
+        <!-- Navbar -->
+        <?php @include ($navbarFile); ?>
+    </header>
 
-            <?php if ($is_staf_or_dekan): ?>
-                <?php if ($_SESSION['role'] == 'staf' && $pengajuan['id_status'] == '1'): ?>
-                    <a href="../proses/validasi_pengajuan.php?id=<?php echo $id_pengajuan; ?>"
-                        class="btn btn-success">Validasi</a>
-                <?php elseif ($_SESSION['role'] == 'dekan' && $pengajuan['id_status'] == '2'): ?>
-                    <a href="../proses/pengesahan.php?id=<?php echo $id_pengajuan; ?>" class="btn btn-success">Sahkan</a>
-                <?php endif; ?>
-            <?php endif; ?>
-        </div>
+    <!-- Section: Design Block -->
+    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
+        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+        <section class="card bg-glass d-flex px-3 py-5">
+            <article class="card-body py-1 px-md-5">
+                <header class="form-outline mb-3">
+                    <label class="form-label form-label-white d-flex">
+                        <span style="font-size: 1.5rem;">Detail Pengajuan legalisir</span></label>
+                </header>
+                <?php
+                include '../config.php'; // File ini harus memiliki koneksi database Anda
+                
+                $id_pengajuan = $_GET['id'];
+                $query = "SELECT p.*, s.keterangan FROM Pengajuan p JOIN Status s ON p.id_status = s.id_status WHERE p.id_pengajuan = ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param("i", $id_pengajuan);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($row = mysqli_fetch_assoc($result)) {
+                    echo "
+                    <table class='table table-custom table-bordered'>
+                    <tr>
+                        <th style='text-align:left' width='30%'>NPM</th>
+                        <td>$row[npm]</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td>$row[nama]</td>
+                    </tr>
+                    <tr>
+                        <th>Tahun Lulus</th>
+                        <td>$row[tahun_lulus]</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>$row[email]</td>
+                    </tr>
+                    <tr>
+                        <th>Metode Pengambilan</th>
+                        <td>$row[metode_pengambilan]</td>
+                    </tr>
+                    <tr>
+                        <th>Alamat Pengiriman</th>
+                        <td>$row[alamat_pengiriman]</td>
+                    </tr>
+                    <tr>
+                        <th>Ekspedisi Pengiriman</th>
+                        <td>$row[ekspedisi]</td>
+                    </tr>
+                    <tr>
+                        <th>Total Harga</th>
+                        <td>$row[total_harga]</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>$row[keterangan]</td>
+                    </tr>
+                </table>
+
+                    <article class='d-flex' style='font-size: 1.5rem;'>Dokumen</article>
+                    <article class='row g-3 py-4'>
+                        <article class='col-sm-8 d-flex gap-2'>
+                            <a class='button-4 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                            <a class='button-4 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                            <a class='button-4 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                        </article>
+                        ";
+                    if ($_SESSION['role'] == 'staf') {
+                        echo "
+                        <article class='col-sm'>
+                        <article class='d-grid'>
+                                <a class='button-1 mb-2' href='../proses/validasi_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Validasi Pengajuan</a>
+                                <a class='button-5' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                            ";
+
+                    } elseif ($_SESSION['role'] == 'dekan') {
+                        echo "
+                                <a class='btn btn-success btn-block mb-2' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
+                                <a class='btn btn-danger btn-block' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                            </article>
+                        </article>
+                        </article>";
+                    }
+                } else {
+                    echo "Pengajuan tidak ditemukan.";
+                }
+
+                mysqli_close($conn);
+                ?>
+            </article>
+            </article>
+        </section>
+    </main>
 </body>
 
 </html>

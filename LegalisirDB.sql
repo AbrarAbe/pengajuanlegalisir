@@ -43,24 +43,16 @@ CREATE TABLE Pengajuan (
     scan_ijazah MEDIUMBLOB NOT NULL,
     scan_transkrip MEDIUMBLOB NOT NULL,
     metode_pengambilan ENUM('ambil di prodi', 'kirim ke alamat') NOT NULL,
-    alamat_pengiriman TEXT NOT NULL,
+    alamat_pengiriman TEXT,
     jumlah_legalisir_ijazah INT,
     jumlah_legalisir_transkrip INT,
-    ekspedisi_pengiriman VARCHAR(50),
+    ekspedisi VARCHAR(50),
+    ekspedisi_harga INT,
     total_harga INT,
     bukti_pembayaran MEDIUMBLOB NOT NULL,
     id_status INT,
     FOREIGN KEY (id_status) REFERENCES Status(id_status),
     FOREIGN KEY (id_user) REFERENCES User(id_user)
-);
-
-CREATE TABLE Dokumen (
-    id_dokumen INT PRIMARY KEY AUTO_INCREMENT,
-    id_pengajuan INT,
-    ijazah LONGBLOB,
-    transkrip LONGBLOB,
-    bukti_pembayaran MEDIUMBLOB,
-    FOREIGN KEY (id_pengajuan) REFERENCES Pengajuan(id_pengajuan)
 );
 
 CREATE TABLE Validasi (

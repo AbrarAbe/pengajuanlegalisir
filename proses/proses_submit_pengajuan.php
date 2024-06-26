@@ -1,38 +1,38 @@
 <?php
 session_start();
-include '../config.php';
+include '../config.php'; // File ini harus memiliki koneksi database Anda
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+session_start();
+include '../config.php'; // File ini harus memiliki koneksi database Anda
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_user = $_SESSION['id_user']; // Ambil ID pengguna dari sesi
     $npm = $_POST['npm'];
     $nama = $_POST['nama'];
     $tahun_lulus = $_POST['tahun_lulus'];
     $email = $_POST['email'];
-    $alamat_pengiriman = isset($_POST['alamat_pengiriman']) ? $_POST['alamat_pengiriman'] : null; // Handle null value
+    $alamat = $_POST['alamat'];
+    $scan_ijazah = addslashes(file_get_contents($_FILES['ijazah']['tmp_name']));
+    $scan_transkrip = addslashes(file_get_contents($_FILES['transkrip']['tmp_name']));
     $metode_pengambilan = $_POST['metode_pengambilan'];
     $jumlah_legalisir_ijazah = $_POST['jumlah_legalisir_ijazah'];
     $jumlah_legalisir_transkrip = $_POST['jumlah_legalisir_transkrip'];
-    $ekspedisi_pengiriman = isset($_POST['ekspedisi_pengiriman']) ? $_POST['ekspedisi_pengiriman'] : null; // Handle null value
+    $ekspedisi = isset($_POST['ekspedisi']) ? $_POST['ekspedisi'] : null;
+    $ekspedisi_harga = isset($_POST['ekspedisi_harga']) ? $_POST['ekspedisi_harga'] : 0;
     $total_harga = $_POST['total_harga'];
-    $id_status = 1; // Default status, misalnya "Menunggu Validasi"
+    $bukti_pembayaran = addslashes(file_get_contents($_FILES['bukti_pembayaran']['tmp_name']));
+    $id_status = 1; // Status awal adalah "Menunggu Validasi"
 
-    // Upload Scan Ijazah
-    $ijazah = file_get_contents($_FILES['ijazah']['tmp_name']);
-    // Upload Scan Transkrip
-    $transkrip = file_get_contents($_FILES['transkrip']['tmp_name']);
-    // Upload Bukti Pembayaran
-    $bukti_pembayaran = file_get_contents($_FILES['bukti_pembayaran']['tmp_name']);
+    $query = "INSERT INTO Pengajuan (id_user, npm, nama, tahun_lulus, email, scan_ijazah, scan_transkrip, metode_pengambilan, alamat_pengiriman, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, ekspedisi, ekspedisi_harga, total_harga, bukti_pembayaran, id_status) 
+              VALUES ('$id_user', '$npm', '$nama', '$tahun_lulus', '$email', '$scan_ijazah', '$scan_transkrip', '$metode_pengambilan', '$alamat', '$jumlah_legalisir_ijazah', '$jumlah_legalisir_transkrip', '$ekspedisi', '$ekspedisi_harga', '$total_harga', '$bukti_pembayaran', '$id_status')";
 
-    $stmt = $conn->prepare("INSERT INTO Pengajuan (id_user, npm, nama, tahun_lulus, email, alamat_pengiriman, scan_ijazah, scan_transkrip, metode_pengambilan, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, ekspedisi_pengiriman, total_harga, bukti_pembayaran, id_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("isssssbbsiisibi", $_SESSION['id_user'], $npm, $nama, $tahun_lulus, $email, $alamat_pengiriman, $ijazah, $transkrip, $metode_pengambilan, $jumlah_legalisir_ijazah, $jumlah_legalisir_transkrip, $ekspedisi_pengiriman, $total_harga, $bukti_pembayaran, $id_status);
-
-    if ($stmt->execute()) {
-        echo "Pengajuan berhasil diajukan.";
+    if (mysqli_query($conn, $query)) {
+        $_SESSION['alert_message'] = "Pengajuan berhasil dikirim.";
+        header("Location: ../pages/form_pengajuan.php");
     } else {
-        echo "Terjadi kesalahan: " . $stmt->error;
+        echo "Error: " . mysqli_error($conn);
+        header("Location: ../pages/form_pengajuan.php");
     }
-    
-    $stmt->close();
-    $conn->close();
 
+    mysqli_close($conn);
 }
-

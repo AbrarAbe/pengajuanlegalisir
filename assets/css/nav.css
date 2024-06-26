@@ -35,5 +35,5 @@
 
 .bg-nav {
   background-color: hsla(0, 0%, 0%, 0.3) !important;
-  backdrop-filter: saturate(300%) blur(25px);
+  backdrop-filter: saturate(0%) blur(25px);
 }
