@@ -18,7 +18,8 @@ if ($row = mysqli_fetch_assoc($result)) {
     header('Content-Disposition: inline; filename="'.$type.'.pdf"');
     echo $row[$type];
 } else {
-    echo "Dokumen tidak ditemukan.";
+    $_SESSION['warning_message'] = "Dokumen tidak ditemukan";
+    header("Location: ../pages/detail_pengajuan.php");
 }
 
 mysqli_close($conn);

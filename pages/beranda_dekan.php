@@ -7,6 +7,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'dekan') {
 
 $navbarFile = '';
 $headFile = '../components/head.html';
+$alertFile = '../components/alert.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -44,6 +45,7 @@ if (isset($_SESSION['role'])) {
     <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
         <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
         <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -1"></section>
+        <?php @include ($alertFile); ?>
         <section class="container bg-transparent aria-hidden="true">
             <article>
                 <iframe src="beranda.php" name="frmmenu"></iframe>

@@ -9,6 +9,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
 
 $navbarFile = '';
 $headFile = '../components/head.html';
+$alertFile = '../components/alert.html';
 $tableFile = '../components/datatables.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
@@ -55,6 +56,7 @@ $result = mysqli_query($conn, $query);
     <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
         <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+        <?php @include ($alertFile); ?>
         <section class="card bg-glass d-flex mb-4 py-5">
             <section class="card-body py-1 px-md-4">
                 <header class="form-outline px-3 mb-3">
@@ -63,35 +65,38 @@ $result = mysqli_query($conn, $query);
                 </header>
             </section>
             <section class="card-body py-1">
-                <article class="table-responsive px-4">
-                    <article class="data_table">
-                        <table id="table-p" class="table display table-custom table-hover table-bordered">
-                            <thead class="table-dark">
+                <article class="data_table px-4">
+                    <table id="table-s" class="table display table-custom table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th width="5%">ID</th>
+                                <th>Nama</th>
+                                <th>Metode Pengambilan</th>
+                                <th>Total Harga</th>
+                                <th>Status</th>
+                                <th width="20%">Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
-                                    <th style="width:5%;">ID</th>
-                                    <th>Nama</th>
-                                    <th>Status</th>
-                                    <th>Detail</th>
+                                    <td><?php echo $row['id_pengajuan']; ?></td>
+                                    <td><?php echo $row['nama']; ?></td>
+                                    <td><?php echo $row['metode_pengambilan']; ?></td>
+                                    <td><?php echo $row['total_harga']; ?></td>
+                                    <td><?php echo $row['keterangan']; ?></td></td>
+                                    <td>
+                                        <article class="d-grid gap-2">
+                                            <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
+                                                id="detail" class="button-2">Lihat Detail
+                                            </a>
+                                        </article>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                                    <tr>
-                                        <td><?php echo $row['id_pengajuan']; ?></td>
-                                        <td><?php echo $row['nama']; ?></td>
-                                        <td><?php echo $row['keterangan']; ?></td>
-                                        <td>
-                                            <article class="d-grid gap-2">
-                                                <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                    id="detail" class="button-2">Lihat Detail
-                                                </a>
-                                            </article>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </article>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </article>
             </section>
             <article class="mx-4 my-4 px-3">
                 <a href="beranda_alumni.php" class="button-3">Kembali ke Beranda</a>

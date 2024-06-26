@@ -22,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../pages/beranda_dekan.php");
         }
     } else {
-        $_SESSION['error_message'] = "Username atau password salah.";
-        header("Location: ../pages/login_alumni.php");
-        exit();
+        $_SESSION['warning_message'] = "Username atau password salah.";
+        header("Location: ../pages/login_admin.php");
     }
+    $stmt->close();
 }
+$conn->close();

@@ -1,40 +1,20 @@
 <?php
 session_start();
-include 'db.php'; // File ini harus memiliki koneksi database Anda
+include '../config.php'; // File ini harus memiliki koneksi database Anda
 
 if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
-    header("Location: login_admin.php");
+    header("Location: ../pages/login_admin.php");
     exit;
 }
 
-if (isset($_GET['id']) && isset($_GET['status'])) {
-    $id_pengajuan = $_GET['id'];
-    $status = $_GET['status'];
+$id_pengajuan = $_GET['id'];
 
-    // Tentukan id_status berdasarkan status yang diterima
-    $id_status = 0;
-    if ($status == 'selesai') {
-        $id_status = 5; // id_status untuk 'Selesai'
-    }
+$query = "UPDATE Pengajuan SET id_status = 5 WHERE id_pengajuan = '$id_pengajuan'"; // Status 5 = "Selesai"
 
-    // Update status pengajuan
-    $query = "UPDATE Pengajuan SET id_status = ? WHERE id_pengajuan = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ii", $id_status, $id_pengajuan);
-    if ($stmt->execute()) {
-        echo "Status pengajuan berhasil diperbarui.";
-    } else {
-        echo "Gagal memperbarui status pengajuan.";
-    }
-
-    $stmt->close();
+if (mysqli_query($conn, $query)) {
+        $_SESSION['alert_message'] = "Berhasil memperbarui status";
+        header("Location: ../pages/list_pengajuan_disahkan.php");
 } else {
-    echo "ID pengajuan atau status tidak valid.";
+        $_SESSION['warning_message'] = "Gagal memperbarui status";
+        header("Location: ../pages/list_pengajuan_disahkan.php");
 }
-
-mysqli_close($conn);
-
-// Redirect kembali ke halaman daftar pengajuan
-header("Location: list_pengajuan_disahkan.php");
-exit;
-?>

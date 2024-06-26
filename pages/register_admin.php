@@ -11,6 +11,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 
 $navbarFile = '';
 $headFile = '../components/head.html';
+$alertFile = '../components/alert.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -70,7 +71,7 @@ if (isset($_SESSION['role'])) {
             <aside class="col-lg-6 mb-5 mb-lg-0 position-relative my-4">
                 <article class="card bg-glass">
                     <article class="card-body px-4 py-5 px-md-5">
-                        <form action="" method="post">
+                        <form action="../proses/proses_register_admin.php" method="post">
                             <header class="form-outline mb-4">
                                 <label class="form-label form-label-white letter-spacing d-flex"><span
                                         style="font-size: 1.5rem;">Daftarkan akun anda</span></label>
@@ -90,7 +91,7 @@ if (isset($_SESSION['role'])) {
                                 <input type="email" id="email" name="email" class="form-control input-glass" required />
                             </article>
                             <!-- Role input -->
-                            <article class="form-outline mb-2 d-flex">
+                            <article class="form-outline mb-2 d-flex gap-2">
                                 <input type="radio" class="btn-check" name="role" id="option1" autocomplete="off"
                                     checked value="staf">
                                 <label class="btn form-label-white letter-spacing" style="color:white;"
@@ -124,43 +125,7 @@ if (isset($_SESSION['role'])) {
                                     class="button-3 mb-4">Daftar</button>
                             </article>
 
-                            <?php
-                            include '../config.php';
-
-                            if (isset($_POST['submit'])) {
-                                $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-                                $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-                                $role = filter_var($_POST['role'], FILTER_SANITIZE_STRING);
-                                $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
-                            
-                                $sql = "SELECT * FROM User WHERE email = ?";
-                                if ($stmt = $conn->prepare($sql)) {
-                                    $stmt->bind_param("s", $email);
-                                    $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    if ($result->num_rows > 0) {
-                                        echo '<article class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Email sudah ada !</strong> <a href="login_admin.php">Masuk</a> atau gunakan email lain.
-                                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                    </article>';
-                                    } else {
-                                        $stmt = $conn->prepare("INSERT INTO User (username, email, password, role) VALUES (?, ?, ?, ?)");
-                                        $stmt->bind_param("ssss", $username, $email, $password, $role);
-                                        if ($stmt->execute()) {
-                                            echo '<article class="alert alert-success alert-dismissible fade show" role="alert">
-                                                          <strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat <a href="../pages/login_admin.php">login</a> sekarang.
-                                                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </article>';
-                                        } else {
-                                            echo '<article class="alert alert-warning alert-dismissible fade show" role="alert">
-                                                          <strong>Gagal !</strong> Gagal daftar akun. Harap ulangi lagi.
-                                                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                        </article>';
-                                        }
-                                    }
-                                }
-                                $stmt->close();
-                            }
-                            ?>
+                            <?php @include ($alertFile); ?>
 
                         </form>
                     </article>

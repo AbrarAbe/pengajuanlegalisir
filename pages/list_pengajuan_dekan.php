@@ -9,6 +9,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'dekan') {
 
 $navbarFile = '';
 $headFile = '../components/head.html';
+$alertFile = '../components/alert.php';
 $tableFile = '../components/datatables.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
@@ -57,48 +58,52 @@ $result = mysqli_query($conn, $query);
     <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
         <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
-        <section class="card bg-glass d-flex mb-4 px-3 py-5">
-            <section class="card-body py-1 px-md-5">
-                <header class="form-outline mb-3">
-                    <label class="form-label form-label-white d-flex">
+        <?php @include ($alertFile); ?>
+        <section class="card bg-glass d-flex mb-4 py-5">
+            <section class="card-body py-1 px-md-4">
+                <header class="form-outline px-3">
+                    <label class="form-label d-flex">
                         <span style="font-size: 1.5rem;">Daftar Pengajuan legalisir</span></label>
                 </header>
-                <article class="table-responsive">
-                    <table class="table table-bordered border-primary table-custom input-glass table-hover">
-                        <thead>
+            </section>
+            <section class="card-body py-1">
+                <article class="data_table px-4">
+                    <table id="table-s" class="table display table-custom table-hover table-bordered">
+                        <thead class="table-dark">
                             <tr>
-                                <th>ID</th>
+                                <th width="5%">ID</th>
                                 <th>Nama</th>
+                                <th>NPM</th>
+                                <th>Metode Pengambilan</th>
                                 <th>Status</th>
-                                <th>Detail</th>
+                                <th width="15%">Detail</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider table-divider-color">
+                        <tbody>
                             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
                                     <td><?php echo $row['id_pengajuan']; ?></td>
                                     <td><?php echo $row['nama']; ?></td>
+                                    <td><?php echo $row['npm']; ?></td>
+                                    <td><?php echo $row['metode_pengambilan']; ?></td>
                                     <td><?php echo $row['keterangan']; ?></td>
                                     <td>
-                                        <article class="d-grid gap-2"><a
-                                                href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                id="detail" target="frmmenu" class="btn btn-outline-info btn-block"
-                                                onclick="document.getElementById('frmmenu').style.display='block'">Lihat
-                                                Detail</a></article>
+                                        <article>
+                                            <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
+                                                id="detail" class="button-2">Lihat
+                                                Detail
+                                            </a>
+                                        </article>
                                     </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </article>
-                <article>
-                    <button class="button-34" onclick="window.location.href='beranda_dekan.php';">Kembali ke
-                        Beranda</button>
+                <article class="py-3 px-4">
+                    <a href="beranda_dekan.php" class="button-3">Kembali ke Beranda</a>
                 </article>
             </section>
-        </section>
-        <section class="bg-transparent" id="frmmenu" style="display: none">
-            <iframe src="" name="frmmenu" width="100%" height="700vh"></iframe>
         </section>
     </main>
 </body>

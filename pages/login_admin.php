@@ -11,6 +11,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 
 $navbarFile = '';
 $headFile = '../components/head.html';
+$alertFile = '../components/alert.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -96,12 +97,7 @@ if (isset($_SESSION['role'])) {
                             <button type="submit" name="submit" class="button-3 mb-4">Login</button>
                         </article>
 
-                        <?php
-                        if (isset($_SESSION['error_message'])) {
-                            echo '<article class="alert alert-danger alert-dismissible fade show" role="alert">' . $_SESSION['error_message'] . '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">' . '</button>' . '</div>';
-                            unset($_SESSION['error_message']);
-                        }
-                        ?>
+                        <?php @include ($alertFile); ?>
 
                     </form>
                 </aside>

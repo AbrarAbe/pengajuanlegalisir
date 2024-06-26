@@ -2,9 +2,6 @@
 session_start();
 include '../config.php'; // File ini harus memiliki koneksi database Anda
 
-session_start();
-include '../config.php'; // File ini harus memiliki koneksi database Anda
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_user = $_SESSION['id_user']; // Ambil ID pengguna dari sesi
     $npm = $_POST['npm'];
@@ -27,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               VALUES ('$id_user', '$npm', '$nama', '$tahun_lulus', '$email', '$scan_ijazah', '$scan_transkrip', '$metode_pengambilan', '$alamat', '$jumlah_legalisir_ijazah', '$jumlah_legalisir_transkrip', '$ekspedisi', '$ekspedisi_harga', '$total_harga', '$bukti_pembayaran', '$id_status')";
 
     if (mysqli_query($conn, $query)) {
-        $_SESSION['alert_message'] = "Pengajuan berhasil dikirim.";
+        $_SESSION['info_message'] = "Pengajuan berhasil dikirim.";
         header("Location: ../pages/form_pengajuan.php");
     } else {
-        echo "Error: " . mysqli_error($conn);
+        $_SESSION['error_message'] = "Pengajuan gagal dikirim.";
         header("Location: ../pages/form_pengajuan.php");
     }
 

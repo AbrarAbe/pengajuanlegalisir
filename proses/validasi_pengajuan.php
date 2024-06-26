@@ -12,12 +12,9 @@ $id_pengajuan = $_GET['id'];
 $query = "UPDATE Pengajuan SET id_status = 2 WHERE id_pengajuan = '$id_pengajuan'"; // Status 2 = "Divalidasi"
 
 if (mysqli_query($conn, $query)) {
-    echo "Pengajuan berhasil divalidasi.";
+    $_SESSION['alert_message'] = "Pengajuan berhasil divalidasi.";
+    header("Location: ../pages/list_pengajuan_staf.php");
 } else {
-    echo "Error: " . mysqli_error($conn);
+    $_SESSION['warning_message'] = "Pengajuan gagal disahkan.";
+    header("Location: ../pages/list_pengajuan_staf.php");
 }
-
-mysqli_close($conn);
-header("Location: ../pages/list_pengajuan_staf.php");
-exit;
-?>

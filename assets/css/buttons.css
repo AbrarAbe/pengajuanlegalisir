@@ -48,7 +48,7 @@
 }
 
 .button-1:not(:disabled) {
-  background-color: #4dca27;
+  background-color: #44ac24;
 }
 
 .button-1:focus {
@@ -58,9 +58,10 @@
 .button-1:active {
   box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
   background: #e62c73;
+  transform: translateY(0px);
 }
 
-/* Blue Purple*/
+/* Blue Purple untuk button action login dll*/
 
 .button-2 {
   align-items: center;
@@ -75,7 +76,7 @@
   font-family: Roboto,sans-serif;
   font-size: .875rem;
   font-weight: 500;
-  min-height: 25px;
+  min-height: 20px;
   max-height: 30px;
   justify-content: center;
   letter-spacing: .0892857em;
@@ -120,6 +121,7 @@
 .button-2:active {
   box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
   background: #6a00ff;
+  transform: translateY(0px);
 }
 
 /* Blue */
@@ -140,7 +142,7 @@
   justify-content: center;
   letter-spacing: .0892857em;
   line-height: normal;
-  min-width: 64px;
+  min-width: px;
   outline: none;
   overflow: visible;
   padding: 0 16px;
@@ -180,6 +182,7 @@
 .button-3:active {
   box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
   background: #22aeffea;
+  transform: translateY(0px);
 }
 
 /* Yellow */
@@ -232,7 +235,7 @@
 }
 
 .button-4:not(:disabled) {
-  background-color: rgb(16, 187, 136);
+  background-color: rgb(158, 155, 0);
 }
 
 .button-4:focus {
@@ -242,6 +245,7 @@
 .button-4:active {
   box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
   background: #ffd900;
+  transform: translateY(0px);
 }
 
 /* Red */
@@ -303,42 +307,112 @@
 .button-5:active {
   box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
   background: #ff5c5c;
+  transform: translateY(0px);
 }
 
+/* Purple */
 
-.button-29 {
+.button-6 {
   align-items: center;
   appearance: none;
-  background-image: radial-gradient(100% 100% at 100% 0, #b93f3f 0, #db0000 100%);
-  border: 0;
-  border-radius: 6px;
-  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  border-radius: 4px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: flex;
-  font-family: "JetBrains Mono",monospace;
-  min-height: 30px;
+  font-family: Roboto,sans-serif;
+  font-size: .875rem;
+  font-weight: 500;
+  min-height: 25px;
   max-height: 40px;
   justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  margin-left: 5px;
-  margin-right: 5px;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  min-width: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 10px;
   position: relative;
+  text-align: center;
   text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
+  text-transform: uppercase;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow,transform;
+  vertical-align: middle;
+  will-change: transform,opacity;
+}
+
+.button-6:hover {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+  transform: translateY(-5px);
+}
+
+.button-6:disabled {
+  background-color: rgba(0, 0, 0, .12);
+  box-shadow: rgba(0, 0, 0, .2) 0 0 0 0, rgba(0, 0, 0, .14) 0 0 0 0, rgba(0, 0, 0, .12) 0 0 0 0;
+  color: rgba(0, 0, 0, .37);
+  cursor: default;
+  pointer-events: none;
+}
+
+.button-6:not(:disabled) {
+  background-color: rgb(114, 0, 221);
+}
+
+.button-6:focus {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+}
+
+.button-6:active {
+  box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
+  background: #0058dd;
+  transform: translateY(0px);
+}
+
+/* Red Variant*/
+.button-29 {
+  align-items: center;
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #b93f3f 0, #db0000 100%);
+  border-radius: 4px;
+  border-style: none;
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Roboto,sans-serif;
+  font-size: .875rem;
+  font-weight: 500;
+  min-height: 30px;
+  max-height: 40px;
+  justify-content: center;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  outline: none;
+  overflow: visible;
+  padding: 0px;
+  margin: 0px 10px 0px 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform,opacity;
 }
 
 .button-29:active {
   box-shadow: #3c4fe0 0 3px 7px inset;
-  transform: translateY(2px);
+  transform: translateY(0px);
 }
 
 .button-29:focus {
@@ -353,19 +427,4 @@
 
 .nf-fa-trash:hover {
   color: red;
-}
-
-.button-40:active {
-  box-shadow: #3c4fe0 0 3px 7px inset;
-  transform: translateY(2px);
-}
-
-.button-40:focus {
-  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-}
-
-.button-40:hover {
-  background-image: radial-gradient(100% 100% at 100% 0, #ff7878 0, #ff5c5c 100%);
-  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
-  transform: translateY(-2px);
 }

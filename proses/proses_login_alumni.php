@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = $user['role'];
         header("Location: ../pages/beranda_alumni.php");
     } else {
-        $_SESSION['error_message'] = "Username atau password salah.";
+        $_SESSION['warning_message'] = "Username atau password salah.";
         header("Location: ../pages/login_alumni.php");
         exit();
     }
+    $stmt->close();
 }
+$conn->close();

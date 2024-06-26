@@ -7,6 +7,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
 
 $navbarFile = '';
 $headFile = '../components/head.html';
+$alertFile = '../components/alert.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -46,12 +47,7 @@ if (isset($_SESSION['role'])) {
     <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
         <section id="radius-shape-3" class="position-absolute shadow-5-strong"></section>
-        <?php
-        if (isset($_SESSION['alert_message'])) {
-            echo '<article class="alert alert-success alert-dismissible fade show" role="alert">' . $_SESSION['alert_message'] . '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">' . '</button>' . '</article>';
-            unset($_SESSION['alert_message']);
-        }
-        ?>
+        <?php @include ($alertFile); ?>
         <section class="card bg-glass d-flex mb-3 px-3 py-5">
             <section class="card-body py-1 px-md-5">
                 <header class="form-outline mb-4">
@@ -153,7 +149,7 @@ if (isset($_SESSION['role'])) {
                             name="bukti_pembayaran" accept=".jpg, .jpeg, .png, .hevc" required>
                     </article>
                     <article class="d-grid">
-                        <button type="submit" name="submit" class="button-2 my-2">Submit</button>
+                        <button type="submit" name="submit" class="button-3 my-2">Submit</button>
                     </article>
                 </form>
             </section>
