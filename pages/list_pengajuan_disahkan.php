@@ -11,6 +11,7 @@ $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $tableFile = '../components/datatables.html';
+$footerFile = '../components/footer.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -54,16 +55,14 @@ $result2 = mysqli_query($conn, $query2);
     <title>Daftar Pengajuan</title>
 </head>
 
-<body class="bg-custom">
+<body class="bg-custom-blue">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+    <main class="container justify-content-center align-items-center py-5 my-5">
         <?php @include ($alertFile); ?>
         <!-- Tabel Legalisir yang Belum Selesai -->
         <section class="card bg-glass d-flex mb-4 py-4">
@@ -76,11 +75,12 @@ $result2 = mysqli_query($conn, $query2);
             <section class="card-body py-1">
                 <article class="data_table px-4">
                     <table id="table-s4" class="table display table-custom table-hover table-bordered">
-                        <thead class="table-dark">
+                        <thead class="thead-glass">
                             <tr>
                                 <th width="5%">ID</th>
-                                <th>Nama</th>
                                 <th>NPM</th>
+                                <th>Nama</th>
+                                <th>Prodi</th>
                                 <th>Metode Pengambilan</th>
                                 <th>Status</th>
                                 <th width="15%">Detail</th>
@@ -90,8 +90,9 @@ $result2 = mysqli_query($conn, $query2);
                             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
                                     <td><?php echo $row['id_pengajuan']; ?></td>
-                                    <td><?php echo $row['nama']; ?></td>
                                     <td><?php echo $row['npm']; ?></td>
+                                    <td><?php echo $row['nama']; ?></td>
+                                    <td><?php echo $row['prodi']; ?></td>
                                     <td><?php echo $row['metode_pengambilan']; ?></td>
                                     <td><?php echo $row['keterangan']; ?></td>
                                     <td>
@@ -122,12 +123,13 @@ $result2 = mysqli_query($conn, $query2);
             </section>
             <section class="card-body py-1">
                 <article class="data_table px-4">
-                    <table id="table-s-p" class="table display table-custom table-hover table-bordered">
-                        <thead class="table-dark">
+                    <table id="table-p" class="table display nowrap table-custom table-hover table-bordered">
+                        <thead class="thead-glass">
                             <tr>
                                 <th width="5%">ID</th>
-                                <th>Nama</th>
                                 <th>NPM</th>
+                                <th>Nama</th>
+                                <th>Prodi</th>
                                 <th>Metode Pengambilan</th>
                                 <th>Status</th>
                                 <th width="15%">Detail</th>
@@ -137,8 +139,9 @@ $result2 = mysqli_query($conn, $query2);
                             <?php while ($row2 = mysqli_fetch_assoc($result2)) { ?>
                                 <tr>
                                     <td><?php echo $row2['id_pengajuan']; ?></td>
-                                    <td><?php echo $row2['nama']; ?></td>
                                     <td><?php echo $row2['npm']; ?></td>
+                                    <td><?php echo $row2['nama']; ?></td>
+                                    <td><?php echo $row2['prodi']; ?></td>
                                     <td><?php echo $row2['metode_pengambilan']; ?></td>
                                     <td><?php echo $row2['keterangan']; ?></td>
                                     <td>
@@ -157,6 +160,9 @@ $result2 = mysqli_query($conn, $query2);
             </section>
         </section>
     </main>
+    <!-- footer -->
+    <?php @include ($footerFile); ?>
+    <!-- footer -->
 </body>
 
 </html>

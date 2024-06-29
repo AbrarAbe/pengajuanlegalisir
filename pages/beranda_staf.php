@@ -8,6 +8,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$footerFile = '../components/footer.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -37,24 +38,34 @@ if (isset($_SESSION['role'])) {
     <title>Beranda Staf</title>
 </head>
 
-<body class="background-radial-gradient">
+<body class="bg-custom-blue">
     <main>
         <header>
             <!-- Navbar -->
             <?php @include ($navbarFile); ?>
         </header>
-
-        <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-            <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-            <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -1"></section>
-            <?php @include ($alertFile); ?>
-            <section class="container bg-transparent aria-hidden="true">
-                <article>
-                    <iframe src="beranda.php" name="frmmenu"></iframe>
-                </article>
-            </section>
-        </main>
+    <!-- Section: Design Block -->
+    <main class="container justify-content-center align-items-center d-flex vh-100 py-5">
+        <section class="row gx-lg-5 justify-content-center align-items-center">
+            <article class="container px-5 mb-lg-0 py-5">
+                <h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
+            </article>
+        </section>
+        <!--<section class="col g-3 d-flex align-items-center justify-content-center px-5 gap-3">
+            <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
+                placeholder
+            </article>
+            <article class="col-sm button-card bg-glass ol-sm justify-content-center align-items-center d-flex">
+                placeholder
+            </article>
+            <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
+                placeholder
+            </article>
+        </section>-->
     </main>
+    <!-- footer -->
+    <?php @include ($footerFile); ?>
+    <!-- footer -->
 </body>
 
 </html>

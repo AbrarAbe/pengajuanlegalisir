@@ -8,4 +8,3 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] == true) {
 } else {
     header('Location: ../index.php');
 }
-?>

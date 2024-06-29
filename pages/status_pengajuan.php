@@ -10,6 +10,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$footerFile = '../components/footer.html';
 $tableFile = '../components/datatables.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
@@ -46,28 +47,26 @@ $result = mysqli_query($conn, $query);
     <title>Daftar Pengajuan</title>
 </head>
 
-<body class="bg-custom">
+<body class="bg-custom-blue">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+    <main class="container justify-content-center align-items-center py-5 my-5">
         <?php @include ($alertFile); ?>
         <section class="card bg-glass d-flex mb-4 py-5">
             <section class="card-body py-1 px-md-4">
-                <header class="form-outline px-3 mb-3">
+                <header class="form-outline px-4">
                     <label class="form-label">
                         <span style="font-size: 1.5rem;">Status Pengajuan legalisir</span></label>
                 </header>
             </section>
-            <section class="card-body py-1">
+            <section class="card-body py1 px-3">
                 <article class="data_table px-4">
-                    <table id="table-s" class="table display table-custom table-hover table-bordered">
-                        <thead class="table-dark">
+                    <table id="table-s3" class="table display table-custom table-hover table-bordered">
+                        <thead class="thead-glass">
                             <tr>
                                 <th width="5%">ID</th>
                                 <th>Nama</th>
@@ -84,7 +83,8 @@ $result = mysqli_query($conn, $query);
                                     <td><?php echo $row['nama']; ?></td>
                                     <td><?php echo $row['metode_pengambilan']; ?></td>
                                     <td><?php echo $row['total_harga']; ?></td>
-                                    <td><?php echo $row['keterangan']; ?></td></td>
+                                    <td><?php echo $row['keterangan']; ?></td>
+                                    </td>
                                     <td>
                                         <article class="d-grid gap-2">
                                             <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
@@ -103,6 +103,9 @@ $result = mysqli_query($conn, $query);
             </article>
         </section>
     </main>
+    <!-- Footer -->
+    <?php @include ($footerFile); ?>
+    <!-- Footer -->
 </body>
 
 </html>

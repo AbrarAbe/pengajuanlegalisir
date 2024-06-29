@@ -12,6 +12,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$footerFile = '../components/footer.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -41,24 +42,22 @@ if (isset($_SESSION['role'])) {
     <title>Registrasi Alumni</title>
 </head>
 
-<body class="background-radial-gradient">
+<body class="bg-custom-green">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -1"></section>
-        <section class="row gx-lg-5 align-items-center">
-            <article class="col-lg-6 mb-4 mb-lg-0">
+    <main class="container d-flex justify-content-center align-items-center vh-100 py-5 px-5">
+        <section class="row gx-lg-5 d-flex justify-content-center align-items-center py-5">
+            <article class="col-lg-6 mb-2 mb-lg-0 my-3">
                 <header>
                     <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
                         Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
                     </h1>
                 </header>
-                <p class="opacity-70" style="color: hsl(218, 81%, 85%)">
+                <p>
                     Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
                     yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
                     Dapatkan legalisir anda <span style="color: hsl(218, 85%, 62%)">kapanpun dan dimanapun</span>
@@ -68,8 +67,8 @@ if (isset($_SESSION['role'])) {
             </article>
 
             <!--Register Card-->
-            <aside class="col-lg-6 mb-5 mb-lg-0 position-relative my-4">
-                <article class="card bg-glass">
+            <aside class="col-lg-6 mb-5 mb-lg-0 my-4">
+                <article class="custom-card bg-glass">
                     <article class="card-body px-4 py-5 px-md-5">
                         <form action="../proses/proses_register_alumni.php" method="post">
                             <header class="form-outline mb-4">
@@ -80,29 +79,43 @@ if (isset($_SESSION['role'])) {
                             <article class="form-outline mb-2">
                                 <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
                                     :</label>
-                                <input type="username" id="username" name="username" class="form-control input-glass"
-                                    required />
+                                <article class="input-group">
+                                    <span class="input-group-text input-glass" id="iconuser"><i
+                                            class="nf nf-oct-person_fill"></i></span>
+                                    <input type="text" id="username" name="username" class="form-control input-glass"
+                                        required />
+                                </article>
                             </article>
                             <!-- Email input -->
                             <article class="form-outline mb-2">
                                 <label class="form-label form-label-white letter-spacing d-flex" for="username">Email
                                     :</label>
-                                <input type="email" id="email" name="email" class="form-control input-glass" required />
+                                <article class="input-group">
+                                    <span class="input-group-text input-glass" id="iconemail">@</span>
+                                    <input type="email" id="email" name="email" class="form-control input-glass"
+                                        required />
+                                </article>
                             </article>
                             <!-- Password input -->
-                            <article class="form-outline">
+                            <article class="form-outline mb-2">
                                 <label class="form-label form-label-white letter-spacing d-flex" for="password">Password
                                     :</label>
-                                <input type="password" id="password" name="password" class="form-control input-glass"
-                                    aria-describedby="passwordHelpBlock" required>
-                            </article>
-                            <article id="passwordHelpBlock" class="form-text mb-4 d-flex" style="color:whitesmoke;">
-                                Must be 8-20 characters long.
+                                <article class="input-group">
+                                    <input type="password" id="password" name="password"
+                                        class="form-control input-glass" aria-describedby="passwordHelpBlock" required>
+                                    <a class="input-group-text input-glass" style="text-decoration:none"
+                                        onclick="apala()">
+                                        <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
+                                    </a>
+                                </article>
+                                <article id="passwordHelpBlock" class="col-auto form-text mb-4 d-flex"
+                                    style="color:whitesmoke;">
+                                    Must be 8-20 characters long.
+                                </article>
                             </article>
                             <!-- Submit button -->
                             <article class="d-grid gap-2">
-                                <button type="submit" name="submit"
-                                    class="button-3 mb-4">Register</button>
+                                <button type="submit" name="submit" class="button-register2 mb-4">Register</button>
                             </article>
 
                             <?php @include ($alertFile); ?>
@@ -113,6 +126,30 @@ if (isset($_SESSION['role'])) {
             </aside>
         </section>
     </main>
+    <!-- Footer -->
+    <footer class="container-fluid bg-glass position-absolute top-100 transform-bottom text-center py-4">
+        <!-- Grid container -->
+        <div class="container">
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                    distinctio earum repellat quaerat voluptatibus placeat nam,
+                    commodi optio pariatur est quia magnam eum harum corrupti dicta,
+                    aliquam sequi voluptate quas.
+                </p>
+            </section>
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                © 2024 Copyright:
+                <a class="text-light" href="https://ft.umb.ac.id/">Fakultas Teknik UMB</a>
+            </div>
+            <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </body>
 
 </html>

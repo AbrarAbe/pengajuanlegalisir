@@ -14,16 +14,16 @@ if (isset($_POST['submit'])) {
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             $_SESSION['warning_message'] = "<strong>Email sudah ada !</strong> <a href='register_admin.php'>Masuk</a> atau gunakan email lain.";
-            header("Location: ../pages/register_admin.php");
+            header("Location: ../pages/register_alumni.php");
         } else {
             $stmt = $conn->prepare("INSERT INTO User (username, email, password, role) VALUES (?, ?, ?, 'alumni')");
             $stmt->bind_param("sss", $username, $email, $password);
             if ($stmt->execute()) {
-                $_SESSION['info_message'] = "<strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat <a href='../pages/register_admin.php'>login</a> sekarang.";
-                header("Location: ../pages/register_admin.php");
+                $_SESSION['info_message'] = "<strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat login sekarang.";
+                header("Location: ../pages/login_alumni.php");
             } else {
                 $_SESSION['error_message'] = "<strong>Gagal !</strong> Gagal daftar akun. Harap ulangi lagi.";
-                header("Location: ../pages/register_admin.php");
+                header("Location: ../pages/register_alumni.php");
             }
         }
     }

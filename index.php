@@ -8,85 +8,81 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
     header('Location: pages/beranda_dekan.php');
     exit;
 }
+
+$navbarFile = 'components/navbar_index.html';
+$headFile = 'components/head_index.html';
+$alertFile = 'components/alert.html';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/buttons.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <?php @include ($headFile); ?>
     <title>E-Legalisir</title>
 </head>
 
-<body class="background-radial-gradient">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+<body class="bg-custom-green">
     <header>
-
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pages/register_alumni.php">Register</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Login
-                            </a>
-                            <ul class="dropdown-menu bg-nav">
-                                <li><a class="dropdown-item" href="pages/login_alumni.php">Alumni</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="pages/login_admin.php">Admin</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -1"></section>
-        <article class="mb-5 mb-lg-0">
-            <header>
-                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                    Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
-                </h1>
-            </header>
-            <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
-                yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
-                Dapatkan legalisir anda <span style="color: hsl(218, 85%, 62%)">kapanpun dan dimanapun</span>
-                tanpa keluar rumah!
-                <br />Tertarik untuk mencoba? Yuk segera <a style="color: hsl(0, 85%, 62%)"
-                    href="pages/register_alumni.php">daftar</a>!
-            </p>
-            <div class="card bg-glass"></div>
-        </article>
+    <main class="container position-absolute top-50 start-50 translate-middle">
+        <section class="row gx-lg-5 align-items-center">
+            <article class="container px-5 mb-lg-0 py-5">
+                <header>
+                    <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        Pesan Legalisir ijazah anda <span style="color: hsl(218, 43%, 45%);">dari rumah</span>
+                    </h1>
+                </header>
+                <p>
+                    Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
+                    yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
+                    Dapatkan legalisir anda kapanpun dan dimanapun <span style="color: hsl(218, 49%, 35%)">tanpa keluar
+                        rumah!</span>
+                    <br />Tertarik untuk mencoba? Yuk segera daftar!
+                </p>
+            </article>
+        </section>
+        <!--<section class="col g-3 d-flex align-items-center justify-content-center px-5 gap-3">
+            <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
+                placeholder
+            </article>
+            <article class="col-sm button-card bg-glass ol-sm justify-content-center align-items-center d-flex">
+                placeholder
+            </article>
+            <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
+                placeholder
+            </article>
+        </section>-->
     </main>
+    <!-- Footer -->
+    <footer class="container-fluid bg-glass position-absolute top-100 transform-bottom text-center py-4">
+        <!-- Grid container -->
+        <div class="container">
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                    distinctio earum repellat quaerat voluptatibus placeat nam,
+                    commodi optio pariatur est quia magnam eum harum corrupti dicta,
+                    aliquam sequi voluptate quas.
+                </p>
+            </section>
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                © 2024 Copyright:
+                <a class="text-light" href="https://ft.umb.ac.id/">Fakultas Teknik UMB</a>
+            </div>
+            <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </body>
 
 </html>

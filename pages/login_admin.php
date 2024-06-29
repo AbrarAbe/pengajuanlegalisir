@@ -12,6 +12,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$footerFile = '../components/footer.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -41,41 +42,49 @@ if (isset($_SESSION['role'])) {
     <title>Login Admin</title>
 </head>
 
-<body class="background-radial-gradient">
+<body class="bg-custom-green">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 vh-100">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong"></section>
-        <section class="card bg-glass mb-3 px-4 py-5">
-            <article class="col g-0 d-flex align-items-center">
-                <figure class="col-lg-8 d-none d-lg-flex px-2">
-                    <img src="../assets/img/pic2.jpg" alt="Trendy Pants and Shoes"
-                        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 px-4" />
+    <main class="container-fluid d-flex justify-content-center align-items-center vh-100">
+        <section class="custom-card d-flex justify-content-center align-items-center bg-glass mb-3 p-4">
+            <article class="container-fluid g-3 d-flex align-items-center">
+                <figure class="col-6 d-none d-lg-flex justify-content-center">
+                    <img src="../assets/icon/umb.png" alt="Trendy Pants and Shoes"
+                        class="w-75 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 px-2" />
                 </figure>
-                <aside class="card-body py-4 px-md-4">
+                <aside class="card-body d-grid py-4 px-md-4">
                     <form action="../proses/proses_login_admin.php" method="post">
                         <header class="form-outline mb-4">
                             <label class="form-label form-label-white letter-spacing d-flex">
                                 <span style="font-size: 2rem;">Login Admin</span></label>
                         </header>
-                        <!-- USername / Email input -->
+                        <!-- Username / Email input -->
                         <article class="form-outline mb-4">
                             <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
                                 atau
                                 email :</label>
-                            <input type="text" id="username" name="username" class="form-control input-glass"
-                                autofocus />
+                            <article class="input-group">
+                                <span class="input-group-text input-glass" id="iconuser"><i
+                                        class="nf nf-oct-person_fill"></i></span>
+                                <input type="text" id="username" name="username" class="form-control input-glass"
+                                    autofocus />
+                            </article>
                         </article>
                         <!-- Password input -->
                         <article class="form-outline mb-4">
                             <label class="form-label form-label-white letter-spacing d-flex" for="password">Password
                                 :</label>
-                            <input type="password" id="password" name="password" class="form-control input-glass" />
+                            <article class="input-group">
+                                <input type="password" id="password" name="password" class="form-control input-glass"
+                                    aria-describedby="passwordHelpBlock" required>
+                                <a class="input-group-text input-glass" style="text-decoration:none" onclick="apala()">
+                                    <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
+                                </a>
+                            </article>
                         </article>
                         <!-- 2 column grid layout for inline styling -->
                         <article class="row mb-4">
@@ -104,6 +113,9 @@ if (isset($_SESSION['role'])) {
             </article>
         </section>
     </main>
+    <!-- footer -->
+    <?php @include ($footerFile); ?>
+    <!-- footer -->
 </body>
 
 </html>

@@ -3,8 +3,8 @@ session_start();
 include '../config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
     $stmt = $conn->prepare("SELECT * FROM User WHERE (username=? OR email=?) AND (role='staf' OR role='dekan')");
     $stmt->bind_param("ss", $username, $username);

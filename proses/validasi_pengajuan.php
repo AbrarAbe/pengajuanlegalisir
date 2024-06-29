@@ -15,6 +15,6 @@ if (mysqli_query($conn, $query)) {
     $_SESSION['alert_message'] = "Pengajuan berhasil divalidasi.";
     header("Location: ../pages/list_pengajuan_staf.php");
 } else {
-    $_SESSION['warning_message'] = "Pengajuan gagal disahkan.";
+    $_SESSION['warning_message'] = "Pengajuan gagal divalidasi.";
     header("Location: ../pages/list_pengajuan_staf.php");
 }

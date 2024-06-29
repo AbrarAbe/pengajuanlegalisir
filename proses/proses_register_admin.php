@@ -20,8 +20,8 @@ if (isset($_POST['submit'])) {
             $stmt = $conn->prepare("INSERT INTO User (username, email, password, role) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("ssss", $username, $email, $password, $role);
             if ($stmt->execute()) {
-                $_SESSION['info_message'] = "<strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat <a href='../pages/register_admin.php'>login</a> sekarang.";
-                header("Location: ../pages/register_admin.php");
+                $_SESSION['info_message'] = "<strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat login sekarang.";
+                header("Location: ../pages/login_admin.php");
             } else {
                 $_SESSION['error_message'] = "<strong>Gagal !</strong> Gagal daftar akun. Harap ulangi lagi.";
                 header("Location: ../pages/register_admin.php");

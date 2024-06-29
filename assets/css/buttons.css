@@ -3,17 +3,17 @@
 .button-1 {
   align-items: center;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 5px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
-  min-height: 25px;
+  min-height: 40px;
   max-height: 40px;
   justify-content: center;
   letter-spacing: .0892857em;
@@ -21,7 +21,7 @@
   min-width: 64px;
   outline: none;
   overflow: visible;
-  padding: 15px;
+  padding: 10px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -66,7 +66,7 @@
 .button-2 {
   align-items: center;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 5px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
@@ -74,7 +74,7 @@
   cursor: pointer;
   display: inline-flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
   min-height: 20px;
   max-height: 30px;
@@ -128,7 +128,7 @@
 .button-3 {
   align-items: center;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 5px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
@@ -136,7 +136,7 @@
   cursor: pointer;
   display: inline-flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
   height: 36px;
   justify-content: center;
@@ -190,7 +190,7 @@
 .button-4 {
   align-items: center;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 5px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
@@ -198,7 +198,7 @@
   cursor: pointer;
   display: flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
   min-height: 25px;
   max-height: 40px;
@@ -252,7 +252,7 @@
 .button-5 {
   align-items: center;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 5px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
@@ -260,9 +260,9 @@
   cursor: pointer;
   display: flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
-  min-height: 25px;
+  min-height: 40px;
   max-height: 40px;
   justify-content: center;
   letter-spacing: .0892857em;
@@ -315,7 +315,7 @@
 .button-6 {
   align-items: center;
   appearance: none;
-  border-radius: 4px;
+  border-radius: 5px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
   box-sizing: border-box;
@@ -323,7 +323,7 @@
   cursor: pointer;
   display: flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
   min-height: 25px;
   max-height: 40px;
@@ -387,7 +387,7 @@
   cursor: pointer;
   display: inline-flex;
   font-family: Roboto,sans-serif;
-  font-size: .875rem;
+  font-size: .775rem;
   font-weight: 500;
   min-height: 30px;
   max-height: 40px;
@@ -423,6 +423,189 @@
   background-image: radial-gradient(100% 100% at 100% 0, #ff7878 0, #ff5c5c 100%);
   box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
   transform: translateY(-2px);
+}
+
+/* Rounded blue button */
+.button-login {
+  align-items: center;
+  appearance: none;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(190, 190, 190, 0.8) 0 3px 5px -1px,rgba(214, 214, 214, 0.527) 0 6px 10px 0,rgba(216, 216, 216, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  background-color: #0057da;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Roboto,sans-serif;
+  font-size: .775rem;
+  font-weight: 500;
+  height: 36px;
+  justify-content: center;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  min-width: px;
+  outline: none;
+  overflow: visible;
+  padding: 0 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform,opacity;
+}
+
+.button-login:hover {
+  background: #3175eb;
+  color: #143364;
+}
+
+.button-login:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.button-login:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-login:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.button-login:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-login:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+/* Blue */
+.button-register2 {
+  align-items: center;
+  appearance: none;
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Roboto,sans-serif;
+  font-size: .775rem;
+  font-weight: 500;
+  height: 36px;
+  justify-content: center;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  min-width: px;
+  outline: none;
+  overflow: visible;
+  padding: 0 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform,opacity;
+}
+
+.button-register2:hover {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+  transform: translateY(-5px);
+}
+
+.button-register2:disabled {
+  background-color: rgba(0, 0, 0, .12);
+  box-shadow: rgba(0, 0, 0, .2) 0 0 0 0, rgba(0, 0, 0, .14) 0 0 0 0, rgba(0, 0, 0, .12) 0 0 0 0;
+  color: rgba(0, 0, 0, .37);
+  cursor: default;
+  pointer-events: none;
+}
+
+.button-register2:not(:disabled) {
+  background-color: #90bb84e1;
+}
+
+.button-register2:focus {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+}
+
+.button-register2:active {
+  box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
+  background: #22aeffea;
+  transform: translateY(0px);
+}
+
+/* Rounded blue button */
+.button-register {
+  align-items: center;
+  appearance: none;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(190, 190, 190, 0.8) 0 3px 5px -1px,rgba(214, 214, 214, 0.527) 0 6px 10px 0,rgba(216, 216, 216, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  background-color: #90bb84e1;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Roboto,sans-serif;
+  font-size: .775rem;
+  font-weight: 500;
+  height: 36px;
+  justify-content: center;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  min-width: px;
+  outline: none;
+  overflow: visible;
+  padding: 0 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform,opacity;
+}
+
+.button-register:hover {
+  background: #90bb96;
+  color: #1f3b1fbd;
+}
+
+.button-register:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.button-register:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-register:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.button-register:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-register:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
 .nf-fa-trash:hover {

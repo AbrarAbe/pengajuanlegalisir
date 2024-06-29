@@ -11,6 +11,7 @@ $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $tableFile = '../components/datatables.html';
+$footerFile = '../components/footer.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -62,73 +63,69 @@ $result3 = mysqli_query($conn, $query3);
     <title>Daftar Pengajuan</title>
 </head>
 
-<body class="bg-custom">
+<body class="bg-custom-blue">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+    <main class="container justify-content-center align-items-center py-5 my-5">
         <?php @include ($alertFile); ?>
         <section class="card bg-glass d-flex mb-4 py-5">
-            <section class="card-body py-1 px-md-4">
-                <header class="form-outline px-3">
-                    <label class="form-label d-flex">
-                        <span style="font-size: 1.5rem;">Pengajuan Masuk</span></label>
-                </header>
-            </section>
-            <!-- Tabel Pengajuan Masuk -->
-            <section class="card-body py-1">
-                <article class="data_table px-4">
-                    <table id="table-s" class="table display table-custom table-hover table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th width="5%">ID</th>
-                                <th>Nama</th>
-                                <th>NPM</th>
-                                <th>Metode Pengambilan</th>
-                                <th>Status</th>
-                                <th width="15%">Detail</th>
-                                <th width="5%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <section id="tbMasuk" style="display:block" class="mb-4">
+                <section class="card-body py-1 px-md-4">
+                    <header class="form-outline px-3">
+                        <label class="form-label d-flex">
+                            <span style="font-size: 1.5rem;">Pengajuan Masuk</span></label>
+                    </header>
+                </section>
+                <!-- Tabel Pengajuan Masuk -->
+                <section class="card-body py-1">
+                    <article class="data_table px-4">
+                        <table id="table-s" class="table display table-custom table-hover table-bordered">
+                            <thead class="thead-glass">
                                 <tr>
-                                    <td><?php echo $row['id_pengajuan']; ?></td>
-                                    <td><?php echo $row['nama']; ?></td>
-                                    <td><?php echo $row['npm']; ?></td>
-                                    <td><?php echo $row['metode_pengambilan']; ?></td>
-                                    <td><?php echo $row['keterangan']; ?></td>
-                                    <td>
-                                        <article>
-                                            <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                id="detail" class="button-2">Lihat
-                                                Detail
-                                            </a>
-                                        </article>
-                                    </td>
-                                    <td>
-                                        <article>
-                                            <a href="#" onclick="confirmDelete(<?php echo $row['id_pengajuan']; ?>)"
-                                                class="d-grid button-29"><i class="nf nf-fa-trash"></i></a>
-                                        </article>
-                                    </td>
+                                    <th width="5%">ID</th>
+                                    <th>NPM</th>
+                                    <th>Nama</th>
+                                    <th>Prodi</th>
+                                    <th>Metode Pengambilan</th>
+                                    <th>Status</th>
+                                    <th width="15%">Detail</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </article>
-                <article class="py-3 px-4">
-                    <a href="beranda_staf.php" class="button-3">Kembali ke Beranda</a>
-                </article>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <tr>
+                                        <td><?php echo $row['id_pengajuan']; ?></td>
+                                        <td><?php echo $row['npm']; ?></td>
+                                        <td><?php echo $row['nama']; ?></td>
+                                        <td><?php echo $row['prodi']; ?></td>
+                                        <td><?php echo $row['metode_pengambilan']; ?></td>
+                                        <td><?php echo $row['keterangan']; ?></td>
+                                        <td>
+                                            <article>
+                                                <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
+                                                    id="detail" class="button-2">Lihat
+                                                    Detail
+                                                </a>
+                                            </article>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </article><!--
+                    <article class="col d-flex gap-2 g-3 justify-content-between px-4 mt-4">
+                        <button class="button-5" onclick="toggle_tbDitolak()">Pengajuan Ditolak</button>
+                        <button class="button-3" onclick="toggle_tbDivalidasi()">Pengajuan Divalidasi</button>
+                    </article>-->
+                </section>
             </section>
         </section>
         <!-- Tabel Pengajuan Divalidasi -->
-        <section class="card bg-glass d-flex mb-4 py-5">
+        <section id="tbDivalidasi" style="display:block" class="card bg-glass d-flex mb-4 py-5">
             <section class="card-body py-1 px-md-4">
                 <header class="form-outline px-3">
                     <label class="form-label d-flex">
@@ -137,24 +134,25 @@ $result3 = mysqli_query($conn, $query3);
             </section>
             <section class="card-body py-1">
                 <article class="data_table px-4">
-                    <table id="table-s2" class="table display table-custom table-hover table-bordered">
-                        <thead class="table-dark">
+                    <table id="table-s4" class="table display table-custom table-hover table-bordered">
+                        <thead class="thead-glass">
                             <tr>
                                 <th width="5%">ID</th>
-                                <th>Nama</th>
                                 <th>NPM</th>
+                                <th>Nama</th>
+                                <th>Prodi</th>
                                 <th>Metode Pengambilan</th>
                                 <th>Status</th>
                                 <th width="15%">Detail</th>
-                                <th width="5%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($row2 = mysqli_fetch_assoc($result)) { ?>
+                            <?php while ($row2 = mysqli_fetch_assoc($result2)) { ?>
                                 <tr>
                                     <td><?php echo $row2['id_pengajuan']; ?></td>
-                                    <td><?php echo $row2['nama']; ?></td>
                                     <td><?php echo $row2['npm']; ?></td>
+                                    <td><?php echo $row2['nama']; ?></td>
+                                    <td><?php echo $row2['prodi']; ?></td>
                                     <td><?php echo $row2['metode_pengambilan']; ?></td>
                                     <td><?php echo $row2['keterangan']; ?></td>
                                     <td>
@@ -173,7 +171,7 @@ $result3 = mysqli_query($conn, $query3);
             </section>
         </section>
         <!-- Tabel Pengajuan Ditolak -->
-        <section class="card bg-glass d-flex mb-4 py-5">
+        <section id="tbDitolak" style="display:block" class="card bg-glass d-flex mb-4 py-5">
             <section class="card-body py-1 px-md-4">
                 <header class="form-outline px-3">
                     <label class="form-label d-flex">
@@ -182,12 +180,13 @@ $result3 = mysqli_query($conn, $query3);
             </section>
             <section class="card-body py-1">
                 <article class="data_table px-4">
-                    <table id="table-s3" class="table display table-custom table-hover table-bordered">
-                        <thead class="table-dark">
+                    <table id="table-a" class="table display table-custom table-hover table-bordered tabel-striped">
+                        <thead class="thead-glass">
                             <tr>
                                 <th width="5%">ID</th>
-                                <th>Nama</th>
                                 <th>NPM</th>
+                                <th>Nama</th>
+                                <th>Prodi</th>
                                 <th>Metode Pengambilan</th>
                                 <th>Status</th>
                                 <th width="15%">Detail</th>
@@ -195,11 +194,12 @@ $result3 = mysqli_query($conn, $query3);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($row3 = mysqli_fetch_assoc($result)) { ?>
+                            <?php while ($row3 = mysqli_fetch_assoc($result3)) { ?>
                                 <tr>
                                     <td><?php echo $row3['id_pengajuan']; ?></td>
-                                    <td><?php echo $row3['nama']; ?></td>
                                     <td><?php echo $row3['npm']; ?></td>
+                                    <td><?php echo $row3['nama']; ?></td>
+                                    <td><?php echo $row3['prodi']; ?></td>
                                     <td><?php echo $row3['metode_pengambilan']; ?></td>
                                     <td><?php echo $row3['keterangan']; ?></td>
                                     <td>
@@ -212,8 +212,8 @@ $result3 = mysqli_query($conn, $query3);
                                     </td>
                                     <td>
                                         <article>
-                                            <a href="#" onclick="confirmDelete(<?php echo $row['id_pengajuan']; ?>)"
-                                                class="button-29"><i class="nf nf-fa-trash"></i></a>
+                                            <a href="#" onclick="confirmDelete(<?php echo $row3['id_pengajuan']; ?>)"
+                                                class="button-29 d-flex"><i class="nf nf-fa-trash"></i></a>
                                         </article>
                                     </td>
                                 </tr>
@@ -223,7 +223,11 @@ $result3 = mysqli_query($conn, $query3);
                 </article>
             </section>
         </section>
+        </section>
     </main>
+    <!-- footer -->
+    <?php @include ($footerFile); ?>
+    <!-- footer -->
 </body>
 
 </html>

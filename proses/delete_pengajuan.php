@@ -7,7 +7,7 @@ if (isset($_GET['id_pengajuan'])) {
 
     // Hapus pengajuan dari database
     $query = "DELETE FROM Pengajuan WHERE id_pengajuan = '$id_pengajuan'";
-
+    
     if (mysqli_query($conn, $query)) {
         $_SESSION['error_message'] = "Pengajuan berhasil dihapus.";
         header("Location: ../pages/list_pengajuan_staf.php");

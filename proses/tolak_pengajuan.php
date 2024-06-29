@@ -13,15 +13,20 @@ $query = "UPDATE Pengajuan SET id_status = 4 WHERE id_pengajuan = '$id_pengajuan
 
 if (mysqli_query($conn, $query)) {
     $_SESSION['alert_message'] = "Pengajuan berhasil ditolak.";
+    if ($_SESSION['role'] == 'staf') {
+        header("Location: ../pages/list_pengajuan_staf.php");
+    }
+    if ($_SESSION['role'] == 'dekan') {
+        header("Location: ../pages/list_pengajuan_dekan.php");
+    }
 } else {
-    $_SESSION['warning_message'] = "Pengajuan gagal divalidasi.";
-    header("Location: ../pages/list_pengajuan_staf.php");
+    $_SESSION['warning_message'] = "Pengajuan gagal ditolak.";
+    if ($_SESSION['role'] == 'staf') {
+        header("Location: ../pages/list_pengajuan_staf.php");
+    }
+    if ($_SESSION['role'] == 'dekan') {
+        header("Location: ../pages/list_pengajuan_dekan.php");
+    }
 }
 
 mysqli_close($conn);
-if ($_SESSION['role'] == 'staf') {
-    header("Location: ../pages/list_pengajuan_staf.php");
-} else {
-    header("Location: ../pages/list_pengajuan_dekan.php");
-}
-exit;
