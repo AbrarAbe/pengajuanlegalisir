@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0 px-3">
     <nav class="container-fluid">
         <a class="navbar-brand" href="../index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -9,7 +9,7 @@
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../index.php">Beranda</a>
+                    <a class="nav-link" aria-current="page" href="../index.php">Beranda</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="list_pengajuan_staf.php">Daftar Pengajuan</a>
@@ -17,10 +17,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="list_pengajuan_disahkan.php">Legalisir</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../proses/logout.php">Logout</a>
-                </li>
             </ul>
+            <article class="dropdown" style="float:right;">
+                <a class="nav-link" role="button"><i class="nf nf-oct-person_fill px-2"></i><?php echo $_SESSION['username']; ?>
+                </a>
+                <article class="dropdown-content bg-nav" style="border-radius: 10px;">
+                    <a class="nav-link" href="#">Ganti Password</a>
+                    <hr class="dropdown-divider">
+                    <a class="nav-link" href="../proses/logout.php">Logout</a>
+                </article>
+            </article>
         </nav>
     </nav>
 </nav>

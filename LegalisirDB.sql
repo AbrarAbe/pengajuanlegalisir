@@ -38,6 +38,7 @@ CREATE TABLE Pengajuan (
     id_user INT NOT NULL,
     npm VARCHAR(20) NOT NULL,
     nama VARCHAR(100) NOT NULL,
+    prodi ENUM('Teknik Informatika', 'Sistem Informasi', 'Arsitektur') NOT NULL
     tahun_lulus VARCHAR(5) NOT NULL,
     email VARCHAR(100) NOT NULL,
     scan_ijazah MEDIUMBLOB NOT NULL,

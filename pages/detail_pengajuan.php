@@ -10,6 +10,7 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] != 'staf' && $_SESSION['r
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$footerFile = '../components/footer.html';
 $tableFile = '../components/datatables.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
@@ -51,40 +52,44 @@ $result = $stmt->get_result();
     <title>Detail Pengajuan</title>
 </head>
 
-<body class="background-radial-gradient">
+<body class="bg-custom-blue">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-        <section id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></section>
-        <section id="radius-shape-3" class="position-absolute shadow-5-strong" style="z-index: -2"></section>
+    <main class="container justify-content-center align-items-start py-5">
         <?php @include ($alertFile); ?>
-        <section class="card bg-glass d-flex px-3 py-5">
-            <article class="card-body py-1 px-md-5">
-                <header class='row g-3 mb-4'>
-                    <article class='d-flex'>
-                        <button class='button-3' onclick='history.back()'><</button>
-                    </article>
-                    <article class="form-outline">
-                        <label class="form-label form-label-white d-flex">
-                            <span style="font-size: 1.5rem;">Detail Pengajuan legalisir</span></label>
-                    </article>
-                </header>
-                <section>
-                <?php if ($row = mysqli_fetch_assoc($result)) {
-                    echo "
-                        <article class='data_tables'>
-                            <table class='table dt[-head|-body]-left table-custom table-hover table-bordered'>
+        <section class="container-fluid justify-content-center align-items-center py-5">
+            <section class="card bg-glass d-flex px-3 py-5">
+                <article class="card-body py-1 px-md-5">
+                    <header class='row g-3 mb-4'>
+                        <article class='d-flex'>
+                            <button class='button-3' onclick='history.back()'>
+                                << /button>
+                        </article>
+                        <article class="form-outline">
+                            <label class="form-label form-label-white d-flex">
+                                <span style="font-size: 1.5rem;">Detail Pengajuan legalisir</span></label>
+                        </article>
+                    </header>
+                    <section>
+                        <?php if ($row = mysqli_fetch_assoc($result)) {
+                            echo "
+                        <article class='data_tables d-flex'>
+                            <table class='table dt[-head|-body] text-start table-custom table-hover table-bordered'>
                                 <tr>
-                                    <th width='30%'>NPM</th>
+                                    <th width='20%'>Nomor Pokok Mahasiswa</th>
                                     <td>$row[npm]</td>
                                 </tr>
                                 <tr>
-                                    <th>Nama</th>
+                                    <th>Nama Lengkap</th>
                                     <td>$row[nama]</td>
+                                </tr>
+                                <tr>
+                                    <th>Program Srudi</th>
+                                    <td>$row[prodi]</td>
                                 </tr>
                                 <tr>
                                     <th>Tahun Lulus</th>
@@ -116,8 +121,8 @@ $result = $stmt->get_result();
                                 </tr>
                             </table>
                         </article>";
-                    if ($_SESSION['role'] == 'alumni') {
-                        echo "
+                            if ($_SESSION['role'] == 'alumni') {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='d-flex gap-2'>
@@ -128,8 +133,8 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Menunggu Validasi')) {
-                        echo "
+                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Menunggu Validasi')) {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -146,8 +151,8 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Divalidasi')) {
-                        echo "
+                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Divalidasi')) {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -158,8 +163,8 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Ditolak')) {
-                        echo "
+                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Ditolak')) {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -175,8 +180,8 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Disahkan')) {
-                        echo "
+                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Disahkan')) {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -192,9 +197,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    
-                    } elseif ($_SESSION['role'] == 'staf') {
-                        echo "
+
+                            } elseif ($_SESSION['role'] == 'staf') {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -205,8 +210,8 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Divalidasi')) {
-                        echo "
+                            } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Divalidasi')) {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -216,15 +221,15 @@ $result = $stmt->get_result();
                                     </article>
                                     <article class='col-sm'>
                                         <article class='d-grid'>
-                                            <a class='btn btn-success btn-block mb-2' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
-                                            <a class='btn btn-danger btn-block' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                                            <a class='button-1 mb-2' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
+                                            <a class='button-5' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
                                         </article>
                                     </article>
                                 </article>
                             </article>
                         ";
-                    } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Disahkan')) {
-                        echo "
+                            } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Disahkan')) {
+                                echo "
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
@@ -235,18 +240,21 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                    }
-                } else {
-                    echo "Pengajuan tidak ditemukan.";
-                }
-                mysqli_close($conn);
-                ?>
+                            }
+                        } else {
+                            echo "Pengajuan tidak ditemukan.";
+                        }
+                        mysqli_close($conn);
+                        ?>
 
-                </section>
-            </article>
-        </section>
+                    </section>
+                </article>
+            </section>
         </section>
     </main>
+    <!-- footer -->
+    <?php @include ($footerFile); ?>
+    <!-- footer -->
 </body>
 
 </html>
