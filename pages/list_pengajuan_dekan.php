@@ -54,7 +54,7 @@ $result2 = mysqli_query($conn, $query2);
     <title>Pengesahan Legalisir</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -67,7 +67,7 @@ $result2 = mysqli_query($conn, $query2);
             <section class="card-body py-1 px-md-4">
                 <header class="form-outline px-3">
                     <label class="form-label d-flex">
-                        <span style="font-size: 1.5rem;">Daftar Pengesahan legalisir</span></label>
+                        <span style="font-size: 1.5rem;">Pengesahan legalisir</span></label>
                 </header>
             </section>
             <section class="card-body py-1">

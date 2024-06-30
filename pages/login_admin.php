@@ -12,7 +12,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
-$footerFile = '../components/footer.html';
+$footerFile = '../components/footer_default.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -50,7 +50,7 @@ if (isset($_SESSION['role'])) {
 
     <!-- Section: Design Block -->
     <main class="container-fluid d-flex justify-content-center align-items-center vh-100">
-        <section class="custom-card d-flex justify-content-center align-items-center bg-glass mb-3 p-4">
+        <section class="custom-card d-flex justify-content-center align-items-center bg-glass-dark mb-3 p-4">
             <article class="container-fluid g-3 d-flex align-items-center">
                 <figure class="col-6 d-none d-lg-flex justify-content-center">
                     <img src="../assets/icon/umb.png" alt="Trendy Pants and Shoes"

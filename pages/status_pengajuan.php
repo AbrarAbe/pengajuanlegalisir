@@ -47,7 +47,7 @@ $result = mysqli_query($conn, $query);
     <title>Daftar Pengajuan</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -60,7 +60,7 @@ $result = mysqli_query($conn, $query);
             <section class="card-body py-1 px-md-4">
                 <header class="form-outline px-4">
                     <label class="form-label">
-                        <span style="font-size: 1.5rem;">Status Pengajuan legalisir</span></label>
+                        <span style="font-size: 1.5rem;">Status Pengajuan legalisir Anda</span></label>
                 </header>
             </section>
             <section class="card-body py1 px-3">

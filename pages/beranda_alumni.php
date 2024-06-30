@@ -38,7 +38,7 @@ if (isset($_SESSION['role'])) {
     <title>Beranda Alumni</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <main>
         <header>
             <!-- Navbar -->
@@ -64,28 +64,7 @@ if (isset($_SESSION['role'])) {
         </section>-->
     </main>
     <!-- Footer -->
-    <footer class="container-fluid bg-glass position-absolute top-100 transform-bottom text-center py-4">
-        <!-- Grid container -->
-        <div class="container">
-
-            <!-- Section: Text -->
-            <section class="mb-4">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                    distinctio earum repellat quaerat voluptatibus placeat nam,
-                    commodi optio pariatur est quia magnam eum harum corrupti dicta,
-                    aliquam sequi voluptate quas.
-                </p>
-            </section>
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2024 Copyright:
-                <a class="text-light" href="https://ft.umb.ac.id/">Fakultas Teknik UMB</a>
-            </div>
-            <!-- Copyright -->
-
-    </footer>
+    <?php @include ($footerFile); ?>
     <!-- Footer -->
 </body>
 

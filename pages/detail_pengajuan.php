@@ -52,7 +52,7 @@ $result = $stmt->get_result();
     <title>Detail Pengajuan</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>

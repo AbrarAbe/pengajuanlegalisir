@@ -116,9 +116,15 @@ select.form-select option {
   background-color: hsla(0, 0%, 0%, 0.4) !important;
 }
 
-.bg-glass {
+.bg-glass-dark {
   background-color: hsla(0, 0%, 0%, 0.5) !important;
   backdrop-filter: saturate(100%) blur(10px);
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 0%, 0.2) !important;
+  backdrop-filter: saturate(120%) blur(10px);
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #dddddd73 0 -3px 0 inset;
 }
 
 .custom-card {
@@ -127,7 +133,7 @@ select.form-select option {
   max-width: 700px;
   min-height: 300px;
   max-height: 1000px;
-  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 1px -2px, rgba(255, 255, 255, 0.14) 0 2px 2px 0, rgba(255, 255, 255, 0.12) 0 1px 5px 0;
+  box-shadow: rgba(45, 35, 66, 0.164) 0 4px 8px, rgba(45, 35, 66, 0.164) 0 7px 13px -3px, #dadadaab 0 -3px 0 inset;
 }
 
 .button-card {
@@ -177,7 +183,7 @@ select.form-select option {
 }
 
 .thead-glass {
-  background-color: hsla(0, 0%, 0%, 0.3) !important;
+  background-color: hsla(0, 0%, 0%, 0.2) !important;
 }
 
 .dataTables_wrapper .bottom {

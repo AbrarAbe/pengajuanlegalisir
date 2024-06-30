@@ -12,6 +12,7 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 $navbarFile = 'components/navbar_index.html';
 $headFile = 'components/head_index.html';
 $alertFile = 'components/alert.html';
+$footerFile = 'components/footer_default.html';
 
 ?>
 
@@ -30,7 +31,7 @@ $alertFile = 'components/alert.html';
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container position-absolute top-50 start-50 translate-middle">
+    <main class="container justify-content-center align-items-center d-flex vh-100 py-5">
         <section class="row gx-lg-5 align-items-center">
             <article class="container px-5 mb-lg-0 py-5">
                 <header>
@@ -59,30 +60,9 @@ $alertFile = 'components/alert.html';
             </article>
         </section>-->
     </main>
-    <!-- Footer -->
-    <footer class="container-fluid bg-glass position-absolute top-100 transform-bottom text-center py-4">
-        <!-- Grid container -->
-        <div class="container">
-
-            <!-- Section: Text -->
-            <section class="mb-4">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                    distinctio earum repellat quaerat voluptatibus placeat nam,
-                    commodi optio pariatur est quia magnam eum harum corrupti dicta,
-                    aliquam sequi voluptate quas.
-                </p>
-            </section>
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-                © 2024 Copyright:
-                <a class="text-light" href="https://ft.umb.ac.id/">Fakultas Teknik UMB</a>
-            </div>
-            <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
+    <!-- footer -->
+    <?php @include ($footerFile); ?>
+    <!-- footer -->
 </body>
 
 </html>

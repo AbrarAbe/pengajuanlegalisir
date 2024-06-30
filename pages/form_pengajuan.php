@@ -38,7 +38,7 @@ if (isset($_SESSION['role'])) {
     <title>Form Pengajuan</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -172,7 +172,8 @@ if (isset($_SESSION['role'])) {
                                 Legalisir
                                 Ijazah :</label>
                             <input type="number" class="form-control input-glass" id="jumlah_legalisir_ijazah"
-                                name="jumlah_legalisir_ijazah" min="1" required oninput="checkNegative(this); updateTotal()">
+                                name="jumlah_legalisir_ijazah" min="1" required
+                                oninput="checkNegative(this); updateTotal()">
                         </article>
 
                         <!-- Jumlah Legalisir Transkrip -->
@@ -180,7 +181,8 @@ if (isset($_SESSION['role'])) {
                             <label class="form-label form-label-white d-flex" for="jumlah_legalisir_transkrip">Jumlah
                                 Legalisir Transkrip :</label>
                             <input type="number" class="form-control input-glass" id="jumlah_legalisir_transkrip"
-                                name="jumlah_legalisir_transkrip" min="1" required oninput="checkNegative(this); updateTotal()">
+                                name="jumlah_legalisir_transkrip" min="1" required
+                                oninput="checkNegative(this); updateTotal()">
                         </article>
 
                         <!-- Total Harga -->

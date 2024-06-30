@@ -55,7 +55,7 @@ $result2 = mysqli_query($conn, $query2);
     <title>Daftar Pengajuan</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>

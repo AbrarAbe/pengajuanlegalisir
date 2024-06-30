@@ -38,7 +38,7 @@ if (isset($_SESSION['role'])) {
     <title>Beranda Staf</title>
 </head>
 
-<body class="bg-custom-blue">
+<body class="background-radial-gradient">
     <main>
         <header>
             <!-- Navbar -->

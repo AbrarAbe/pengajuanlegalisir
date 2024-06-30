@@ -39,7 +39,7 @@ if (isset($_SESSION['role'])) {
 
 <head>
     <?php @include ($headFile); ?>
-    <title>Registrasi Admin</title>
+    <title>Registrasi Alumni</title>
 </head>
 
 <body class="bg-custom-green">
@@ -49,9 +49,9 @@ if (isset($_SESSION['role'])) {
     </header>
 
     <!-- Section: Design Block -->
-    <main class="container d-flex justify-content-center align-items-center vh-100 px-5">
+    <main class="container d-flex justify-content-center align-items-center vh-100 py-5 px-5">
         <section class="row gx-lg-5 d-flex justify-content-center align-items-center py-5">
-            <article class="col-lg-5 mb-2 mb-lg-0">
+            <article class="col-lg-6 mb-2 mb-lg-0 my-3">
                 <header>
                     <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
                         Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
@@ -67,10 +67,10 @@ if (isset($_SESSION['role'])) {
             </article>
 
             <!--Register Card-->
-            <aside class="col-lg-7 mb-lg-0 my-4">
+            <aside class="col-lg-6 mb-5 mb-lg-0 my-4">
                 <article class="custom-card bg-glass-dark">
-                    <article class="card-body px-3 py-4 px-md-5">
-                        <form action="../proses/proses_register_admin.php" method="post">
+                    <article class="card-body px-4 py-5 px-md-5">
+                        <form action="../proses/proses_register_alumni.php" method="post">
                             <header class="form-outline mb-4">
                                 <label class="form-label form-label-white letter-spacing d-flex"><span
                                         style="font-size: 1.5rem;">Daftarkan akun anda</span></label>
@@ -96,16 +96,6 @@ if (isset($_SESSION['role'])) {
                                         required />
                                 </article>
                             </article>
-                            <!-- Role input -->
-                            <article class="form-outline mb-2 d-flex gap-2">
-                                <input type="radio" class="btn-check" name="role" id="option1" autocomplete="off"
-                                    checked value="staf">
-                                <label class="btn form-label-white letter-spacing" style="color:white;"
-                                    for="option1">Staf</label>
-                                <input type="radio" class="btn-check" name="role" id="option2" autocomplete="off"
-                                    value="dekan">
-                                <label class="btn" style="color:white;" for="option2">Dekan</label>
-                            </article>
                             <!-- Password input -->
                             <article class="form-outline mb-2">
                                 <label class="form-label form-label-white letter-spacing d-flex" for="password">Password
@@ -123,18 +113,9 @@ if (isset($_SESSION['role'])) {
                                     Must be 8-20 characters long.
                                 </article>
                             </article>
-                            <!-- Checkbox -->
-                            <article class="form-check d-flex mb-4">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" unchecked
-                                    required />
-                                <label class="form-check-label form-label-white d-flex" for="checkbox">
-                                    engan mendaftar anda menyetujui syarat dan ketentuan yang berlaku
-                                </label>
-                            </article>
                             <!-- Submit button -->
                             <article class="d-grid gap-2">
-                                <button id="submit" type="submit" name="submit"
-                                    class="button-register2 mb-4">Daftar</button>
+                                <button type="submit" name="submit" class="button-register2 mb-4">Register</button>
                             </article>
 
                             <?php @include ($alertFile); ?>
