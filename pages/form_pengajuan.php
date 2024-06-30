@@ -76,17 +76,17 @@ if (isset($_SESSION['role'])) {
                         <!-- Prodi -->
                         <label class="form-label form-label-white d-flex" for="prodi">Program Studi :</label>
                         <article class="form-outline mb-3 d-flex gap-2">
-                                <input type="radio" class="btn-check" name="prodi" id="option1" autocomplete="off"
-                                    checked value="Teknik Informatika">
-                                <label class="btn form-label-white letter-spacing" style="color:white;"
-                                    for="option1">Teknik Informatika</label>
-                                <input type="radio" class="btn-check" name="prodi" id="option2" autocomplete="off"
-                                    value="Sistem Informasi">
-                                <label class="btn" style="color:white;" for="option2">Sistem Informasi</label>
-                                <input type="radio" class="btn-check" name="prodi" id="option3" autocomplete="off"
-                                    value="Arsitektur">
-                                <label class="btn" style="color:white;" for="option3">Arsitektur</label>
-                            </article>
+                            <input type="radio" class="btn-check" name="prodi" id="option1" autocomplete="off" checked
+                                value="Teknik Informatika">
+                            <label class="btn form-label-white" style="color:white;" for="option1">Teknik
+                                Informatika</label>
+                            <input type="radio" class="btn-check" name="prodi" id="option2" autocomplete="off"
+                                value="Sistem Informasi">
+                            <label class="btn" style="color:white;" for="option2">Sistem Informasi</label>
+                            <input type="radio" class="btn-check" name="prodi" id="option3" autocomplete="off"
+                                value="Arsitektur">
+                            <label class="btn" style="color:white;" for="option3">Arsitektur</label>
+                        </article>
 
                         <!-- Tahun Lulus -->
                         <article class="form-outline mb-3">
@@ -150,9 +150,9 @@ if (isset($_SESSION['role'])) {
                             <label class="form-label form-label-white d-flex">Pilihan
                                 Ekspedisi Pengiriman :</label>
                             <article class="form-outline mb-3 d-flex gap-2">
-                                <input type="radio" class="btn-check" name="ekspedisi" id="jnt" checked value="JNE"
-                                    data-harga="15000" onchange="updateTotal()">
-                                <label class="btn form-label-white" style="color :white;" for="jnt">JNE - Rp.
+                                <input type="radio" class="btn-check" name="ekspedisi" id="jne" value="JNE"
+                                    data-harga="15000" checked onchange="updateTotal()">
+                                <label class="btn form-label-white" style="color :white;" for="jne">JNE - Rp.
                                     15.000</label>
                                 <input type="radio" class="btn-check" name="ekspedisi" id="pos" value="POS"
                                     data-harga="20000" onchange="updateTotal()">
@@ -172,7 +172,7 @@ if (isset($_SESSION['role'])) {
                                 Legalisir
                                 Ijazah :</label>
                             <input type="number" class="form-control input-glass" id="jumlah_legalisir_ijazah"
-                                name="jumlah_legalisir_ijazah" required oninput="updateTotal()">
+                                name="jumlah_legalisir_ijazah" min="1" required oninput="checkNegative(this); updateTotal()">
                         </article>
 
                         <!-- Jumlah Legalisir Transkrip -->
@@ -180,7 +180,7 @@ if (isset($_SESSION['role'])) {
                             <label class="form-label form-label-white d-flex" for="jumlah_legalisir_transkrip">Jumlah
                                 Legalisir Transkrip :</label>
                             <input type="number" class="form-control input-glass" id="jumlah_legalisir_transkrip"
-                                name="jumlah_legalisir_transkrip" required oninput="updateTotal()">
+                                name="jumlah_legalisir_transkrip" min="1" required oninput="checkNegative(this); updateTotal()">
                         </article>
 
                         <!-- Total Harga -->

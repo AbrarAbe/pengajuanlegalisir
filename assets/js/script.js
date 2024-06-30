@@ -3,24 +3,50 @@ function updateTotal() {
     const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
     const legalisirTranskrip = parseInt(document.getElementById('jumlah_legalisir_transkrip').value) || 0;
     const ekspedisi = document.querySelector('input[name="ekspedisi"]:checked');
-    const ekspedisiHarga = ekspedisi ? parseInt(ekspedisi.getAttribute('data-harga')) : 0;
+    var ekspedisiHarga = 0;
 
     const hargaIjazah = 3000; // Harga per legalisir ijazah
     const hargaTranskrip = 5000; // Harga per legalisir transkrip
 
-    const totalHarga = (legalisirIjazah * hargaIjazah) + (legalisirTranskrip * hargaTranskrip) + ekspedisiHarga;
+    if (ekspedisi) {
+        ekspedisiHarga = parseInt(ekspedisi.getAttribute('data-harga'));
+    }
 
-    document.getElementById('total_harga').innerText = totalHarga;
-    document.getElementById('total_harga_input').value = totalHarga; // Update hidden input value
-    document.getElementById('ekspedisi_harga_input').value = ekspedisiHarga; // Set ekspedisi harga value
+    var totalHarga = (legalisirIjazah * hargaIjazah) + (legalisirTranskrip * hargaTranskrip); // Harga per legalisir, misalnya Rp. 10.000
+    if (!document.getElementById('ambil').checked) {
+        totalHarga += ekspedisiHarga;
+    }
+
+    document.getElementById('total_harga').innerText = totalHarga.toLocaleString('id-ID');
+    document.getElementById('total_harga_input').value = totalHarga;
+    document.getElementById('ekspedisi_harga_input').value = ekspedisiHarga;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    toggleEkspedisi();
+});
+
+// Cek angka negatif di input jumlah legalisir
+function checkNegative(input) {
+    if (input.value < 0) {
+        input.value = 1;
+    }
 }
 
 // Button script
-// Button metode pengiriman
 function toggleEkspedisi() {
-    const metode = document.querySelector('input[name="metode_pengambilan"]:checked').value;
-    const ekspedisiDiv = document.getElementById('ekspedisi_article');
-    ekspedisiDiv.style.display = metode === 'kirim ke alamat' ? 'block' : 'none';
+    var metodeAmbil = document.getElementById('ambil').checked;
+    var ekspedisiArticle = document.getElementById('ekspedisi_article');
+    var ekspedisiHargaInput = document.getElementById('ekspedisi_harga_input');
+    
+    if (metodeAmbil) {
+        ekspedisiArticle.style.display = 'none';
+        ekspedisiHargaInput.value = 0;
+    } else {
+        ekspedisiArticle.style.display = 'block';
+        updateTotal(); // Call updateTotal to set initial ekspedisi harga
+    }
+    updateTotal(); // Update total harga
 }
 
 // Button show password
