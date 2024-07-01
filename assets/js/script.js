@@ -49,6 +49,24 @@ function toggleEkspedisi() {
     updateTotal(); // Update total harga
 }
 
+function toggle_tbDivalidasi() {
+    var a = document.getElementById('tbDivalidasi');
+    if (a.style.display === 'none') {
+        a.style.display = 'block';
+    } else {
+        a.style.display = 'none';
+    }
+}
+
+function toggle_tbDitolak() {
+    var b = document.getElementById('tbDitolak');
+    if (b.style.display === 'none') {
+        b.style.display = 'block';
+    } else {
+        b.style.display = 'none';
+    }
+}
+
 // Button show password
 $(document).ready(function () {
     $("#show_hide_password a").on('click', function (event) {
@@ -89,21 +107,10 @@ function confirmDelete(id_pengajuan) {
     }
 }
 
-function toggle_tbDivalidasi() {
-    var a = document.getElementById('tbDivalidasi');
-    if (a.style.display === 'none') {
-        a.style.display = 'block';
-    } else {
-        a.style.display = 'none';
-    }
-}
-
-function toggle_tbDitolak() {
-    var b = document.getElementById('tbDitolak');
-    if (b.style.display === 'none') {
-        b.style.display = 'block';
-    } else {
-        b.style.display = 'none';
+// Logout
+function confirmLogout() {
+    if (confirm("Apakah Anda yakin ingin logout?")) {
+        window.location.href = '../proses/logout.php';
     }
 }
 

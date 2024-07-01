@@ -53,6 +53,9 @@ $result = $stmt->get_result();
 </head>
 
 <body class="background-radial-gradient">
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -66,8 +69,8 @@ $result = $stmt->get_result();
                 <article class="card-body py-1 px-md-5">
                     <header class='row g-3 mb-4'>
                         <article class='d-flex'>
-                            <button class='button-3' onclick='history.back()'>
-                                << /button>
+                            <button class='button-3' onclick='history.back()'><
+                                </button>
                         </article>
                         <article class="form-outline">
                             <label class="form-label form-label-white d-flex">
@@ -126,9 +129,9 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                     </article>
                                 </article>
                             </article>
@@ -138,14 +141,14 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                     </article>
                                     <article class='col-sm'>
                                         <article class='d-grid'>
-                                            <a class='button-1 mb-2' href='../proses/validasi_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Validasi Pengajuan</a>
-                                            <a class='button-5' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                                            <a class='button-1 mb-2 preload-link' href='../proses/validasi_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Validasi Pengajuan</a>
+                                            <a class='button-5 preload-link' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
                                         </article>
                                     </article>
                                 </article>
@@ -156,25 +159,25 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                     </article>
                                 </article>
                             </article>
                         ";
                             } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Ditolak')) {
                                 echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                            <article class='d-flex mb-4 preload-link' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                     </article>
                                     <article class='col-sm'>
                                         <article class='d-grid'>
-                                            <a href='#' onclick='confirmDelete($row[id_pengajuan])' class='button-5 mb-2'>Hapus Pengajuan</a>
+                                            <a href='#' onclick='confirmDelete($row[id_pengajuan])' class='button-5 mb-2 preload-link'>Hapus Pengajuan</a>
                                         </article>
                                     </article>
                                 </article>
@@ -185,9 +188,9 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
                                     </article>
                                     <article class='col-sm'>
                                         <article class='d-grid'>
@@ -203,9 +206,9 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
                                     </article>
                                 </article>
                             </article>
@@ -215,14 +218,14 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                     </article>
                                     <article class='col-sm'>
                                         <article class='d-grid'>
-                                            <a class='button-1 mb-2' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
-                                            <a class='button-5' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                                            <a class='button-1 mb-2 preload-link' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
+                                            <a class='button-5 preload-link' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
                                         </article>
                                     </article>
                                 </article>
@@ -233,9 +236,9 @@ $result = $stmt->get_result();
                             <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                        <a class='button-6 text-wrap' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        <a class='button-6 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                     </article>
                                 </article>
                             </article>

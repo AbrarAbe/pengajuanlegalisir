@@ -25,6 +25,9 @@ $footerFile = 'components/footer_default.html';
 </head>
 
 <body class="bg-custom-green">
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>

@@ -46,6 +46,18 @@ body {
   border-color: transparent;
 }
 
+.bg-glass-dark {
+  background-color: hsla(0, 0%, 0%, 0.5) !important;
+  backdrop-filter: saturate(100%) blur(10px);
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #dddddd73 0 -3px 0 inset;
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 0%, 0.2) !important;
+  backdrop-filter: saturate(120%) blur(10px);
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #dddddd73 0 -3px 0 inset;
+}
+
 #box {
   --mask:
     radial-gradient(38.99px at 50% calc(100% + 18px), #0000 calc(99% - 8px), #000 calc(101% - 8px) 99%, #0000 101%) calc(50% - 60px) calc(50% - 19px + .5px)/120px 38px,
@@ -109,22 +121,6 @@ body {
 
 .input-glass {
   background-color: hsla(0, 0%, 0%, 0.4) !important;
-}
-
-/* Custom style for select options */
-select.form-select option {
-  background-color: hsla(0, 0%, 0%, 0.4) !important;
-}
-
-.bg-glass-dark {
-  background-color: hsla(0, 0%, 0%, 0.5) !important;
-  backdrop-filter: saturate(100%) blur(10px);
-}
-
-.bg-glass {
-  background-color: hsla(0, 0%, 0%, 0.2) !important;
-  backdrop-filter: saturate(120%) blur(10px);
-  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #dddddd73 0 -3px 0 inset;
 }
 
 .custom-card {

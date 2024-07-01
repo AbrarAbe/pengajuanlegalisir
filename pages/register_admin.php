@@ -43,6 +43,12 @@ if (isset($_SESSION['role'])) {
 </head>
 
 <body class="bg-custom-green">
+    <section id="preloaderSubmit" class="preloader-submit">
+        <article class="loader"></article>
+    </section>
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -133,8 +139,8 @@ if (isset($_SESSION['role'])) {
                             </article>
                             <!-- Submit button -->
                             <article class="d-grid gap-2">
-                                <button id="submit" type="submit" name="submit"
-                                    class="button-register2 mb-4">Daftar</button>
+                                <button id="submit" type="submit" name="submit" id="submitBtn"
+                                    class="preload-submit button-register2 mb-4">Daftar</button>
                             </article>
 
                             <?php @include ($alertFile); ?>

@@ -43,6 +43,12 @@ if (isset($_SESSION['role'])) {
 </head>
 
 <body class="bg-custom-green">
+    <section id="preloaderSubmit" class="preloader-submit">
+        <article class="loader"></article>
+    </section>
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -57,7 +63,7 @@ if (isset($_SESSION['role'])) {
                         class="w-75 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 px-2" />
                 </figure>
                 <aside class="card-body py-4 px-md-4">
-                    <form action="../proses/proses_login_alumni.php" method="post">
+                    <form id="loginForm" action="../proses/proses_login_alumni.php" method="post">
                         <header class="form-outline mb-4">
                             <label class="form-label form-label-white letter-spacing d-flex">
                                 <span style="font-size: 2rem;">Login Alumni</span></label>
@@ -103,7 +109,8 @@ if (isset($_SESSION['role'])) {
                         </article>
                         <!-- Submit button -->
                         <article class="d-grid gap-2">
-                            <button type="submit" name="submit" class="button-3 mb-4">Login</button>
+                            <button type="submit" name="submit" id="submitBtn"
+                                class="preload-submit button-3 mb-4">Login</button>
                         </article>
 
                         <?php @include ($alertFile); ?>

@@ -64,6 +64,9 @@ $result3 = mysqli_query($conn, $query3);
 </head>
 
 <body class="background-radial-gradient">
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -107,7 +110,7 @@ $result3 = mysqli_query($conn, $query3);
                                         <td>
                                             <article>
                                                 <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                    id="detail" class="button-2">Lihat
+                                                    id="detail" class="button-2 preload-link"">Lihat
                                                     Detail
                                                 </a>
                                             </article>
@@ -158,7 +161,7 @@ $result3 = mysqli_query($conn, $query3);
                                     <td>
                                         <article>
                                             <a href="detail_pengajuan.php?id=<?php echo $row2['id_pengajuan']; ?>"
-                                                id="detail" class="button-2">Lihat
+                                                id="detail" class="button-2 preload-link"">Lihat
                                                 Detail
                                             </a>
                                         </article>
@@ -205,7 +208,7 @@ $result3 = mysqli_query($conn, $query3);
                                     <td>
                                         <article>
                                             <a href="detail_pengajuan.php?id=<?php echo $row3['id_pengajuan']; ?>"
-                                                id="detail" class="button-2">Lihat
+                                                id="detail" class="button-2 preload-link"">Lihat
                                                 Detail
                                             </a>
                                         </article>
@@ -213,7 +216,7 @@ $result3 = mysqli_query($conn, $query3);
                                     <td>
                                         <article>
                                             <a href="#" onclick="confirmDelete(<?php echo $row3['id_pengajuan']; ?>)"
-                                                class="button-29 d-flex"><i class="nf nf-fa-trash"></i></a>
+                                                class="button-2 preload-link"9 d-flex"><i class="nf nf-fa-trash"></i></a>
                                         </article>
                                     </td>
                                 </tr>

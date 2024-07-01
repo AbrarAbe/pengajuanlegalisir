@@ -39,19 +39,23 @@ if (isset($_SESSION['role'])) {
 </head>
 
 <body class="background-radial-gradient">
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
+    </section>
     <main>
         <header>
             <!-- Navbar -->
             <?php @include ($navbarFile); ?>
         </header>
-    <!-- Section: Design Block -->
-    <main class="container justify-content-center align-items-center d-flex vh-100 py-5">
-        <section class="row gx-lg-5 align-items-center">
-            <article class="container px-5 mb-lg-0 py-5 justify-content-center">
-                <h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
-            </article>
-        </section>
-        <!--<section class="col g-3 d-flex align-items-center justify-content-center px-5 gap-3">
+        <!-- Section: Design Block -->
+        <main class="container justify-content-center align-items-center d-flex vh-100 py-5">
+            <section class="row gx-lg-5 align-items-center">
+                <article class="container px-5 mb-lg-0 py-5 justify-content-center">
+                    <h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
+                </article>
+            </section>
+            <!--<section class="col g-3 d-flex align-items-center justify-content-center px-5 gap-3">
             <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
                 placeholder
             </article>
@@ -62,10 +66,10 @@ if (isset($_SESSION['role'])) {
                 placeholder
             </article>
         </section>-->
-    </main>
-    <!-- Footer -->
-    <?php @include ($footerFile); ?>
-    <!-- Footer -->
+        </main>
+        <!-- Footer -->
+        <?php @include ($footerFile); ?>
+        <!-- Footer -->
 </body>
 
 </html>

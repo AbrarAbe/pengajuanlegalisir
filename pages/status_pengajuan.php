@@ -48,6 +48,9 @@ $result = mysqli_query($conn, $query);
 </head>
 
 <body class="background-radial-gradient">
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -88,7 +91,7 @@ $result = mysqli_query($conn, $query);
                                     <td>
                                         <article class="d-grid gap-2">
                                             <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                id="detail" class="button-2">Lihat Detail
+                                                id="detail" class="button-2 preload-link">Lihat Detail
                                             </a>
                                         </article>
                                     </td>

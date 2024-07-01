@@ -39,6 +39,9 @@ if (isset($_SESSION['role'])) {
 </head>
 
 <body class="background-radial-gradient">
+    <section id="preloaderLink" class="preloader d-flex">
+        <article class="loader"></article>
+    </section>
     <header>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
@@ -75,17 +78,19 @@ if (isset($_SESSION['role'])) {
 
                         <!-- Prodi -->
                         <label class="form-label form-label-white d-flex" for="prodi">Program Studi :</label>
-                        <article class="form-outline mb-3 d-flex gap-2">
-                            <input type="radio" class="btn-check" name="prodi" id="option1" autocomplete="off" checked
-                                value="Teknik Informatika">
-                            <label class="btn form-label-white" style="color:white;" for="option1">Teknik
-                                Informatika</label>
-                            <input type="radio" class="btn-check" name="prodi" id="option2" autocomplete="off"
-                                value="Sistem Informasi">
-                            <label class="btn" style="color:white;" for="option2">Sistem Informasi</label>
-                            <input type="radio" class="btn-check" name="prodi" id="option3" autocomplete="off"
-                                value="Arsitektur">
-                            <label class="btn" style="color:white;" for="option3">Arsitektur</label>
+                        <article class="form-outline mb-3 row d-flex">
+                            <article class="col-auto g-3 gap-3">
+                                <input type="radio" class="btn-check" name="prodi" id="option1" autocomplete="off"
+                                    checked value="Teknik Informatika">
+                                <label class="btn form-label-white" style="color:white;" for="option1">Teknik
+                                    Informatika</label>
+                                <input type="radio" class="btn-check" name="prodi" id="option2" autocomplete="off"
+                                    value="Sistem Informasi">
+                                <label class="btn" style="color:white;" for="option2">Sistem Informasi</label>
+                                <input type="radio" class="btn-check" name="prodi" id="option3" autocomplete="off"
+                                    value="Arsitektur">
+                                <label class="btn" style="color:white;" for="option3">Arsitektur</label>
+                            </article>
                         </article>
 
                         <!-- Tahun Lulus -->
@@ -153,15 +158,15 @@ if (isset($_SESSION['role'])) {
                                 <input type="radio" class="btn-check" name="ekspedisi" id="jne" value="JNE"
                                     data-harga="15000" checked onchange="updateTotal()">
                                 <label class="btn form-label-white" style="color :white;" for="jne">JNE - Rp.
-                                    15.000</label>
+                                    25.000</label>
                                 <input type="radio" class="btn-check" name="ekspedisi" id="pos" value="POS"
                                     data-harga="20000" onchange="updateTotal()">
                                 <label class="btn form-label-white" style="color :white;" for="pos">POS - Rp.
                                     20.000</label>
-                                <input type="radio" class="btn-check" name="ekspedisi" id="tiki" value="TIKI"
+                                <input type="radio" class="btn-check" name="ekspedisi" id="JNT" value="JNT"
                                     data-harga="25000" onchange="updateTotal()">
-                                <label class="btn form-label-white" style="color :white;" for="tiki">TIKI - Rp.
-                                    25.000</label>
+                                <label class="btn form-label-white" style="color :white;" for="JNT">JNT - Rp.
+                                    35.000</label>
                             </article>
                         </article>
 
@@ -208,7 +213,8 @@ if (isset($_SESSION['role'])) {
                                 name="bukti_pembayaran" accept=".jpg, .jpeg, .png, .hevc" required>
                         </article>
                         <article class="d-grid">
-                            <button type="submit" name="submit" class="button-3 my-2">Submit</button>
+                            <button type="submit" name="submit" id="submitBtn"
+                                class="preload-link button-3 my-2">Submit</button>
                         </article>
                     </form>
                 </section>
