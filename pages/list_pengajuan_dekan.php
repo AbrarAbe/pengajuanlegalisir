@@ -34,13 +34,13 @@ if (isset($_SESSION['role'])) {
 
 // Query hanya untuk pengajuan yang telah divalidasi oleh staf
 $query = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 2"; // Status 'Divalidasi' (2)
 $result = mysqli_query($conn, $query);
 $query2 = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 3"; // Status 'Disahkan' (3)
 $result2 = mysqli_query($conn, $query2);
 ?>

@@ -2,7 +2,7 @@
 session_start();
 include '../config.php';
 
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
+if (!isset($_SESSION['id_s']) || $_SESSION['role'] != 'staf') {
     header("Location: login_admin.php");
     exit;
 }
@@ -34,22 +34,22 @@ if (isset($_SESSION['role'])) {
 
 //tabel belum divalidasi
 $query = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 1 "; // Status 'Menunggu divalidasi' (1)
 $result = mysqli_query($conn, $query);
 
 //tabel telah divalidasi
 $query2 = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 2"; // Status 'Divalidasi' (5)
 $result2 = mysqli_query($conn, $query2);
 
 //tabel telah divalidasi
 $query3 = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 4"; // Status 'Ditolak' (5)
 $result3 = mysqli_query($conn, $query3);
 ?>

@@ -6,7 +6,7 @@ function updateTotal() {
     var ekspedisiHarga = 0;
 
     const hargaIjazah = 3000; // Harga per legalisir ijazah
-    const hargaTranskrip = 5000; // Harga per legalisir transkrip
+    const hargaTranskrip = 3000; // Harga per legalisir transkrip
 
     if (ekspedisi) {
         ekspedisiHarga = parseInt(ekspedisi.getAttribute('data-harga'));

@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $role = filter_var($_POST['role'], FILTER_SANITIZE_STRING);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
 
-    $sql = "SELECT * FROM User WHERE email = ?";
+    $sql = "SELECT * FROM user WHERE email = ?";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['warning_message'] = "<strong>Email sudah ada !</strong> <a href='register_admin.php'>Masuk</a> atau gunakan email lain.";
             header("Location: ../pages/register_admin.php");
         } else {
-            $stmt = $conn->prepare("INSERT INTO User (username, email, password, role) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("ssss", $username, $email, $password, $role);
             if ($stmt->execute()) {
                 $_SESSION['info_message'] = "<strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat login sekarang.";

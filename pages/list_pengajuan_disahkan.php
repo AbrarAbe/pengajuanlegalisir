@@ -33,15 +33,15 @@ if (isset($_SESSION['role'])) {
 }
 //tabel disahkan
 $query = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 3"; // Status 'Disahkan' (3)
 $result = mysqli_query($conn, $query);
 
 //tabel selesai
 $query2 = "SELECT p.*, s.keterangan 
-          FROM Pengajuan p 
-          JOIN Status s ON p.id_status = s.id_status 
+          FROM pengajuan p 
+          JOIN status s ON p.id_status = s.id_status 
           WHERE p.id_status = 5"; // Status 'Selesai' (5)
 $result2 = mysqli_query($conn, $query2);
 ?>
@@ -72,7 +72,7 @@ $result2 = mysqli_query($conn, $query2);
             <section class="card-body py-1 px-md-4">
                 <header class="form-outline px-3">
                     <label class="form-label d-flex">
-                        <span style="font-size: 1.5rem;">Legalisir yang belum diselesaikan</span></label>
+                        <span style="font-size: 1.5rem;">Pengajuan yang telah disahkan</span></label>
                 </header>
             </section>
             <section class="card-body py-1">

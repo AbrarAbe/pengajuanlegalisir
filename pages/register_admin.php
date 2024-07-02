@@ -110,7 +110,7 @@ if (isset($_SESSION['role'])) {
                                     for="option1">Staf</label>
                                 <input type="radio" class="btn-check" name="role" id="option2" autocomplete="off"
                                     value="dekan">
-                                <label class="btn" style="color:white;" for="option2">Dekan</label>
+                                <label class="btn" style="color:white;" for="option2">Dekan/Wakil</label>
                             </article>
                             <!-- Password input -->
                             <article class="form-outline mb-2">
@@ -118,7 +118,7 @@ if (isset($_SESSION['role'])) {
                                     :</label>
                                 <article class="input-group">
                                     <input type="password" id="password" name="password"
-                                        class="form-control input-glass" aria-describedby="passwordHelpBlock" required>
+                                        class="form-control input-glass" aria-describedby="passwordHelpBlock" min="8" required>
                                     <a class="input-group-text input-glass" style="text-decoration:none"
                                         onclick="apala()">
                                         <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
@@ -134,7 +134,7 @@ if (isset($_SESSION['role'])) {
                                 <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" unchecked
                                     required />
                                 <label class="form-check-label form-label-white d-flex" for="checkbox">
-                                    engan mendaftar anda menyetujui syarat dan ketentuan yang berlaku
+                                    Dengan mendaftar anda menyetujui syarat dan ketentuan yang berlaku
                                 </label>
                             </article>
                             <!-- Submit button -->

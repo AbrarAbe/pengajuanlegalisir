@@ -108,7 +108,7 @@ if (isset($_SESSION['role'])) {
                                     :</label>
                                 <article class="input-group">
                                     <input type="password" id="password" name="password"
-                                        class="form-control input-glass" aria-describedby="passwordHelpBlock" required>
+                                        class="form-control input-glass" aria-describedby="passwordHelpBlock" min="8" required>
                                     <a class="input-group-text input-glass" style="text-decoration:none"
                                         onclick="apala()">
                                         <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>

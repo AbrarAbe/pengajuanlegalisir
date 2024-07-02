@@ -35,7 +35,7 @@ if (isset($_SESSION['role'])) {
 include '../config.php'; // File ini harus memiliki koneksi database Anda
 
 $id_pengajuan = $_GET['id'];
-$query = "SELECT p.*, s.keterangan FROM Pengajuan p JOIN Status s ON p.id_status = s.id_status WHERE p.id_pengajuan = ?";
+$query = "SELECT p.*, s.keterangan FROM pengajuan p JOIN status s ON p.id_status = s.id_status WHERE p.id_pengajuan = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $id_pengajuan);
 $stmt->execute();

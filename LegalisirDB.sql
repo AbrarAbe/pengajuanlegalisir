@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS LegalisirDB;
-USE LegalisirDB;
+CREATE DATABASE IF NOT EXISTS pengajuanlegalisir;
+USE pengajuanlegalisir;
 
-CREATE TABLE User (
+CREATE TABLE user (
     id_user INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
@@ -9,36 +9,25 @@ CREATE TABLE User (
     role ENUM('alumni', 'staf', 'dekan') NOT NULL
 );
 
-CREATE TABLE Alumni (
-    id_alumni INT PRIMARY KEY AUTO_INCREMENT,
-    npm VARCHAR(20) UNIQUE,
-    nama VARCHAR(50),
-    tahun_lulus YEAR,
-    email VARCHAR(50),
-    alamat TEXT
-);
-
-CREATE TABLE Status (
+CREATE TABLE status (
     id_status INT PRIMARY KEY AUTO_INCREMENT,
     keterangan VARCHAR(20)
 );
 
-INSERT INTO Status (keterangan) VALUES
+INSERT INTO status (keterangan) VALUES
 ('Menunggu Validasi'),
 ('Divalidasi'),
 ('Disahkan'),
 ('Ditolak'),
-('Selesai'),
-('Ambil'),
-('Dikirim')
+('Selesai')
 ;
 
-CREATE TABLE Pengajuan (
+CREATE TABLE pengajuan (
     id_pengajuan INT PRIMARY KEY AUTO_INCREMENT,
     id_user INT NOT NULL,
     npm VARCHAR(20) NOT NULL,
     nama VARCHAR(100) NOT NULL,
-    prodi ENUM('Teknik Informatika', 'Sistem Informasi', 'Arsitektur') NOT NULL
+    prodi ENUM('Teknik Informatika', 'Sistem Informasi', 'Arsitektur') NOT NULL,
     tahun_lulus VARCHAR(5) NOT NULL,
     email VARCHAR(100) NOT NULL,
     scan_ijazah MEDIUMBLOB NOT NULL,
@@ -52,24 +41,6 @@ CREATE TABLE Pengajuan (
     total_harga INT,
     bukti_pembayaran MEDIUMBLOB NOT NULL,
     id_status INT,
-    FOREIGN KEY (id_status) REFERENCES Status(id_status),
-    FOREIGN KEY (id_user) REFERENCES User(id_user)
-);
-
-CREATE TABLE Validasi (
-    id_validasi INT PRIMARY KEY AUTO_INCREMENT,
-    id_pengajuan INT,
-    id_staf INT,
-    tanggal_validasi DATE,
-    FOREIGN KEY (id_pengajuan) REFERENCES Pengajuan(id_pengajuan),
-    FOREIGN KEY (id_staf) REFERENCES User(id_user)
-);
-
-CREATE TABLE Persetujuan (
-    id_persetujuan INT PRIMARY KEY AUTO_INCREMENT,
-    id_pengajuan INT,
-    id_dekan INT,
-    tanggal_persetujuan DATE,
-    FOREIGN KEY (id_pengajuan) REFERENCES Pengajuan(id_pengajuan),
-    FOREIGN KEY (id_dekan) REFERENCES User(id_user)
+    FOREIGN KEY (id_status) REFERENCES status(id_status),
+    FOREIGN KEY (id_user) REFERENCES user(id_user)
 );

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tahun_lulus = filter_var($_POST['tahun_lulus'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $alamat = filter_var($_POST['alamat'], FILTER_SANITIZE_STRING);
-    $scan_ijazah = addslashes(file_get_contents($_FILES['ijazah']['tmp_name']));
+    $scan_ijazah = addslashdes(file_get_contents($_FILES['ijazah']['tmp_name']));
     $scan_transkrip = addslashes(file_get_contents($_FILES['transkrip']['tmp_name']));
     $metode_pengambilan = filter_var($_POST['metode_pengambilan'], FILTER_SANITIZE_STRING);
     $jumlah_legalisir_ijazah = filter_var($_POST['jumlah_legalisir_ijazah'], FILTER_SANITIZE_STRING);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bukti_pembayaran = addslashes(file_get_contents($_FILES['bukti_pembayaran']['tmp_name']));
     $id_status = 1; // Status awal adalah "Menunggu Validasi"
 
-    $query = "INSERT INTO Pengajuan (id_user, npm, nama, prodi, tahun_lulus, email, scan_ijazah, scan_transkrip, metode_pengambilan, alamat_pengiriman, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, ekspedisi, ekspedisi_harga, total_harga, bukti_pembayaran, id_status) 
+    $query = "INSERT INTO pengajuan (id_user, npm, nama, prodi, tahun_lulus, email, scan_ijazah, scan_transkrip, metode_pengambilan, alamat_pengiriman, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, ekspedisi, ekspedisi_harga, total_harga, bukti_pembayaran, id_status) 
               VALUES ('$id_user', '$npm', '$nama', '$prodi' , '$tahun_lulus', '$email', '$scan_ijazah', '$scan_transkrip', '$metode_pengambilan', '$alamat', '$jumlah_legalisir_ijazah', '$jumlah_legalisir_transkrip', '$ekspedisi', '$ekspedisi_harga', '$total_harga', '$bukti_pembayaran', '$id_status')";
 
     if (mysqli_query($conn, $query)) {

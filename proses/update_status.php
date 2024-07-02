@@ -9,7 +9,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
 
 $id_pengajuan = $_GET['id'];
 
-$query = "UPDATE Pengajuan SET id_status = 5 WHERE id_pengajuan = '$id_pengajuan'"; // Status 5 = "Selesai"
+$query = "UPDATE pengajuan SET id_status = 5 WHERE id_pengajuan = '$id_pengajuan'"; // Status 5 = "Selesai"
 
 if (mysqli_query($conn, $query)) {
         $_SESSION['alert_message'] = "Berhasil memperbarui status";

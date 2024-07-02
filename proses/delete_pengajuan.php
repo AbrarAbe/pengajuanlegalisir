@@ -6,10 +6,10 @@ if (isset($_GET['id_pengajuan'])) {
     $id_pengajuan = $_GET['id_pengajuan'];
 
     // Hapus pengajuan dari database
-    $query = "DELETE FROM Pengajuan WHERE id_pengajuan = '$id_pengajuan'";
+    $query = "DELETE FROM pengajuan WHERE id_pengajuan = '$id_pengajuan'";
     
     if (mysqli_query($conn, $query)) {
-        $_SESSION['error_message'] = "Pengajuan berhasil dihapus.";
+        $_SESSION['error_message'] = "pengajuan berhasil dihapus.";
         header("Location: ../pages/list_pengajuan_staf.php");
     } else {
         $_SESSION['warning_message'] = "Terjadi kesalahan saat menghapus pengajuan.";
@@ -18,7 +18,7 @@ if (isset($_GET['id_pengajuan'])) {
 
     mysqli_close($conn);
 } else {
-    $_SESSION['error_message'] = "ID Pengajuan tidak ditemukan.";
+    $_SESSION['error_message'] = "ID pengajuan tidak ditemukan.";
 }
 
 header("Location: ../pages/list_pengajuan_staf.php");

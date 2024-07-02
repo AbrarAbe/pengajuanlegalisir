@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_user'])) {
 $id_pengajuan = $_GET['id'];
 $type = $_GET['type'];
 
-$query = "SELECT $type FROM Pengajuan WHERE id_pengajuan = '$id_pengajuan'";
+$query = "SELECT $type FROM pengajuan WHERE id_pengajuan = '$id_pengajuan'";
 $result = mysqli_query($conn, $query);
 
 if ($row = mysqli_fetch_assoc($result)) {

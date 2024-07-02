@@ -33,8 +33,8 @@ if (isset($_SESSION['role'])) {
 }
 
 $id_user = $_SESSION['id_user'];
-$query = "SELECT Pengajuan.*, Status.keterangan FROM Pengajuan JOIN Status ON Pengajuan.id_status = Status.id_status 
-            WHERE Pengajuan.id_user = '$id_user'";
+$query = "SELECT pengajuan.*, status.keterangan FROM pengajuan JOIN status ON pengajuan.id_status = status.id_status 
+            WHERE pengajuan.id_user = '$id_user'";
 $result = mysqli_query($conn, $query);
 ?>
 

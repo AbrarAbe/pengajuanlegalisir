@@ -55,7 +55,7 @@ if (isset($_SESSION['role'])) {
                 <section class="card-body px-5 justify-content-center align-items-center">
                     <header class="form-outline mb-4">
                         <label class="form-label form-label-white d-flex">
-                            <span style="font-size : 1.5rem;">Form Pengajuan legalisir</span></label>
+                            <span style="font-size : 1.5rem;">Form Pengajuan Legalisir</span></label>
                     </header>
 
                     <!-- Form -->
@@ -214,7 +214,7 @@ if (isset($_SESSION['role'])) {
                         </article>
                         <article class="d-grid">
                             <button type="submit" name="submit" id="submitBtn"
-                                class="preload-link button-3 my-2">Submit</button>
+                                class="preload-submit button-3 my-2">Submit</button>
                         </article>
                     </form>
                 </section>
