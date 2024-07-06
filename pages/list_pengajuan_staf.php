@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $query);
 		<section id="preloaderLink" class="preloader d-flex">
 			<article class="loader"></article>
 		</section>
-		<nav id="sidebar" class="nav-bg" style="min-height:100vh;">
+		<nav id="sidebar" class="nav-bg">
 			<div class="custom-menu">
 				<button type="button" id="sidebarCollapse" class="btn btn-primary">
 					<i class="fa fa-bars"></i>

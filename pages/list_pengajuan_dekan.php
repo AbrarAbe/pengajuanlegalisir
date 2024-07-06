@@ -123,7 +123,6 @@ $result = mysqli_query($conn, $query);
 				</table>
 			</article>
 		</section>
-		</section>
 	</main>
 </body>
 
