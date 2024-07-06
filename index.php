@@ -1,19 +1,17 @@
 <?php
 session_start();
 if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
-    header('Location: pages/beranda_alumni.php');
+    header('Location: beranda_alumni.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
-    header('Location: pages/beranda_staf.php');
+    header('Location: beranda_staf.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
-    header('Location: pages/beranda_dekan.php');
+    header('Location: beranda_dekan.php');
     exit;
 }
 
-$navbarFile = 'components/navbar_index.html';
 $headFile = 'components/head_index.html';
 $alertFile = 'components/alert.html';
 $footerFile = 'components/footer_default.html';
-
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +22,42 @@ $footerFile = 'components/footer_default.html';
     <title>E-Legalisir</title>
 </head>
 
-<body class="bg-custom-green">
-    <section id="preloaderLink" class="preloader d-flex">
-        <article class="loader"></article>
-    </section>
-    <header>
-        <!-- Navbar -->
-        <?php @include ($navbarFile); ?>
-    </header>
+<body class="bg-custom poppins">
+    <main class="wrapper d-flex align-items-stretch">
+        <section id="preloaderLink" class="preloader d-flex">
+            <article class="loader"></article>
+        </section>
+        <nav id="sidebar" class="nav-bg" style="min-height:100vh">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="container d-grid p-4">
+                <h1><a href="index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                            Transkrip</span></a></h1>
+                <ul class="list-unstyled components mb-4">
+                    <li class="active">
+                        <a href="index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+                    </li>
+                    <li>
+                        <a href="pages/login.php" class="nav-link preload-link"><span
+                                class="fa fa-right-to-bracket mr-4"></span>
+                            Login</a>
+                    </li>
+                    <li>
+                        <a href="pages/register_alumni.php" class="nav-link preload-link"><span
+                                class="fa fa-user-plus mr-4"></span>Register</a>
+                    </li>
+                </ul>
+                <?php @include ($footerFile); ?>
+            </div>
+        </nav>
 
-    <!-- Section: Design Block -->
-    <main class="container justify-content-center align-items-center d-flex vh-100 py-5">
-        <section class="row gx-lg-5 align-items-center">
-            <article class="container px-5 mb-lg-0 py-5">
+        <!-- Section Block -->
+        <section class="container gx-lg-5 d-flex justify-content-center align-items-center">
+            <article class="container mb-lg-0">
                 <header>
                     <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
                         Pesan Legalisir ijazah anda <span style="color: hsl(218, 43%, 45%);">dari rumah</span>
@@ -46,8 +67,9 @@ $footerFile = 'components/footer_default.html';
                     Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
                     yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
                     Dapatkan legalisir anda kapanpun dan dimanapun <span style="color: hsl(218, 49%, 35%)">tanpa keluar
-                        rumah!</span>
-                    <br />Tertarik untuk mencoba? Yuk segera daftar!
+                        rumah!</span><br>
+                    <br />Tertarik untuk mencoba? Yuk segera <a href="pages/register_alumni.php"
+                        style="text-decoration: none;">daftar</a>!
                 </p>
             </article>
         </section>
@@ -63,9 +85,6 @@ $footerFile = 'components/footer_default.html';
             </article>
         </section>-->
     </main>
-    <!-- footer -->
-    <?php @include ($footerFile); ?>
-    <!-- footer -->
 </body>
 
 </html>

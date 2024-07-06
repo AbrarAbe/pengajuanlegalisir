@@ -3,7 +3,7 @@ session_start();
 include '../config.php'; // File ini harus memiliki koneksi database Anda
 
 if (!isset($_SESSION['id_user'])) {
-    header("Location: ../pages/login_admin.php");
+    header("Location: ../pages/login.php");
     exit;
 }
 

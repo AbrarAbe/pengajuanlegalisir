@@ -1,50 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0 px-4">
-    <nav class="container-fluid">
-        <a class="navbar-brand" href="../index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav id="sidebar" class="nav-bg" style="min-height:100vh">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
         </button>
-        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="../index.php">Beranda</a>
-                </li>
-            </ul>
-            <nav class="nav-item dropdown">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="register_alumni.php" class="nav-link mx-2 preload-link">Register</a>
-                    </li>
-                    <button type="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Login
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end bg-glass-dark">
-                        <li><a class="dropdown-item preload-link" href="login_alumni.php">Alumni</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item preload-link" href="login_admin.php">Admin</a></li>
-                    </ul>
-                </ul>
-            </nav>
-            <!--<nav class="nav-item dropdown">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <a href="register_alumni.php" class="button-register mx-2">Register</a>
-                    <button type="button" class="button-login dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Login
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end input-glass">
-                        <li><a class="dropdown-item" href="login_alumni.php">Alumni</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="login_admin.php">Admin</a></li>
-                    </ul>
-                </ul>
-            </nav>-->
-        </nav>
-    </nav>
+    </div>
+    <div class="container d-grid p-4">
+        <h1><a href="index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                    Transkrip</span></a></h1>
+        <ul class="list-unstyled components mb-4">
+            <li>
+                <a href="index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+            </li>
+            <li>
+                <a href="pages/login.php" class="nav-link preload-link"><span
+                        class="fa fa-right-to-bracket mr-4"></span>
+                    Login</a>
+            </li>
+            <li>
+                <a href="pages/register_alumni.php" class="nav-link preload-link"><span
+                        class="fa fa-user-plus mr-4"></span>Register</a>
+            </li>
+        </ul>
+        <?php @include ($footerFile); ?>
+    </div>
 </nav>

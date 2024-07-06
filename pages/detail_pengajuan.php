@@ -1,17 +1,16 @@
 <?php
 session_start();
-include '../config.php';
 
 if (!isset($_SESSION['id_user']) || ($_SESSION['role'] != 'staf' && $_SESSION['role'] != 'dekan' && $_SESSION['role'] != 'alumni')) {
-    header("Location: login_admin.php");
+    header("Location: login.php");
     exit;
 }
 
 $navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
-$tableFile = '../components/datatables.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -32,58 +31,43 @@ if (isset($_SESSION['role'])) {
     $navbarFile = '../components/navbar_default.html'; // Jika pengguna tidak login, gunakan navbar default
 }
 
-include '../config.php'; // File ini harus memiliki koneksi database Anda
-
+include '../config.php';
 $id_pengajuan = $_GET['id'];
 $query = "SELECT p.*, s.keterangan FROM pengajuan p JOIN status s ON p.id_status = s.id_status WHERE p.id_pengajuan = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $id_pengajuan);
 $stmt->execute();
 $result = $stmt->get_result();
-
 ?>
 
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
 
 <head>
     <?php @include ($headFile); ?>
-    <?php @include ($tableFile); ?>
+    <?php @include ($scriptsFile); ?>
     <title>Detail Pengajuan</title>
 </head>
 
-<body class="background-radial-gradient">
-    <section id="preloaderLink" class="preloader d-flex">
-        <article class="loader"></article>
-    </section>
-    <header>
+<body>
+    <main class="wrapper d-flex align-items-stretch poppins">
+        <section id="preloaderLink" class="preloader d-flex">
+            <article class="loader"></article>
+        </section>
         <!-- Navbar -->
         <?php @include ($navbarFile); ?>
-    </header>
-
-    <!-- Section: Design Block -->
-    <main class="container justify-content-center align-items-start py-5">
-        <?php @include ($alertFile); ?>
-        <section class="container-fluid justify-content-center align-items-center py-5">
-            <section class="card bg-glass d-flex px-3 py-5">
-                <article class="card-body py-1 px-md-5">
-                    <header class='row g-3 mb-4'>
-                        <article class='d-flex'>
-                            <button class='button-3' onclick='history.back()'><
-                                </button>
-                        </article>
-                        <article class="form-outline">
-                            <label class="form-label form-label-white d-flex">
-                                <span style="font-size: 1.5rem;">Detail Pengajuan legalisir</span></label>
-                        </article>
-                    </header>
-                    <section>
-                        <?php if ($row = mysqli_fetch_assoc($result)) {
-                            echo "
-                        <article class='data_tables d-flex'>
-                            <table class='table dt[-head|-body] text-start table-custom table-hover table-bordered'>
+        <!-- Page Content  -->
+        <section id="content" class="p-4 p-md-5 pt-5">
+            <?php @include ($alertFile); ?>
+            <h2 class="mb-4">Detail Pengajuan</h2>
+            </header>
+            <section>
+                <?php if ($row = mysqli_fetch_assoc($result)) {
+                    echo "
+                        <article class='data_tables mb-4' style='font-size:0.8rem'>
+                            <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
-                                    <th width='20%'>Nomor Pokok Mahasiswa</th>
+                                    <th width='25%'>Nomor Pokok Mahasiswa</th>
                                     <td>$row[npm]</td>
                                 </tr>
                                 <tr>
@@ -124,9 +108,9 @@ $result = $stmt->get_result();
                                 </tr>
                             </table>
                         </article>";
-                            if ($_SESSION['role'] == 'alumni') {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    if ($_SESSION['role'] == 'alumni') {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -136,9 +120,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Menunggu Validasi')) {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Menunggu Validasi')) {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -154,9 +138,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Divalidasi')) {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Divalidasi')) {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -166,9 +150,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Ditolak')) {
-                                echo "
-                            <article class='d-flex mb-4 preload-link' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Ditolak')) {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -183,9 +167,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Disahkan')) {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'staf' && ($row['keterangan'] == 'Disahkan')) {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
@@ -201,9 +185,9 @@ $result = $stmt->get_result();
                             </article>
                         ";
 
-                            } elseif ($_SESSION['role'] == 'staf') {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'staf') {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
@@ -213,9 +197,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Divalidasi')) {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Divalidasi')) {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -231,9 +215,9 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Disahkan')) {
-                                echo "
-                            <article class='d-flex mb-4' style='font-size: 1.5rem;'>Dokumen</article>
+                    } elseif ($_SESSION['role'] == 'dekan' && ($row['keterangan'] == 'Disahkan')) {
+                        echo "
+                            <h2 class='mb-4'>Dokumen</h2>
                                 <article class='row g-3'>
                                     <article class='col-sm-8 d-flex gap-2'>
                                         <a class='button-6 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -243,21 +227,16 @@ $result = $stmt->get_result();
                                 </article>
                             </article>
                         ";
-                            }
-                        } else {
-                            echo "Pengajuan tidak ditemukan.";
-                        }
-                        mysqli_close($conn);
-                        ?>
+                    }
+                } else {
+                    echo "Pengajuan tidak ditemukan.";
+                }
+                mysqli_close($conn);
+                ?>
 
-                    </section>
-                </article>
             </section>
         </section>
     </main>
-    <!-- footer -->
-    <?php @include ($footerFile); ?>
-    <!-- footer -->
 </body>
 
 </html>

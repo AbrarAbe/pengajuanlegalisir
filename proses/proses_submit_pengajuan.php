@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tahun_lulus = filter_var($_POST['tahun_lulus'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $alamat = filter_var($_POST['alamat'], FILTER_SANITIZE_STRING);
-    $scan_ijazah = addslashdes(file_get_contents($_FILES['ijazah']['tmp_name']));
+    $scan_ijazah = addslashes(file_get_contents($_FILES['ijazah']['tmp_name']));
     $scan_transkrip = addslashes(file_get_contents($_FILES['transkrip']['tmp_name']));
     $metode_pengambilan = filter_var($_POST['metode_pengambilan'], FILTER_SANITIZE_STRING);
     $jumlah_legalisir_ijazah = filter_var($_POST['jumlah_legalisir_ijazah'], FILTER_SANITIZE_STRING);

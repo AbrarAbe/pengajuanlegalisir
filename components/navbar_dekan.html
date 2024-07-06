@@ -1,29 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0 px-4">
-    <nav class="container-fluid">
-        <a class="navbar-brand" href="../index.php"><span style="color: #2FDAD1;">E-</span>Legalisir</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav id="sidebar" class="nav-bg">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
         </button>
-        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="../index.php">Beranda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link preload-link" href="list_pengajuan_dekan.php">Pengesahan</a>
-                </li>
-            </ul>
-            <article class="dropdown" style="float:right;">
-                <a class="nav-link" role="button"><i class="nf nf-oct-person_fill px-2"></i><?php echo $_SESSION['username']; ?>
-                </a>
-                <article class="dropdown-content bg-glass-dark" style="border-radius: 10px;">
-                    <a class="nav-link preload-link" href="#">Ganti Password</a>
-                    <hr class="dropdown-divider">
-                    <a class="nav-link preload-link" href="../proses/logout.php">Logout</a>
-                </article>
-            </article>
-        </nav>
-    </nav>
+    </div>
+    <div class="container d-grid p-4 position-fixed" style="max-width: 270px">
+        <h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                    Transkrip</span></a></h1>
+        <ul class="list-unstyled components mb-5">
+            <li>
+                <a href="beranda_dekan.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+            </li>
+            <li class="active">
+                <a href="list_pengajuan_dekan.php" class="nav-link preload-link"><span
+                        class="fa fa-id-card mr-4"></span>List Pengesahan</a>
+            </li>
+            <li>
+                <a href="login.php" class="nav-link preload-link"><span
+                        class="fa fa-gear mr-4"></span>Pengaturan</a>
+            </li>
+            <li>
+                <a href="../proses/logout.php" class="nav-link preload-link"><span
+                        class="fa fa-right-from-bracket mr-4"></span>Logout</a>
+            </li>
+        </ul>
+        <!-- Footer -->
+        <?php @include ($footerFile); ?>
+        <!-- Footer -->
+    </div>
 </nav>

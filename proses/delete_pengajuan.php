@@ -9,7 +9,7 @@ if (isset($_GET['id_pengajuan'])) {
     $query = "DELETE FROM pengajuan WHERE id_pengajuan = '$id_pengajuan'";
     
     if (mysqli_query($conn, $query)) {
-        $_SESSION['error_message'] = "pengajuan berhasil dihapus.";
+        $_SESSION['error_message'] = "Pengajuan berhasil dihapus.";
         header("Location: ../pages/list_pengajuan_staf.php");
     } else {
         $_SESSION['warning_message'] = "Terjadi kesalahan saat menghapus pengajuan.";

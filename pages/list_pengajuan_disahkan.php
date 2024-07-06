@@ -1,175 +1,133 @@
 <?php
 session_start();
-include '../config.php'; // File ini harus memiliki koneksi database Anda
-
 if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'staf') {
-    header("Location: login_admin.php");
-    exit;
+	header("Location: login.php");
+	exit;
 }
 
-$navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
-$tableFile = '../components/datatables.html';
+$scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
-// path ke file navbar berdasarkan role
-if (isset($_SESSION['role'])) {
-    switch ($_SESSION['role']) {
-        case 'alumni':
-            $navbarFile = '../components/navbar_alumni.html';
-            break;
-        case 'staf':
-            $navbarFile = '../components/navbar_staf.html';
-            break;
-        case 'dekan':
-            $navbarFile = '../components/navbar_dekan.html';
-            break;
-        default:
-            $navbarFile = '../components/navbar_default.html';
-            break;
-    }
-} else {
-    $navbarFile = '../components/navbar_default.html'; // Jika pengguna tidak login, gunakan navbar default
-}
-//tabel disahkan
+
+include '../config.php';
 $query = "SELECT p.*, s.keterangan 
           FROM pengajuan p 
           JOIN status s ON p.id_status = s.id_status 
-          WHERE p.id_status = 3"; // Status 'Disahkan' (3)
+          WHERE p.id_status IN (3,5) "; // Status 'Disahkan' (3), 'Selesai' (5)
 $result = mysqli_query($conn, $query);
-
-//tabel selesai
-$query2 = "SELECT p.*, s.keterangan 
-          FROM pengajuan p 
-          JOIN status s ON p.id_status = s.id_status 
-          WHERE p.id_status = 5"; // Status 'Selesai' (5)
-$result2 = mysqli_query($conn, $query2);
 ?>
 
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($tableFile); ?>
-    <title>Daftar Pengajuan</title>
+	<?php @include ($headFile); ?>
+	<?php @include ($scriptsFile); ?>
+	<title>List Pengajuan</title>
 </head>
 
-<body class="background-radial-gradient">
-    <section id="preloaderLink" class="preloader d-flex">
-        <article class="loader"></article>
-    </section>
-    <header>
-        <!-- Navbar -->
-        <?php @include ($navbarFile); ?>
-    </header>
-
-    <!-- Section: Design Block -->
-    <main class="container justify-content-center align-items-center py-5 my-5">
-        <?php @include ($alertFile); ?>
-        <!-- Tabel Legalisir yang Belum Selesai -->
-        <section class="card bg-glass d-flex mb-4 py-4">
-            <section class="card-body py-1 px-md-4">
-                <header class="form-outline px-3">
-                    <label class="form-label d-flex">
-                        <span style="font-size: 1.5rem;">Pengajuan yang telah disahkan</span></label>
-                </header>
-            </section>
-            <section class="card-body py-1">
-                <article class="data_table px-4">
-                    <table id="table-s4" class="table display table-custom table-hover table-bordered">
-                        <thead class="thead-glass">
-                            <tr>
-                                <th width="5%">ID</th>
-                                <th>NPM</th>
-                                <th>Nama</th>
-                                <th>Prodi</th>
-                                <th>Metode Pengambilan</th>
-                                <th>Status</th>
-                                <th width="15%">Detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                                <tr>
-                                    <td><?php echo $row['id_pengajuan']; ?></td>
-                                    <td><?php echo $row['npm']; ?></td>
-                                    <td><?php echo $row['nama']; ?></td>
-                                    <td><?php echo $row['prodi']; ?></td>
-                                    <td><?php echo $row['metode_pengambilan']; ?></td>
-                                    <td><?php echo $row['keterangan']; ?></td>
-                                    <td>
-                                        <article>
-                                            <a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>"
-                                                id="detail" class="button-2 preload-link"">Lihat
-                                                Detail
-                                            </a>
-                                        </article>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </article>
-                <article class="py-3 px-4">
-                    <a href="beranda_staf.php" class="button-3">Kembali ke Beranda</a>
-                </article>
-            </section>
-        </section>
-        <!-- Tabel Legalisir Selesai -->
-        <section class="card bg-glass d-flex mb-4 py-4">
-            <section class="card-body py-1 px-md-4">
-                <header class="form-outline px-3">
-                    <label class="form-label d-flex">
-                        <span style="font-size: 1.5rem;">Legalisir yang telah diselesaikan</span></label>
-                </header>
-            </section>
-            <section class="card-body py-1">
-                <article class="data_table px-4">
-                    <table id="table-p" class="table display nowrap table-custom table-hover table-bordered">
-                        <thead class="thead-glass">
-                            <tr>
-                                <th width="5%">ID</th>
-                                <th>NPM</th>
-                                <th>Nama</th>
-                                <th>Prodi</th>
-                                <th>Metode Pengambilan</th>
-                                <th>Status</th>
-                                <th width="15%">Detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while ($row2 = mysqli_fetch_assoc($result2)) { ?>
-                                <tr>
-                                    <td><?php echo $row2['id_pengajuan']; ?></td>
-                                    <td><?php echo $row2['npm']; ?></td>
-                                    <td><?php echo $row2['nama']; ?></td>
-                                    <td><?php echo $row2['prodi']; ?></td>
-                                    <td><?php echo $row2['metode_pengambilan']; ?></td>
-                                    <td><?php echo $row2['keterangan']; ?></td>
-                                    <td>
-                                        <article>
-                                            <a href="detail_pengajuan.php?id=<?php echo $row2['id_pengajuan']; ?>"
-                                                id="detail" class="button-2 preload-link"">Lihat
-                                                Detail
-                                            </a>
-                                        </article>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </article>
-            </section>
-        </section>
-    </main>
-    <!-- footer -->
-    <?php @include ($footerFile); ?>
-    <!-- footer -->
+<body>
+	<main class="wrapper d-flex align-items-stretch poppins">
+		<section id="preloaderLink" class="preloader d-flex">
+			<article class="loader"></article>
+		</section>
+		<nav id="sidebar" class="nav-bg" style="min-height:100vh;">
+			<div class="custom-menu">
+				<button type="button" id="sidebarCollapse" class="btn btn-primary">
+					<i class="fa fa-bars"></i>
+					<span class="sr-only">Toggle Menu</span>
+				</button>
+			</div>
+			<div class="container d-grid p-4 position-fixed" style="max-width: 270px">
+				<h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+							Transkrip</span></a></h1>
+				<ul class="list-unstyled components mb-5">
+					<li>
+						<a href="beranda_staf.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+					</li>
+					<li>
+						<a href="list_pengajuan_staf.php" class="nav-link preload-link"><span
+								class="fa fa-id-card mr-4"></span>List Pengajuan</a>
+					</li>
+					<li class="active">
+						<a href="list_pengajuan_disahkan.php" class="nav-link"><span
+								class="fa fa-file-lines ml-1 mr-4"></span> Legalisir</a>
+					</li>
+					<li>
+						<a href="login.php" class="nav-link preload-link"><span
+								class="fa fa-gear ml-1 mr-4"></span>Pengaturan</a>
+					</li>
+					<li>
+						<a href="../proses/logout.php" class="nav-link preload-link"><span
+								class="fa fa-right-from-bracket ml-1 mr-4"></span>Logout</a>
+					</li>
+				</ul>
+				<!-- Footer -->
+				<?php @include ($footerFile); ?>
+				<!-- Footer -->
+			</div>
+		</nav>
+		<!-- Page Content  -->
+		<section id="content" class="p-4 p-md-5 pt-5">
+			<?php @include ($alertFile); ?>
+			<h2 class="mb-4">Legalisir</h2>
+			<article class="data_table" style="font-size:0.8rem">
+				<table id="table-sp" class="table display table-hover table-bordered">
+					<thead class="table-primary">
+						<tr>
+							<th class="text-start">ID</th>
+							<th class="text-start">NPM</th>
+							<th>Nama</th>
+							<th>Prodi</th>
+							<th>Pengambilan</th>
+							<th>Status</th>
+							<th>Detail</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+							<tr>
+								<td class="text-start"><?php echo $row['id_pengajuan']; ?></td>
+								<td class="text-start"><?php echo $row['npm']; ?></td>
+								<td><?php echo $row['nama']; ?></td>
+								<td><?php echo $row['prodi']; ?></td>
+								<td><?php echo $row['metode_pengambilan']; ?></td>
+								<td class="text-center">
+									<?php switch ($row['keterangan']) {
+										case 'Menunggu Validasi':
+											echo "<span class='badge badge-warning d-flex justify-content-center align-items-center py-2 px-2'>Menunggu validasi</span>";
+											break;
+										case 'Divalidasi':
+											echo "<span class='badge badge-primary d-flex justify-content-center align-items-center py-2 px-2'>Divalidasi</span>";
+											break;
+										case 'Disahkan':
+											echo "<span class='badge badge-info d-flex justify-content-center align-items-center py-2 px-2'>Disahkan</span>";
+											break;
+										case 'Ditolak':
+											echo "<span class='badge badge-danger d-flex justify-content-center align-items-center py-2 px-2'>Ditolak</span>";
+											break;
+										case 'Selesai':
+											echo "<span class='badge badge-success d-flex justify-content-center align-items-center py-2 px-2'>Selesai</span>";
+											break;
+									}
+									; ?>
+								</td>
+								<td>
+									<article>
+										<a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>" id="detail"
+											class="button-4 preload-link px-2">Lihat
+											Detail
+										</a>
+									</article>
+								</td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</article>
+		</section>
+	</main>
 </body>
 
 </html>
-
-<?php
-mysqli_close($conn);
-?>

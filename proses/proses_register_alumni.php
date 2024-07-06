@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
             $stmt->bind_param("sss", $username, $email, $password);
             if ($stmt->execute()) {
                 $_SESSION['info_message'] = "<strong>Berhasil !</strong> Akun anda berhasil terdaftar! Anda dapat login sekarang.";
-                header("Location: ../pages/login_alumni.php");
+                header("Location: ../pages/login.php");
             } else {
                 $_SESSION['error_message'] = "<strong>Gagal !</strong> Gagal daftar akun. Harap ulangi lagi.";
                 header("Location: ../pages/register_alumni.php");

@@ -1,3 +1,24 @@
+// main scripts
+(function ($) {
+
+    "use strict";
+
+    var fullHeight = function () {
+
+        $('.js-fullheight').css('height', $(window).height());
+        $(window).resize(function () {
+            $('.js-fullheight').css('height', $(window).height());
+        });
+
+    };
+    fullHeight();
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+})(jQuery);
+
 // Form harga total
 function updateTotal() {
     const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
@@ -22,7 +43,7 @@ function updateTotal() {
     document.getElementById('ekspedisi_harga_input').value = ekspedisiHarga;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     toggleEkspedisi();
 });
 
@@ -38,7 +59,7 @@ function toggleEkspedisi() {
     var metodeAmbil = document.getElementById('ambil').checked;
     var ekspedisiArticle = document.getElementById('ekspedisi_article');
     var ekspedisiHargaInput = document.getElementById('ekspedisi_harga_input');
-    
+
     if (metodeAmbil) {
         ekspedisiArticle.style.display = 'none';
         ekspedisiHargaInput.value = 0;
@@ -83,7 +104,7 @@ $(document).ready(function () {
     });
 });
 
-function apala() {
+function showPass() {
     // Toggle the type attribute using getAttribute() and setAttribute()
     const password = document.getElementById('password');
     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -118,6 +139,7 @@ function confirmLogout() {
 
 // Table pagination
 new DataTable('#table-p', {
+    autoWidth: false,
     stateSave: true,
     responsive: true,
     colReorder: true,
@@ -134,6 +156,7 @@ new DataTable('#table-p', {
 $(document).ready(function () {
 
     var table = $('#table-s').DataTable({
+        autoWidth: false,
         stateSave: true,
         responsive: true,
         colReorder: true,
@@ -146,6 +169,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     var table = $('#table-s2').DataTable({
+        autoWidth: false,
         stateSave: true,
         responsive: true,
         colReorder: true,
@@ -158,6 +182,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     var table = $('#table-s3').DataTable({
+        autoWidth: false,
         stateSave: true,
         responsive: true,
         colReorder: true,
@@ -170,6 +195,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     var table = $('#table-s4').DataTable({
+        autoWidth: false,
         stateSave: true,
         responsive: true,
         colReorder: true,
@@ -181,7 +207,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-    var table = $('#tables5').DataTable({
+    var table = $('#table-s5').DataTable({
+        autoWidth: false,
         stateSave: true,
         responsive: true,
         colReorder: true,
@@ -199,6 +226,27 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     var table = $('#table-sp').DataTable({
+        lengthChange: true,
+        autoWidth: false,
+        stateSave: true,
+        responsive: true,
+        colReorder: true,
+        paging: false,
+        layout: {
+            topStart: {
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ]
+            }
+        }
+    });
+});
+
+
+// Table scroll print
+$(document).ready(function () {
+    var table = $('#table-a').DataTable({
+        autoWidth: false,
         stateSave: true,
         responsive: true,
         colReorder: true,
@@ -212,18 +260,23 @@ $(document).ready(function () {
     });
 });
 
-// Table scroll print
-$(document).ready(function () {
-    var table = $('#table-a').DataTable({
+$(function () {
+    $('#example1').DataTable({
+        responsive: true, lengthChange: false, autoWidth: false,
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis']
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
         stateSave: true,
-        responsive: true,
-        colReorder: true,
         paging: false,
+        lengthChange: false,
+        searching: true,
+        ordering: true,
+        info: true,
+        autoWidth: false,
+        responsive: true,
         scrollCollapse: true,
         scrollY: '50vh',
-        dom: '<"top"f>rt<"bottom"Blip>',
-        buttons: [
-            'copy', 'excel', 'pdf', 'print'
-        ]
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis']
     });
 });
+

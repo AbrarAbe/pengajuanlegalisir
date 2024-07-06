@@ -1,75 +1,75 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
-    header("Location: login_alumni.php");
-    exit;
+	header("Location: login.php");
+	exit;
 }
 
-$navbarFile = '';
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
+$scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
-// path ke file navbar berdasarkan role
-if (isset($_SESSION['role'])) {
-    switch ($_SESSION['role']) {
-        case 'alumni':
-            $navbarFile = '../components/navbar_alumni.html';
-            break;
-        case 'staf':
-            $navbarFile = '../components/navbar_staf.html';
-            break;
-        case 'dekan':
-            $navbarFile = '../components/navbar_dekan.html';
-            break;
-        default:
-            $navbarFile = '../components/navbar_default.html';
-            break;
-    }
-} else {
-    $navbarFile = '../components/navbar_default.html'; // Jika pengguna tidak login, gunakan navbar default
-}
 ?>
 
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
 
 <head>
-    <?php @include ($headFile); ?>
-    <title>Beranda Alumni</title>
+	<?php @include ($headFile); ?>
+	<?php @include ($scriptsFile); ?>
+	<title>Beranda</title>
 </head>
 
-<body class="background-radial-gradient">
-    <section id="preloaderLink" class="preloader d-flex">
-        <article class="loader"></article>
-    </section>
-    </section>
-    <main>
-        <header>
-            <!-- Navbar -->
-            <?php @include ($navbarFile); ?>
-        </header>
-        <!-- Section: Design Block -->
-        <main class="container justify-content-center align-items-center d-flex vh-100 py-5">
-            <section class="row gx-lg-5 align-items-center">
-                <article class="container px-5 mb-lg-0 py-5 justify-content-center">
-                    <h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
-                </article>
-            </section>
-            <!--<section class="col g-3 d-flex align-items-center justify-content-center px-5 gap-3">
-            <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
-                placeholder
-            </article>
-            <article class="col-sm button-card bg-glass ol-sm justify-content-center align-items-center d-flex">
-                placeholder
-            </article>
-            <article class="col-sm button-card bg-glass col-sm justify-content-center align-items-center d-flex">
-                placeholder
-            </article>
-        </section>-->
-        </main>
-        <!-- Footer -->
-        <?php @include ($footerFile); ?>
-        <!-- Footer -->
+<body>
+	<main class="wrapper d-flex align-items-stretch poppins">
+		<section id="preloaderLink" class="preloader d-flex">
+			<article class="loader"></article>
+		</section>
+		<nav id="sidebar" class="nav-bg">
+			<div class="custom-menu">
+				<button type="button" id="sidebarCollapse" class="btn btn-primary">
+					<i class="fa fa-bars"></i>
+					<span class="sr-only">Toggle Menu</span>
+				</button>
+			</div>
+			<div class="container d-grid p-4 position-fixed" style="max-width: 270px">
+				<h1><a href="../index.html" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+							Transkrip</span></a></h1>
+				<ul class="list-unstyled components mb-5">
+					<li class="active">
+						<a href="beranda_alumni.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+					</li>
+					<li>
+						<a href="form_pengajuan.php" class="nav-link preload-link"><span
+								class="fa fa-id-card mr-4"></span>Form Pengajuan</a>
+					</li>
+					<li>
+						<a href="status_pengajuan.php" class="nav-link preload-link"><span
+								class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
+					</li>
+					<li>
+						<a href="login.php" class="nav-link preload-link"><span
+								class="fa fa-gear mr-4"></span>Pengaturan</a>
+					</li>
+					<li>
+						<a href="../proses/logout.php" class="nav-link preload-link"><span
+								class="fa fa-right-from-bracket mr-4"></span>Logout</a>
+					</li>
+				</ul>
+				<!-- Footer -->
+				<?php @include ($footerFile); ?>
+				<!-- Footer -->
+			</div>
+		</nav>
+		<!-- Page Content  -->
+		<section id="content" class="p-4 p-md-5 pt-5">
+			<?php @include ($alertFile); ?>
+			<h2 class="mb-4">Beranda</h2>
+			<article class="container px-5 mb-lg-0 py-5 justify-content-center">
+				<h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
+			</article>
+		</section>
+	</main>
 </body>
 
 </html>
