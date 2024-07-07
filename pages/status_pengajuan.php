@@ -9,6 +9,7 @@ $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
+$themeFile = '../components/theme.html';
 
 include '../config.php';
 $id_user = $_SESSION['id_user'];
@@ -18,11 +19,12 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en">
 
 <head>
     <?php @include ($headFile); ?>
     <?php @include ($scriptsFile); ?>
+    <?php @include ($themeFile); ?>
     <title>Status Pengajuan</title>
 </head>
 
@@ -31,7 +33,7 @@ $result = mysqli_query($conn, $query);
         <section id="preloaderLink" class="preloader d-flex">
             <article class="loader"></article>
         </section>
-        <nav id="sidebar" class="nav-bg">
+        <nav id="sidebar" class="nav-bg-light">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fa fa-bars"></i>
@@ -50,12 +52,12 @@ $result = mysqli_query($conn, $query);
                                 class="fa fa-id-card mr-4"></span>Form Pengajuan</a>
                     </li>
                     <li class="active">
-                        <a href="status_pengajuan.php" class="nav-link"><span
-                                class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
+                        <a href="status_pengajuan.php" class="nav-link"><span class="fa fa-chart-simple mr-4"></span>
+                            Status Pengajuan</a>
                     </li>
                     <li>
-                        <a href="login.php" class="nav-link preload-link"><span
-                                class="fa fa-solid fa-gear mr-4"></span>Pengaturan</a>
+                        <a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+                                class="fa fa-sun mr-4"></span>Ganti Tema</a>
                     </li>
                     <li>
                         <a href="../proses/logout.php" class="nav-link preload-link"><span
@@ -69,13 +71,13 @@ $result = mysqli_query($conn, $query);
         </nav>
         <!-- Page Content  -->
         <section id="content" class="p-4 p-md-5 pt-5">
-            <?php @include ($alertFile); ?>
             <h2 class="mb-4">Status Pengajuan</h2>
+            <?php @include ($alertFile); ?>
             <article class="data_table" style="font-size:0.8rem">
-                <table id="table-sp" class="table display table-hover table-bordered">
+                <table id="table-s" class="table display table-bordered">
                     <thead class="table-primary">
                         <tr>
-                            <th>ID</th>
+                            <th class="text-start">ID</th>
                             <th>Nama</th>
                             <th>Metode Pengambilan</th>
                             <th>Status</th>
@@ -85,7 +87,7 @@ $result = mysqli_query($conn, $query);
                     <tbody>
                         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tr>
-                                <td><?php echo $row['id_pengajuan']; ?></td>
+                                <td class="text-start"><?php echo $row['id_pengajuan']; ?></td>
                                 <td><?php echo $row['nama']; ?></td>
                                 <td><?php echo $row['metode_pengambilan']; ?></td>
                                 <td class="text-center">

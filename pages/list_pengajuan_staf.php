@@ -9,6 +9,7 @@ $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
+$themeFile = '../components/theme.html';
 
 include '../config.php';
 $query = "SELECT p.*, s.keterangan 
@@ -19,11 +20,12 @@ $result = mysqli_query($conn, $query);
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en">
 
 <head>
 	<?php @include ($headFile); ?>
 	<?php @include ($scriptsFile); ?>
+	<?php @include ($themeFile); ?>
 	<title>List Pengajuan</title>
 </head>
 
@@ -32,7 +34,7 @@ $result = mysqli_query($conn, $query);
 		<section id="preloaderLink" class="preloader d-flex">
 			<article class="loader"></article>
 		</section>
-		<nav id="sidebar" class="nav-bg">
+		<nav id="sidebar" class="nav-bg-light">
 			<div class="custom-menu">
 				<button type="button" id="sidebarCollapse" class="btn btn-primary">
 					<i class="fa fa-bars"></i>
@@ -47,16 +49,16 @@ $result = mysqli_query($conn, $query);
 						<a href="beranda_staf.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
 					</li>
 					<li class="active">
-						<a href="list_pengajuan_staf.php" class="nav-link"><span
-								class="fa fa-id-card mr-4"></span>List Pengajuan</a>
+						<a href="list_pengajuan_staf.php" class="nav-link"><span class="fa fa-id-card mr-4"></span>List
+							Pengajuan</a>
 					</li>
 					<li>
 						<a href="list_pengajuan_disahkan.php" class="nav-link preload-link"><span
 								class="fa fa-file-lines ml-1 mr-4"></span> Legalisir</a>
 					</li>
 					<li>
-						<a href="login.php" class="nav-link preload-link"><span
-								class="fa fa-gear ml-1 mr-4"></span>Pengaturan</a>
+						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+								class="fa fa-sun ml-1 mr-4"></span> Tema</a>
 					</li>
 					<li>
 						<a href="../proses/logout.php" class="nav-link preload-link"><span
@@ -70,8 +72,8 @@ $result = mysqli_query($conn, $query);
 		</nav>
 		<!-- Page Content  -->
 		<section id="content" class="p-4 p-md-5 pt-5">
-			<?php @include ($alertFile); ?>
 			<h2 class="mb-4">List Pengajuan</h2>
+			<?php @include ($alertFile); ?>
 			<article class="data_table" style="font-size:0.8rem">
 				<table id="table-sp" class="table display table-hover table-bordered">
 					<thead class="table-primary">

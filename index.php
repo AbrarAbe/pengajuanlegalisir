@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
-    header('Location: beranda_alumni.php');
+    header('Location: ../pages/beranda_alumni.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
-    header('Location: beranda_staf.php');
+    header('Location: ../pages/beranda_staf.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
-    header('Location: beranda_dekan.php');
+    header('Location: ../pages/beranda_dekan.php');
     exit;
 }
 
@@ -27,7 +27,7 @@ $footerFile = 'components/footer_default.html';
         <section id="preloaderLink" class="preloader d-flex">
             <article class="loader"></article>
         </section>
-        <nav id="sidebar" class="nav-bg" style="min-height:100vh">
+        <nav id="sidebar" class="nav-bg-light" style="min-height:100vh">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fa fa-bars"></i>
@@ -58,6 +58,7 @@ $footerFile = 'components/footer_default.html';
         <!-- Section Block -->
         <section class="container gx-lg-5 d-flex justify-content-center align-items-center">
             <article class="container mb-lg-0">
+			<?php @include ($alertFile); ?>
                 <header>
                     <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
                         Pesan Legalisir ijazah anda <span style="color: hsl(218, 43%, 45%);">dari rumah</span>

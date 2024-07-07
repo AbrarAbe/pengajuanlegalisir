@@ -9,14 +9,16 @@ $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
+$themeFile = '../components/theme.html';
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en">
 
 <head>
     <?php @include ($headFile); ?>
     <?php @include ($scriptsFile); ?>
+    <?php @include ($themeFile); ?>
     <title>Beranda</title>
 </head>
 
@@ -25,7 +27,7 @@ $footerFile = '../components/footer.html';
         <section id="preloaderLink" class="preloader d-flex">
             <article class="loader"></article>
         </section>
-        <nav id="sidebar" class="nav-bg">
+        <nav id="sidebar" class="nav-bg-light">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fa fa-bars"></i>
@@ -48,9 +50,9 @@ $footerFile = '../components/footer.html';
                                 class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
                     </li>
                     <li>
-                        <a href="login.php" class="nav-link preload-link"><span
-                                class="fa fa-solid fa-gear mr-4"></span>Pengaturan</a>
-                    </li>
+						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+								class="fa fa-sun mr-4"></span>Ganti Tema</a>
+					</li>
                     <li>
                         <a href="../proses/logout.php" class="nav-link preload-link"><span
                                 class="fa fa-right-from-bracket mr-4"></span>Logout</a>

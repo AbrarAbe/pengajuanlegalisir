@@ -279,4 +279,3 @@ $(function () {
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print', 'colvis']
     });
 });
-

@@ -32,7 +32,7 @@ $footerFile = '../components/footer_default.html';
         <section id="preloaderSubmit" class="preloader-submit">
             <article class="loader"></article>
         </section>
-        <nav id="sidebar" class="nav-bg" style="min-height:100vh">
+        <nav id="sidebar" class="nav-bg-light" style="min-height:100vh">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fa fa-bars"></i>

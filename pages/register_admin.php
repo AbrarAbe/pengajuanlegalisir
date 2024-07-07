@@ -29,7 +29,7 @@ $footerFile = '../components/footer_default.html';
         <section id="preloaderLink" class="preloader d-flex">
             <article class="loader"></article>
         </section>
-        <nav id="sidebar" class="nav-bg">
+        <nav id="sidebar" class="nav-bg-light">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     <i class="fa fa-bars"></i>

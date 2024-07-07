@@ -1,3 +1,7 @@
-.nav-bg {
+.nav-bg-light {
   background-color: hsl(218, 39%, 17%) !important;
+}
+
+.nav-bg-dark {
+  background-color: hsl(197, 7%, 21%) !important;
 }

@@ -1,4 +1,12 @@
 /* Background */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Tambahkan lebih banyak gaya untuk tema dark dan light sesuai kebutuhan */
+
+
 .background-radial-gradient {
   background-color: hsl(218, 41%, 15%);
   background-image: radial-gradient(650px circle at 0% 0%,

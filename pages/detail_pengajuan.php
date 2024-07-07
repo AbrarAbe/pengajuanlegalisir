@@ -11,6 +11,7 @@ $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
+$themeFile = '../components/theme.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -41,11 +42,12 @@ $result = $stmt->get_result();
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en">
 
 <head>
     <?php @include ($headFile); ?>
     <?php @include ($scriptsFile); ?>
+    <?php @include ($themeFile); ?>
     <title>Detail Pengajuan</title>
 </head>
 
@@ -58,13 +60,13 @@ $result = $stmt->get_result();
         <?php @include ($navbarFile); ?>
         <!-- Page Content  -->
         <section id="content" class="p-4 p-md-5 pt-5">
-            <?php @include ($alertFile); ?>
             <h2 class="mb-4">Detail Pengajuan</h2>
+            <?php @include ($alertFile); ?>
             </header>
             <section>
                 <?php if ($row = mysqli_fetch_assoc($result)) {
                     echo "
-                        <article class='data_tables mb-4' style='font-size:0.8rem'>
+                        <article style='font-size:0.8rem'>
                             <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
                                     <th width='25%'>Nomor Pokok Mahasiswa</th>

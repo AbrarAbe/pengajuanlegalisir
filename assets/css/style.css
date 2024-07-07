@@ -70,7 +70,6 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -11932,6 +11931,59 @@ h5,
 
 #sidebar .custom-menu .btn.btn-primary:hover,
 #sidebar .custom-menu .btn.btn-primary:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+#sidebar .custom-menu .btn.btn-light {
+  color: #f8f9fa;
+  background: transparent;
+  border-color: transparent;
+}
+
+#sidebar .custom-menu .btn.btn-light:after {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: hsl(218, 39%, 17%) !important;
+  border-radius: 10px;
+}
+
+#sidebar .custom-menu .btn.btn-light:hover,
+#sidebar .custom-menu .btn.btn-light:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+#sidebar .custom-menu .btn.btn-dark {
+  background: transparent;
+  border-color: transparent;
+}
+
+#sidebar .custom-menu .btn.btn-dark:after {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: hsl(197, 7%, 21%) !important;
+  border-radius: 10px;
+}
+
+#sidebar .custom-menu .btn.btn-dark:hover,
+#sidebar .custom-menu .btn.btn-dark:focus {
   background: transparent !important;
   border-color: transparent !important;
 }
