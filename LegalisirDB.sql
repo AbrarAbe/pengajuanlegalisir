@@ -19,7 +19,9 @@ INSERT INTO status (keterangan) VALUES
 ('Divalidasi'),
 ('Disahkan'),
 ('Ditolak'),
-('Selesai')
+('Selesai'),
+('Penentuan Ekspedisi'),
+('Menunggu Pembayaran')
 ;
 
 CREATE TABLE pengajuan (
@@ -34,12 +36,12 @@ CREATE TABLE pengajuan (
     scan_transkrip MEDIUMBLOB NOT NULL,
     metode_pengambilan ENUM('ambil di prodi', 'kirim ke alamat') NOT NULL,
     alamat_pengiriman TEXT,
-    jumlah_legalisir_ijazah INT,
-    jumlah_legalisir_transkrip INT,
+    jumlah_legalisir_ijazah INT NOT NULL,
+    jumlah_legalisir_transkrip INT NOT NULL,
     ekspedisi VARCHAR(50),
     ekspedisi_harga INT,
-    total_harga INT,
-    bukti_pembayaran MEDIUMBLOB NOT NULL,
+    total_harga INT NOT NULL,
+    bukti_pembayaran MEDIUMBLOB,
     id_status INT,
     FOREIGN KEY (id_status) REFERENCES status(id_status),
     FOREIGN KEY (id_user) REFERENCES user(id_user)

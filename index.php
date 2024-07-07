@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
-    header('Location: ../pages/beranda_alumni.php');
+    header('Location: pages/beranda_alumni.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
-    header('Location: ../pages/beranda_staf.php');
+    header('Location: pages/beranda_staf.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
-    header('Location: ../pages/beranda_dekan.php');
+    header('Location: pages/beranda_dekan.php');
     exit;
 }
 

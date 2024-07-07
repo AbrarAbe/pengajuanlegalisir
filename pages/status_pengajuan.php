@@ -107,6 +107,12 @@ $result = mysqli_query($conn, $query);
                                         case 'Selesai':
                                             echo "<span class='badge badge-success d-flex justify-content-center align-items-center py-2 px-2'>Selesai</span>";
                                             break;
+                                        case 'Penentuan Ekspedisi':
+                                            echo "<span class='badge badge-orange d-flex justify-content-center align-items-center py-2 px-2'>Sedang diperiksa</span>";
+                                            break;
+                                        case 'Menunggu Pembayaran':
+                                            echo "<span class='badge badge-purple d-flex justify-content-center align-items-center py-2 px-2'>Menunggu pembayaran</span>";
+                                            break;
                                     }
                                     ; ?>
                                 </td>

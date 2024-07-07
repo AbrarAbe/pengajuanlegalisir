@@ -5899,6 +5899,42 @@ a.badge-dark.focus {
   box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
 }
 
+.badge-purple {
+  color: #fff;
+  background-color: #6e34bb;
+}
+
+a.badge-purple:hover,
+a.badge-purple:focus {
+  color: #fff;
+  background-color: #1d2124;
+}
+
+a.badge-purple:focus,
+a.badge-purple.focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+}
+
+.badge-orange {
+  color: #fff;
+  background-color: #a75528;
+}
+
+a.badge-orange:hover,
+a.badge-orange:focus {
+  color: #fff;
+  background-color: #a75528;
+}
+
+a.badge-orange:focus,
+a.badge-orange.focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+}
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;

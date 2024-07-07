@@ -50,9 +50,9 @@ $themeFile = '../components/theme.html';
                                 class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
                     </li>
                     <li>
-						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
-								class="fa fa-sun mr-4"></span>Ganti Tema</a>
-					</li>
+                        <a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+                                class="fa fa-sun mr-4"></span>Ganti Tema</a>
+                    </li>
                     <li>
                         <a href="../proses/logout.php" class="nav-link preload-link"><span
                                 class="fa fa-right-from-bracket mr-4"></span>Logout</a>
@@ -68,9 +68,7 @@ $themeFile = '../components/theme.html';
             <?php @include ($alertFile); ?>
             <h2 class="mb-4">Form Pengajuan Legalisir</h2>
             <!-- Form -->
-            <form action="../proses/proses_submit_pengajuan.php" method="post" enctype="multipart/form-data"
-                class="poppins">
-
+            <form action="../proses/proses_submit_pengajuan.php" method="post" enctype="multipart/form-data">
                 <!-- NPM -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="npm">NPM :</label>
@@ -102,10 +100,11 @@ $themeFile = '../components/theme.html';
 
                 <!-- Tahun Lulus -->
                 <article class="form-outline mb-3">
-                    <label for="tahun_lulus" class="form-label d-flex">Tahun Lulus</label>
+                    <label for="tahun_lulus" class="form-label d-flex" for="tahun_lulus">Tahun Lulus</label>
                     <input type="text" class="form-control" list="tahunList" id="tahun_lulus" name="tahun_lulus"
                         placeholder="Ex 20241" required>
                     <datalist id="tahunList">
+                        <option value="20251">
                         <option value="20242">
                         <option value="20241">
                         <option value="20232">
@@ -139,40 +138,12 @@ $themeFile = '../components/theme.html';
                 <!-- Metode Pengambilan -->
                 <article class="form-outline mb-2 d-flex gap-2">
                     <input type="radio" class="btn-check" name="metode_pengambilan" id="ambil" autocomplete="off"
-                        checked value="ambil di prodi" onchange="toggleEkspedisi()">
+                        checked value="ambil di prodi" onchange="metodePengiriman()">
                     <label class="btn" for="ambil">Ambil di
                         prodi 📦</label>
                     <input type="radio" class="btn-check" name="metode_pengambilan" id="kirim" autocomplete="off"
-                        value="kirim ke alamat" onchange="toggleEkspedisi()">
+                        value="kirim ke alamat" onchange="metodePengiriman()">
                     <label class="btn" for="kirim">Kirim ke alamat ✈️</label>
-                </article>
-                <article id="ekspedisi_article" style="display : none;">
-
-                    <!-- Alamat -->
-                    <article class="form-outline mb-3">
-                        <label class="form-label d-flex" for="alamat">Alamat
-                            Pengiriman :</label>
-                        <textarea class="form-control" id="alamat" name="alamat" rows="4"
-                            placeholder="Alamat Lengkap"></textarea>
-                    </article>
-
-                    <!-- Expedisi -->
-                    <label class="form-label d-flex">Pilihan
-                        Ekspedisi Pengiriman :</label>
-                    <article class="form-outline mb-3 d-flex gap-2">
-                        <input type="radio" class="btn-check" name="ekspedisi" id="jne" value="JNE" data-harga="15000"
-                            checked onchange="updateTotal()">
-                        <label class="btn" for="jne">JNE - Rp.
-                            25.000</label>
-                        <input type="radio" class="btn-check" name="ekspedisi" id="pos" value="POS" data-harga="20000"
-                            onchange="updateTotal()">
-                        <label class="btn" for="pos">POS - Rp.
-                            20.000</label>
-                        <input type="radio" class="btn-check" name="ekspedisi" id="JNT" value="JNT" data-harga="25000"
-                            onchange="updateTotal()">
-                        <label class="btn" for="JNT">JNT - Rp.
-                            35.000</label>
-                    </article>
                 </article>
 
                 <!-- Jumlah Legalisir Ijazah -->
@@ -196,11 +167,14 @@ $themeFile = '../components/theme.html';
                 <!-- Total Harga -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="total_harga">Total Harga :</label>
-                    <p class="d-flex">Rp. <span class="d-flex" id="total_harga">0</span></p>
+                    <p class="d-flex">Rp<span class="d-flex" id="total_harga">0</span><span
+                            id="warningPengiriman" class="text-danger mx-2">*harga belum termasuk ongkos kirim</span>
+                    </p>
                     <input type="hidden" id="total_harga_input" name="total_harga" value="0">
                 </article>
 
-                <article class="form-outline mb-3">
+                <!-- Nomor Rekening -->
+                <article id="nomorRekening" class="form-outline mb-3" style="display:block">
                     <label class="form-label d-flex" for="bukti_pembayaran">Nomor Rekening
                         Fakultas
                         Teknik :</label>
@@ -209,12 +183,22 @@ $themeFile = '../components/theme.html';
                 </article>
 
                 <!-- Bukti Pembayaran -->
-                <article class="form-outline mb-5">
+                <article id="buktiPembayaran" class="form-outline mb-5" style="display:block">
                     <label class="form-label d-flex" for="bukti_pembayaran">Upload
                         Bukti Pembayaran (PDF/JPG/PNG) :</label>
                     <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran"
-                        accept=".jpg, .jpeg, .png, .hevc" required>
+                        accept=".jpg, .jpeg, .png">
                 </article>
+
+                <!-- Alamat -->
+                <article id="alamatPengiriman" class="form-outline mb-5" style="display:none">
+                    <label class="form-label d-flex" for="alamat">Alamat
+                        Pengiriman :</label>
+                    <textarea class="form-control" id="alamat" name="alamat" rows="4"
+                        placeholder="Alamat Lengkap"></textarea>
+                </article>
+
+                <!-- Submit -->
                 <article class="d-grid">
                     <button type="submit" name="submit" id="submitBtn" class="preload-submit button-82-pushable"
                         role="button">

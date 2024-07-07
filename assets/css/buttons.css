@@ -1,5 +1,67 @@
 /* CSS */
 
+/* Tombol orange */
+.button-0 {
+  align-items: center;
+  appearance: none;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-family: Roboto,sans-serif;
+  font-size: .775rem;
+  font-weight: 500;
+  min-height: 40px;
+  max-height: 40px;
+  justify-content: center;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  min-width: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform,opacity;
+}
+
+.button-0:hover {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+  transform: translateY(-5px);
+  color: #fff;
+}
+
+.button-0:disabled {
+  background-color: rgba(0, 0, 0, .12);
+  box-shadow: rgba(0, 0, 0, .2) 0 0 0 0, rgba(0, 0, 0, .14) 0 0 0 0, rgba(0, 0, 0, .12) 0 0 0 0;
+  color: rgba(0, 0, 0, .37);
+  cursor: default;
+  pointer-events: none;
+}
+
+.button-0:not(:disabled) {
+  background-color: #a75528;
+}
+
+.button-0:focus {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+}
+
+.button-0:active {
+  box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
+  background: #e6ae2c;
+  transform: translateY(0px);
+}
+
 /* Tombol hijau untuk validasi */
 .button-1 {
   align-items: center;
@@ -27,7 +89,6 @@
   text-align: center;
   text-decoration: none;
   text-transform: capitalize;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -37,7 +98,8 @@
 
 .button-1:hover {
   box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  color: #fff;
 }
 
 .button-1:disabled {
@@ -59,6 +121,67 @@
 .button-1:active {
   box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
   background: #e62c73;
+  transform: translateY(0px);
+}
+
+/* Tombol purple untuk kembali*/
+.button-2 {
+  align-items: center;
+  appearance: none;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-family: Roboto,sans-serif;
+  font-size: .775rem;
+  font-weight: 500;
+  min-height: 25px;
+  max-height: 40px;
+  justify-content: center;
+  letter-spacing: .0892857em;
+  line-height: normal;
+  min-width: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform,opacity;
+}
+
+.button-2:hover {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+  transform: translateY(-5px);
+  color: #fff;
+}
+
+.button-2:disabled {
+  background-color: rgba(0, 0, 0, .12);
+  box-shadow: rgba(0, 0, 0, .2) 0 0 0 0, rgba(0, 0, 0, .14) 0 0 0 0, rgba(0, 0, 0, .12) 0 0 0 0;
+  color: rgba(0, 0, 0, .37);
+  cursor: default;
+  pointer-events: none;
+}
+
+.button-2:not(:disabled) {
+  background-color: #6e34bb;
+}
+
+.button-2:focus {
+  box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+}
+
+.button-2:active {
+  box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
+  background: #2f1e45;
   transform: translateY(0px);
 }
 
@@ -239,7 +362,7 @@
   transform: translateY(0px);
 }
 
-/* Tombol hijau untuk lihat dokumen */
+/* Tombol biru untuk lihat dokumen */
 .button-6 {
   align-items: center;
   appearance: none;
@@ -287,7 +410,7 @@
 }
 
 .button-6:not(:disabled) {
-  background-color: rgb(114, 0, 221);
+  background-color: #0057da;
 }
 
 .button-6:focus {

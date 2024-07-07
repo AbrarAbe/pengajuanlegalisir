@@ -15,7 +15,7 @@ include '../config.php';
 $query = "SELECT p.*, s.keterangan 
           FROM pengajuan p 
           JOIN status s ON p.id_status = s.id_status 
-          WHERE p.id_status IN (1,2,4) "; // Status 'Menunggu divalidasi' (1), 'Divalidasi' (2), 'Ditolak' (4)
+          WHERE p.id_status IN (1,2,4,6,7) "; // Status 'Menunggu divalidasi' (1), 'Divalidasi' (2), 'Ditolak' (4)
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -111,6 +111,12 @@ $result = mysqli_query($conn, $query);
 											break;
 										case 'Selesai':
 											echo "<span class='badge badge-success d-flex justify-content-center align-items-center py-2 px-2'>Selesai</span>";
+											break;
+										case 'Penentuan Ekspedisi':
+											echo "<span class='badge badge-orange d-flex justify-content-center align-items-center py-2 px-2'>Pilih ekspedisi</span>";
+											break;
+										case 'Menunggu Pembayaran':
+											echo "<span class='badge badge-purple d-flex justify-content-center align-items-center py-2 px-2'>Menunggu pembayaran</span>";
 											break;
 									}
 									; ?>

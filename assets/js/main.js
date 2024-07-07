@@ -19,7 +19,7 @@
 
 })(jQuery);
 
-// Form harga total
+/* // Form harga total
 function updateTotal() {
     const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
     const legalisirTranskrip = parseInt(document.getElementById('jumlah_legalisir_transkrip').value) || 0;
@@ -41,11 +41,25 @@ function updateTotal() {
     document.getElementById('total_harga').innerText = totalHarga.toLocaleString('id-ID');
     document.getElementById('total_harga_input').value = totalHarga;
     document.getElementById('ekspedisi_harga_input').value = ekspedisiHarga;
-}
+}*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    toggleEkspedisi();
+    metodePengiriman();
 });
+
+// Form harga total
+function updateTotal() {
+    const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
+    const legalisirTranskrip = parseInt(document.getElementById('jumlah_legalisir_transkrip').value) || 0;
+
+    const hargaIjazah = 3000; // Harga per legalisir ijazah
+    const hargaTranskrip = 3000; // Harga per legalisir transkrip
+
+    var totalHarga = (legalisirIjazah * hargaIjazah) + (legalisirTranskrip * hargaTranskrip); // Harga per legalisir, misalnya Rp. 10.000
+
+    document.getElementById('total_harga').innerText = totalHarga.toLocaleString('id-ID');
+    document.getElementById('total_harga_input').value = totalHarga;
+}
 
 // Cek angka negatif di input jumlah legalisir
 function checkNegative(input) {
@@ -55,55 +69,27 @@ function checkNegative(input) {
 }
 
 // Button script
-function toggleEkspedisi() {
-    var metodeAmbil = document.getElementById('ambil').checked;
-    var ekspedisiArticle = document.getElementById('ekspedisi_article');
-    var ekspedisiHargaInput = document.getElementById('ekspedisi_harga_input');
+function metodePengiriman() {
+    var metodeAmbil = document.getElementById('kirim').checked;
+    var nomorRekening = document.getElementById('nomorRekening');
+    var buktiPembayaran = document.getElementById('buktiPembayaran');
+    var alamatPengiriman = document.getElementById('alamatPengiriman');
+    var warningPengiriman = document.getElementById('warningPengiriman');
 
     if (metodeAmbil) {
-        ekspedisiArticle.style.display = 'none';
-        ekspedisiHargaInput.value = 0;
+        nomorRekening.style.display = 'none';
+        buktiPembayaran.style.display = 'none';
+        alamatPengiriman.style.display = 'block';
+        warningPengiriman.style.display = 'block';
     } else {
-        ekspedisiArticle.style.display = 'block';
-        updateTotal(); // Call updateTotal to set initial ekspedisi harga
-    }
-    updateTotal(); // Update total harga
-}
-
-function toggle_tbDivalidasi() {
-    var a = document.getElementById('tbDivalidasi');
-    if (a.style.display === 'none') {
-        a.style.display = 'block';
-    } else {
-        a.style.display = 'none';
-    }
-}
-
-function toggle_tbDitolak() {
-    var b = document.getElementById('tbDitolak');
-    if (b.style.display === 'none') {
-        b.style.display = 'block';
-    } else {
-        b.style.display = 'none';
+        nomorRekening.style.display = 'block';
+        buktiPembayaran.style.display = 'block';
+        alamatPengiriman.style.display = 'none';
+        warningPengiriman.style.display = 'none';
     }
 }
 
 // Button show password
-$(document).ready(function () {
-    $("#show_hide_password a").on('click', function (event) {
-        event.preventDefault();
-        if ($('#show_hide_password input').attr("type") == "text") {
-            $('#show_hide_password input').attr('type', 'password');
-            $('#show_hide_password i').addClass("nf nf-fa-eye_slash");
-            $('#show_hide_password i').removeClass("nf nf-fa-eye");
-        } else if ($('#show_hide_password input').attr("type") == "password") {
-            $('#show_hide_password input').attr('type', 'text');
-            $('#show_hide_password i').removeClass("nf nf-fa-eye_slash");
-            $('#show_hide_password i').addClass("nf nf-fa-eye");
-        }
-    });
-});
-
 function showPass() {
     // Toggle the type attribute using getAttribute() and setAttribute()
     const password = document.getElementById('password');
