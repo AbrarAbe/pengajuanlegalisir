@@ -35,7 +35,7 @@ $themeFile = '../components/theme.html';
 				</button>
 			</div>
 			<div class="container d-grid p-4 position-fixed" style="max-width: 270px">
-				<h1><a href="../index.html" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+				<h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
 							Transkrip</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<li class="active">

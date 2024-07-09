@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "UPDATE pengajuan SET bukti_pembayaran = '$bukti_pembayaran', id_status = 1 WHERE id_pengajuan = '$id_pengajuan'";
 
         if (mysqli_query($conn, $query)) {
-            $_SESSION['success_message'] = "Bukti pembayaran berhasil diunggah.";
+            $_SESSION['alert_message'] = "Bukti pembayaran berhasil diunggah.";
             header("Location: ../pages/detail_pengajuan.php?id=$id_pengajuan");
         } else {
             $_SESSION['error_message'] = "Bukti pembayaran gagal diunggah.";
