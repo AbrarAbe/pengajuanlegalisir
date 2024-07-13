@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $query);
 					</li>
 					<li>
 						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
-								class="fa fa-sun ml-1 mr-4"></span>Ganti Tema</a>
+								class="fa fa-sun ml-1 mr-4"></span> Ganti Tema</a>
 					</li>
 					<li>
 						<a href="../proses/logout.php" class="nav-link preload-link"><span

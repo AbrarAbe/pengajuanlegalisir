@@ -78,7 +78,7 @@ $result = $stmt->get_result();
                                     <td>$row[nama]</td>
                                 </tr>
                                 <tr>
-                                    <th>Program Srudi</th>
+                                    <th>Program Studi</th>
                                     <td>$row[prodi]</td>
                                 </tr>
                                 <tr>
@@ -125,7 +125,7 @@ $result = $stmt->get_result();
                                     <td>$row[nama]</td>
                                 </tr>
                                 <tr>
-                                    <th>Program Srudi</th>
+                                    <th>Program Studi</th>
                                     <td>$row[prodi]</td>
                                 </tr>
                                 <tr>
@@ -183,7 +183,7 @@ $result = $stmt->get_result();
                                     <td>$row[nama]</td>
                                 </tr>
                                 <tr>
-                                    <th>Program Srudi</th>
+                                    <th>Program Studi</th>
                                     <td>$row[prodi]</td>
                                 </tr>
                                 <tr>
@@ -285,7 +285,7 @@ $result = $stmt->get_result();
                                     <article class='row g-3 mb-4'>
                                         <article class='col-sm-8 d-flex gap-2'>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>d<br>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a><br>
                                         </article>
                                     <article class='col-sm'>
                                             <article class='d-grid'>
