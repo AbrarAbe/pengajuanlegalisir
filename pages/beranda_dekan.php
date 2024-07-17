@@ -39,7 +39,7 @@ $themeFile = '../components/theme.html';
 							Transkrip</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<li class="active">
-						<a href="beranda_dekan.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+						<a href="beranda_dekan.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
 					</li>
 					<li>
 						<a href="list_pengajuan_dekan.php" class="nav-link preload-link"><span
@@ -51,7 +51,7 @@ $themeFile = '../components/theme.html';
 					</li>
 					<li>
 						<a href="../proses/logout.php" class="nav-link preload-link"><span
-								class="fa fa-right-from-bracket mr-4"></span>Logout</a>
+								class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
 					</li>
 				</ul>
 				<!-- Footer -->

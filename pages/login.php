@@ -1,19 +1,19 @@
-<?php
-session_start();
+<?php session_start();
 if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
-    header('Location: beranda_alumni.php');
+    header('Location:
+    beranda_alumni.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
-    header('Location: beranda_staf.php');
+    header('Location:
+    beranda_staf.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
-    header('Location: beranda_dekan.php');
+    header('Location:
+    beranda_dekan.php');
     exit;
 }
-
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
-$footerFile = '../components/footer_default.html';
-?>
+$footerFile = '../components/footer_default.html'; ?>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
@@ -44,21 +44,22 @@ $footerFile = '../components/footer_default.html';
                             Transkrip</span></a></h1>
                 <ul class="list-unstyled components mb-4">
                     <li>
-                        <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+                        <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
                     </li>
                     <li class="active">
-                        <a href="login.php" class="nav-link"><span
+                        <a href="login.php" class="nav-link preload-link"><span
                                 class="fa fa-right-to-bracket mr-4"></span>
-                            Login</a>
+                            Masuk</a>
                     </li>
                     <li>
-                        <a href="register_alumni.php" class="nav-link preload-link"><span
-                                class="fa fa-user-plus mr-4"></span>Register</a>
+                        <a href="register_alumni.php" class="nav-link"><span
+                                class="fa fa-user-plus mr-4"></span>Daftar</a>
                     </li>
                 </ul>
                 <?php @include ($footerFile); ?>
             </div>
         </nav>
+
 
         <!-- Section Block -->
         <section class="container d-flex justify-content-center align-items-center px-5 py-5">
@@ -68,7 +69,7 @@ $footerFile = '../components/footer_default.html';
                         <img src="../assets/images/umb.png" alt="Trendy Pants and Shoes"
                             class="w-75 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 px-2" />
                     </figure>
-                    <aside class=" col-auto"  style="font-size:0.8rem">
+                    <aside class=" col-auto" style="font-size:0.8rem">
                         <form id="loginForm" action="../proses/proses_login.php" method="post">
                             <header class="form-outline mb-4">
                                 <label class="form-label form-label-white d-flex letter-spacing">
@@ -118,9 +119,15 @@ $footerFile = '../components/footer_default.html';
                             <!-- Submit button -->
                             <article class="d-grid gap-2">
                                 <button type="submit" name="submit" id="submitBtn"
-                                    class="preload-submit button-3 mb-4">Login</button>
+                                    class="preload-submit button-3 mb-3">Masuk</button>
                             </article>
                         </form>
+                        <!-- Redirect -->
+                        <article id="redirect" class="form-outline mb-2 d-flex justify-content-center">
+                            <label class="form-label d-flex mr-1 " for="alamat">Belum Punya Akun ?</label>
+                            <a href="register_alumni.php" style="text-decoration:none;">Daftar
+                                disini</a>
+                        </article>
                     </aside>
                     <?php @include ($alertFile); ?>
                 </article>

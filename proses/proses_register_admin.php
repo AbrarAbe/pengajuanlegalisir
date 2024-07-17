@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
-            $_SESSION['warning_message'] = "<strong>Email sudah ada !</strong> <a href='register_admin.php'>Masuk</a> atau gunakan email lain.";
+            $_SESSION['warning_message'] = "<strong>Email sudah ada !</strong> <a href='register_admin.php'>Login</a> atau gunakan email lain.";
             header("Location: ../pages/register_admin.php");
         } else {
             $stmt = $conn->prepare("INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)");

@@ -41,16 +41,16 @@ $footerFile = '../components/footer_default.html';
                             Transkrip</span></a></h1>
                 <ul class="list-unstyled components mb-4">
                     <li>
-                        <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Home</a>
+                        <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
                     </li>
                     <li>
                         <a href="login.php" class="nav-link preload-link"><span
                                 class="fa fa-right-to-bracket mr-4"></span>
-                            Login</a>
+                            Masuk</a>
                     </li>
                     <li class="active">
                         <a href="register_alumni.php" class="nav-link"><span
-                                class="fa fa-user-plus mr-4"></span>Register</a>
+                                class="fa fa-user-plus mr-4"></span>Daftar</a>
                     </li>
                 </ul>
                 <?php @include ($footerFile); ?>
@@ -79,32 +79,34 @@ $footerFile = '../components/footer_default.html';
                 <aside class="col-lg-6 mb-5 mb-lg-0" style="font-size:0.8rem">
                     <article class="custom-card bg-glass-dark">
                         <article class="card-body px-4 py-5 px-md-5">
-                        <form action="../proses/proses_register_alumni.php" method="post">
-                            <header class="form-outline mb-4">
-                                <label class="form-label form-label-white letter-spacing d-flex"><span
-                                        style="font-size: 1.5rem;">Daftarkan akun anda</span></label>
-                            </header>
-                            <!-- Username input -->
-                            <article class="form-outline mb-2">
-                                <label class="form-label form-label-white letter-spacing d-flex" for="username">Username
-                                    :</label>
-                                <article class="input-group">
-                                    <span class="input-group-text input-glass" id="iconuser"><i
-                                            class="nf nf-oct-person_fill"></i></span>
-                                    <input type="text" id="username" name="username" class="form-control input-glass"
-                                        required />
+                            <form action="../proses/proses_register_alumni.php" method="post">
+                                <header class="form-outline mb-4">
+                                    <label class="form-label form-label-white letter-spacing d-flex"><span
+                                            style="font-size: 1.5rem;">Daftarkan akun anda</span></label>
+                                </header>
+                                <!-- Username input -->
+                                <article class="form-outline mb-2">
+                                    <label class="form-label form-label-white letter-spacing d-flex"
+                                        for="username">Username
+                                        :</label>
+                                    <article class="input-group">
+                                        <span class="input-group-text input-glass" id="iconuser"><i
+                                                class="nf nf-oct-person_fill"></i></span>
+                                        <input type="text" id="username" name="username"
+                                            class="form-control input-glass" required />
+                                    </article>
                                 </article>
-                            </article>
-                            <!-- Email input -->
-                            <article class="form-outline mb-3">
-                                <label class="form-label form-label-white letter-spacing d-flex" for="username">Email
-                                    :</label>
-                                <article class="input-group">
-                                    <span class="input-group-text input-glass" id="iconemail">@</span>
-                                    <input type="email" id="email" name="email" class="form-control input-glass"
-                                        required />
+                                <!-- Email input -->
+                                <article class="form-outline mb-3">
+                                    <label class="form-label form-label-white letter-spacing d-flex"
+                                        for="username">Email
+                                        :</label>
+                                    <article class="input-group">
+                                        <span class="input-group-text input-glass" id="iconemail">@</span>
+                                        <input type="email" id="email" name="email" class="form-control input-glass"
+                                            required />
+                                    </article>
                                 </article>
-                            </article>
                                 <!-- Password input -->
                                 <article class="form-outline mb-2">
                                     <label class="form-label form-label-white letter-spacing d-flex"
@@ -135,12 +137,16 @@ $footerFile = '../components/footer_default.html';
                                 <!-- Submit button -->
                                 <article class="d-grid gap-2">
                                     <button type="submit" name="submit" id="submitBtn"
-                                        class="preload-submit button-3 mb-4">Register</button>
+                                        class="preload-submit button-3 mb-3">Daftar</button>
                                 </article>
-
-                                <?php @include ($alertFile); ?>
-
+                                <!-- Redirect -->
+                                <article id="redirect" class="form-outline mb-2 d-flex justify-content-center">
+                                    <label class="form-label d-flex mr-1 " for="alamat">Sudah Punya Akun ?</label>
+                                    <a href="login.php" style="text-decoration:none;">Login
+                                        disini</a>
+                                </article>
                             </form>
+                            <?php @include ($alertFile); ?>
                         </article>
                     </article>
                 </aside>
