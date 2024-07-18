@@ -67,7 +67,7 @@ $result = $stmt->get_result();
                 <?php if ($row = mysqli_fetch_assoc($result)) {
                     if ($row['metode_pengambilan'] == 'ambil di prodi') {
                         echo "
-                        <article class='mb-4' style='font-size:0.8rem'>
+                        <article class='mb-5' style='font-size:0.8rem'>
                             <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
                                     <th width='25%'>Nomor Pokok Mahasiswa</th>
@@ -281,38 +281,38 @@ $result = $stmt->get_result();
                                 ";
                             } elseif ($row['keterangan'] == 'Penentuan Ekspedisi') {
                                 echo "
-                                <h2 class='mb-4'>Dokumen</h2>
+                                    <h2 class='mb-4'>Dokumen</h2>
                                     <article class='row g-3 mb-4'>
                                         <article class='col-sm-8 d-flex gap-2'>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a><br>
                                         </article>
-                                    <article class='col-sm'>
+                                        <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-6' href='list_pengajuan_staf.php'>Kembali</a>
+                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
                                             </article>
                                         </article>
                                     </article>
                                 ";
                             } else {
                                 echo "
-                                <h2 class='mb-4'>Dokumen</h2>
+                                    <h2 class='mb-4'>Dokumen</h2>
                                     <article class='row g-3 mb-4'>
                                         <article class='col-sm-8 d-flex gap-2'>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                         </article>
-                                    <article class='col-sm'>
+                                        <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-6' href='list_pengajuan_staf.php'>Kembali</a>
+                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
                                             </article>
                                         </article>
                                     </article>
                                 ";
                             }
                             break;
-                    
+
                         case 'staf':
                             if ($row['keterangan'] == 'Penentuan Ekspedisi') {
                                 echo "
@@ -354,19 +354,19 @@ $result = $stmt->get_result();
                             } elseif ($row['keterangan'] == 'Menunggu Pembayaran') {
                                 echo "
                                     <h2 class='mb-4'>Dokumen</h2>
-                                        <article class='row g-3 mb-4'>
-                                            <article class='col-sm-8 d-flex gap-2'>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                            </article>
+                                    <article class='row g-3 mb-4'>
+                                        <article class='col-sm-8 d-flex gap-2'>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                        </article>
                                         <article class='col-sm'>
-                                                <article class='d-grid'>
-                                                    <a class='button-6' href='list_pengajuan_staf.php'>Kembali</a>
-                                                </article>
+                                            <article class='d-grid'>
+                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
                                             </article>
                                         </article>
+                                    </article>
                                 ";
-                            }elseif ($row['keterangan'] == 'Menunggu Validasi') {
+                            } elseif ($row['keterangan'] == 'Menunggu Validasi') {
                                 echo "
                                     <h2 class='mb-4'>Dokumen</h2>
                                     <article class='row g-3'>
@@ -386,61 +386,6 @@ $result = $stmt->get_result();
                             } elseif ($row['keterangan'] == 'Ditolak') {
                                 echo "
                                     <h2 class='mb-4'>Dokumen</h2>
-                                        <article class='row g-3'>
-                                            <article class='col-sm-8 d-flex gap-2'>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
-                                            </article>
-                                            <article class='col-sm'>
-                                                <article class='d-grid'>
-                                                    <a href='#' onclick='confirmDelete($row[id_pengajuan])' class='button-5 mb-2 preload-link'>Hapus Pengajuan</a>
-                                                </article>
-                                            </article>
-                                        </article>
-                                    </article>
-                                ";
-                    
-                            } elseif ($row['keterangan'] == 'Disahkan') {
-                                echo "
-                                    <h2 class='mb-4'>Dokumen</h2>
-                                        <article class='row g-3'>
-                                            <article class='col-sm-8 d-flex gap-2'>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
-                                                <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
-                                            </article>
-                                            <article class='col-sm'>
-                                                <article class='d-grid'>
-                                                    <a class='button-1 mb-2' href='../proses/update_status.php?id=" . $row['id_pengajuan'] . "'>Update Status Pengajuan</a>
-                                                </article>
-                                            </article>
-                                        </article>
-                                    </article>
-                                ";
-                            } else {
-                                echo "
-                                <h2 class='mb-4'>Dokumen</h2>
-                                    <article class='row g-3 mb-4'>
-                                        <article class='col-sm-8 d-flex gap-2'>
-                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
-                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
-                                            <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
-                                        </article>
-                                    <article class='col-sm'>
-                                            <article class='d-grid'>
-                                                <a class='button-6' href='list_pengajuan_staf.php'>Kembali</a>
-                                            </article>
-                                        </article>
-                                    </article>
-                                ";
-                            }
-                            break;
-                    
-                        case 'dekan':
-                            if ($row['keterangan'] == 'Divalidasi') {
-                                echo "
-                                <h2 class='mb-4'>Dokumen</h2>
                                     <article class='row g-3'>
                                         <article class='col-sm-8 d-flex gap-2'>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
@@ -449,39 +394,100 @@ $result = $stmt->get_result();
                                         </article>
                                         <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-1 mb-2 preload-link' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
-                                                <a class='button-5 preload-link' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                                                <a href='#' onclick='confirmDelete($row[id_pengajuan])' class='button-5 mb-2 text-wrap'>Hapus Pengajuan</a>
                                             </article>
                                         </article>
                                     </article>
-                                </article>
-                            ";
+                                ";
                             } elseif ($row['keterangan'] == 'Disahkan') {
                                 echo "
-                                <h2 class='mb-4'>Dokumen</h2>
+                                    <h2 class='mb-4'>Dokumen</h2>
+                                    <article class='row g-3'>
+                                        <article class='col-sm-8 d-flex gap-2'>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
+                                        </article>
+                                        <article class='col-sm'>
+                                            <article class='d-grid'>
+                                                <a class='button-1 mb-2 text-wrap preload-link' href='../proses/update_status.php?id=" . $row['id_pengajuan'] . "'>Update Status Pengajuan</a>
+                                            </article>
+                                        </article>
+                                    </article>
+                                ";
+                            } else {
+                                echo "
+                                    <h2 class='mb-4'>Dokumen</h2>
                                     <article class='row g-3 mb-4'>
                                         <article class='col-sm-8 d-flex gap-2'>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
                                         </article>
-                                    <article class='col-sm'>
+                                        <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-6' href='list_pengajuan_dekan.php'>Kembali</a>
+                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
                                             </article>
                                         </article>
                                     </article>
-                            ";
+                                ";
                             }
-                    
+                            break;
+
+                        case 'dekan':
+                            if ($row['keterangan'] == 'Divalidasi') {
+                                echo "
+                                    <h2 class='mb-4'>Dokumen</h2>
+                                    <article class='row g-3'>
+                                        <article class='col-sm-8 d-flex gap-2'>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        </article>
+                                        <article class='col-sm'>
+                                            <article class='d-grid'>
+                                                <a class='button-1 text-wrap mb-2 preload-link' href='../proses/approve_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Sahkan Pengajuan</a>
+                                                <a class='button-5 text-wrap preload-link' href='../proses/tolak_pengajuan.php?id=" . $row['id_pengajuan'] . "'>Tolak Pengajuan</a>
+                                            </article>
+                                        </article>
+                                    </article>
+                                ";
+                            } elseif ($row['keterangan'] == 'Disahkan') {
+                                echo "
+                                    <h2 class='mb-4'>Dokumen</h2>
+                                    <article class='row g-3 mb-4'>
+                                        <article class='col-sm-8 d-flex gap-2'>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Lihat Transkrip</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Lihat Bukti Pembayaran</a><br>
+                                        </article>
+                                        <article class='col-sm'>
+                                            <article class='d-grid'>
+                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
+                                            </article>
+                                        </article>
+                                    </article>
+                                ";
+                            }
+
                     }
-                    
+
                 } else {
-                    echo "Pengajuan tidak ditemukan.";
+                    echo "
+                        <article class='row g-3 mb-4 my-1'>
+                            <article class='col-sm-8 d-flex gap-2'>
+                                <p>Pengajuan tidak ditemukan :(</p>
+                            </article>
+                            <article class='col-sm'>
+                                <article class='d-grid'>
+                                    <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
+                                </article>
+                            </article>
+                        </article>
+                    ";
                 }
                 mysqli_close($conn);
                 ?>
-
             </section>
         </section>
     </main>
