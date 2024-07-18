@@ -28,13 +28,13 @@ $themeFile = '../components/theme.html';
 			<article class="loader"></article>
 		</section>
 		<nav id="sidebar" class="nav-bg-light">
-			<div class="custom-menu">
+			<article class="custom-menu">
 				<button type="button" id="sidebarCollapse" class="btn btn-primary">
 					<i class="fa fa-bars"></i>
 					<span class="sr-only">Toggle Menu</span>
 				</button>
-			</div>
-			<div class="container d-grid p-4 position-fixed" style="max-width: 270px">
+			</article>
+			<article class="container d-grid p-4 position-fixed" style="max-width: 270px">
 				<h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
 							Transkrip</span></a></h1>
 				<ul class="list-unstyled components mb-5">
@@ -57,7 +57,7 @@ $themeFile = '../components/theme.html';
 				<!-- Footer -->
 				<?php @include ($footerFile); ?>
 				<!-- Footer -->
-			</div>
+			</article>
 		</nav>
 		<!-- Page Content  -->
 		<section id="content" class="p-4 p-md-5 pt-5">
