@@ -167,8 +167,8 @@ $themeFile = '../components/theme.html';
                 <!-- Total Harga -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="total_harga">Total Harga :</label>
-                    <p class="d-flex">Rp<span class="d-flex" id="total_harga">0</span><span
-                            id="warningPengiriman" class="text-danger mx-2">*harga belum termasuk ongkos kirim</span>
+                    <p class="d-flex">Rp<span class="d-flex" id="total_harga">0</span><span id="warningPengiriman"
+                            class="text-danger mx-2">*harga belum termasuk ongkos kirim</span>
                     </p>
                     <input type="hidden" id="total_harga_input" name="total_harga" value="0">
                 </article>
@@ -178,8 +178,9 @@ $themeFile = '../components/theme.html';
                     <label class="form-label d-flex" for="bukti_pembayaran">Nomor Rekening
                         Fakultas
                         Teknik :</label>
-                    <article class="card d-flex justify-content-center align-items-center" style="height:75px">
-                        Placeholder</article>
+                    <article class="card d-flex justify-content-between align-items-center py-3" height="5em"><span
+                            class="pb-2">Bank Mega Syariah</span><span class="fw-bold" style="letter-spacing:0.5rem;">
+                            2010354847</span></article>
                 </article>
 
                 <!-- Bukti Pembayaran -->
@@ -199,7 +200,7 @@ $themeFile = '../components/theme.html';
                 </article>
 
                 <!-- Submit -->
-                <article class="d-grid mb-2">
+                <article class="d-grid">
                     <button type="submit" name="submit" id="submitBtn" class="preload-submit button-82-pushable"
                         role="button">
                         <span class="button-82-shadow"></span>
