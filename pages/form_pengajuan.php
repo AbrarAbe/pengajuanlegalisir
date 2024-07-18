@@ -151,7 +151,7 @@ $themeFile = '../components/theme.html';
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="jumlah_legalisir_ijazah">Jumlah
                         Legalisir
-                        Ijazah :</label>
+                        Ijazah (Rp3000 per lembar) :</label>
                     <input type="number" class="form-control" id="jumlah_legalisir_ijazah"
                         name="jumlah_legalisir_ijazah" min="1" required oninput="checkNegative(this); updateTotal()">
                 </article>
@@ -159,7 +159,7 @@ $themeFile = '../components/theme.html';
                 <!-- Jumlah Legalisir Transkrip -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="jumlah_legalisir_transkrip">Jumlah
-                        Legalisir Transkrip :</label>
+                        Legalisir Transkrip (Rp3000 per lembar) :</label>
                     <input type="number" class="form-control" id="jumlah_legalisir_transkrip"
                         name="jumlah_legalisir_transkrip" min="1" required oninput="checkNegative(this); updateTotal()">
                 </article>
@@ -199,7 +199,7 @@ $themeFile = '../components/theme.html';
                 </article>
 
                 <!-- Submit -->
-                <article class="d-grid">
+                <article class="d-grid mb-2">
                     <button type="submit" name="submit" id="submitBtn" class="preload-submit button-82-pushable"
                         role="button">
                         <span class="button-82-shadow"></span>
