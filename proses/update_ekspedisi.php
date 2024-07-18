@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "UPDATE pengajuan SET ekspedisi = '$ekspedisi', ekspedisi_harga = '$ekspedisi_harga', total_harga = total_harga + '$ekspedisi_harga', id_status = 7 WHERE id_pengajuan = '$id_pengajuan'";
 
     if (mysqli_query($conn, $query)) {
-        $_SESSION['success_message'] = "Ekspedisi berhasil diperbarui.";
+        $_SESSION['alert_message'] = "Ekspedisi berhasil diperbarui.";
         header("Location: ../pages/detail_pengajuan.php?id=$id_pengajuan");
     } else {
         $_SESSION['error_message'] = "Ekspedisi gagal diperbarui.";

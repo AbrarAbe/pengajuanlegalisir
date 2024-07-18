@@ -289,7 +289,7 @@ $result = $stmt->get_result();
                                         </article>
                                         <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
+                                                <a class='button-6 text-wrap preload-link' href='status_pengajuan.php'>Kembali</a>
                                             </article>
                                         </article>
                                     </article>
@@ -305,7 +305,7 @@ $result = $stmt->get_result();
                                         </article>
                                         <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
+                                                <a class='button-6 text-wrap preload-link' href='status_pengajuan.php'>Kembali</a>
                                             </article>
                                         </article>
                                     </article>
@@ -331,12 +331,26 @@ $result = $stmt->get_result();
                                         <!-- Ekspedisi Pengiriman -->
                                         <article class='form-outline mb-3'>
                                             <label class='form-label d-flex' for='ekspedisi'>Ekspedisi Pengiriman :</label>
-                                            <input type='text' class='form-control' id='ekspedisi' name='ekspedisi' required placeholder='Ekspedisi'>
+                                            <input type='text' class='form-control' list='eksList' id='ekspedisi' name='ekspedisi' required placeholder='Ekspedisi'>
+                                            <datalist id='eksList'>
+                                                <option value='J&T Express'>
+                                                <option value='JNE'>
+                                                <option value='Shopee Xpress'>
+                                                <option value='SiCepat'>
+                                                <option value='Anteraja'>
+                                                <option value='GoSend'>
+                                                <option value='Grab Xpress'>
+                                                <option value='TIKI'>
+                                                <option value='Ninja Xpress'>
+                                                <option value='POS Indonesia'>
+                                                <option value='Lion Parcel'>
+                                                <option value='Paxel'>
+                                            </datalist>
                                         </article>
                                         <!-- Harga Pengiriman -->
                                         <article class='form-outline mb-4'>
                                             <label class='form-label d-flex' for='ekspedisi_harga'>Harga Pengiriman :</label>
-                                            <input type='number' class='form-control' id='ekspedisi_harga' name='ekspedisi_harga' oninput='checkNegative(this)' required placeholder='Harga Pengiriman'>
+                                            <input type='number' class='form-control' id='ekspedisi_harga' name='ekspedisi_harga' oninput='checkNegative(this)' min='4' required placeholder='Harga Pengiriman'>
                                         </article>
                                         <!-- Submit btn -->
                                         <article class='d-grid'>
@@ -361,7 +375,7 @@ $result = $stmt->get_result();
                                         </article>
                                         <article class='col-sm'>
                                             <article class='d-grid'>
-                                                <a class='button-6 text-wrap preload-link' onclick=history.back()' style='color:white;'>Kembali</a>
+                                                <a class='button-6 text-wrap preload-link' href='list_pengajuan_staf.php'>Kembali</a>
                                             </article>
                                         </article>
                                     </article>
