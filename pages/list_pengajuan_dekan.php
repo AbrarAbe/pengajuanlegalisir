@@ -15,7 +15,7 @@ include '../config.php';
 $query = "SELECT p.*, s.keterangan 
           FROM pengajuan p 
           JOIN status s ON p.id_status = s.id_status 
-          WHERE p.id_status IN (2,3,4) "; // Status 'Divalidasi', 'Disahkan' (3), 'Ditolak' (4)
+          WHERE p.id_status IN (2,3,4,5) "; // Status 'Divalidasi', 'Disahkan' (3), 'Ditolak' (4), 'Selesai' (5)
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -46,14 +46,14 @@ $result = mysqli_query($conn, $query);
 							Transkrip</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<li>
-						<a href="beranda_dekan.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
+						<a href="beranda_dekan.php" class="nav-link"><span class="fa fa-home mr-4"></span>Dashboard</a>
 					</li>
 					<li class="active">
 						<a href="list_pengajuan_dekan.php" class="nav-link preload-link"><span
 								class="fa fa-id-card mr-4"></span>List Pengesahan</a>
 					</li>
 					<li>
-						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+						<a id="theme-toggle" class="nav-link"><span id="theme-icon"
 								class="fa fa-sun mr-4"></span>Ganti Tema</a>
 					</li>
 					<li>
@@ -93,11 +93,8 @@ $result = mysqli_query($conn, $query);
 								<td><?php echo $row['metode_pengambilan']; ?></td>
 								<td class="text-center">
 									<?php switch ($row['keterangan']) {
-										case 'Menunggu Validasi':
-											echo "<span class='badge badge-warning d-flex justify-content-center align-items-center py-2 px-2'>Menunggu validasi</span>";
-											break;
 										case 'Divalidasi':
-											echo "<span class='badge badge-primary d-flex justify-content-center align-items-center py-2 px-2'>Divalidasi</span>";
+											echo "<span class='badge badge-primary d-flex justify-content-center align-items-center py-2 px-2'>Belum disahkan</span>";
 											break;
 										case 'Disahkan':
 											echo "<span class='badge badge-info d-flex justify-content-center align-items-center py-2 px-2'>Disahkan</span>";
@@ -114,7 +111,7 @@ $result = mysqli_query($conn, $query);
 								<td>
 									<article>
 										<a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>" id="detail"
-											class="button-4 preload-link px-2">Lihat
+											class="button-4 preload-link px-2 text-nowrap">Lihat
 											Detail
 										</a>
 									</article>

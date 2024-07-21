@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jumlah_legalisir_transkrip = filter_var($_POST['jumlah_legalisir_transkrip'], FILTER_SANITIZE_STRING);
     $total_harga = filter_var($_POST['total_harga'], FILTER_SANITIZE_STRING);
     $bukti_pembayaran = null;
-    
+
     // Tetapkan id_status berdasarkan metode pengambilan
     if ($metode_pengambilan === 'ambil di prodi') {
         $id_status = 1; // Menunggu Validasi
@@ -35,6 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               VALUES ('$id_user', '$npm', '$nama', '$prodi' , '$tahun_lulus', '$email', '$scan_ijazah', '$scan_transkrip', '$metode_pengambilan', '$alamat_pengiriman', '$jumlah_legalisir_ijazah', '$jumlah_legalisir_transkrip', '$total_harga', '$bukti_pembayaran', '$id_status')";
 
     if (mysqli_query($conn, $query)) {
+
+        // Menambahkan notifikasi
+        $pesan = "Pengajuan masuk atas nama <span class=text-primary>$nama</span> ";
+        tambahNotifikasi($pesan);
+
         $_SESSION['info_message'] = "Pengajuan berhasil dikirim.";
         header("Location: ../pages/status_pengajuan.php");
     } else {
@@ -43,4 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     mysqli_close($conn);
+}
+function tambahNotifikasi($pesan)
+{
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO notifikasi (pesan) VALUES (?)");
+    $stmt->bind_param("s", $pesan);
+    $stmt->execute();
+    $stmt->close();
 }

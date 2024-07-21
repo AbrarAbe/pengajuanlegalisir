@@ -56,7 +56,7 @@ $result = mysqli_query($conn, $query);
                             Status Pengajuan</a>
                     </li>
                     <li>
-                        <a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+                        <a id="theme-toggle" class="nav-link"><span id="theme-icon"
                                 class="fa fa-sun mr-4"></span>Ganti Tema</a>
                     </li>
                     <li>

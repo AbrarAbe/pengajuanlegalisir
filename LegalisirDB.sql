@@ -6,7 +6,15 @@ CREATE TABLE user (
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     role ENUM('alumni', 'staf', 'dekan') NOT NULL
+    status ENUM('aktif', 'nonaktif') DEFAULT 'nonaktif';
+);
+
+CREATE TABLE notifikasi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pesan TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE status (

@@ -101,7 +101,7 @@ $footerFile = '../components/footer_default.html'; ?>
                                 </article>
                             </article>
                             <!-- 2 column grid layout for inline styling -->
-                            <article class="row mb-4">
+                            <article class="row mb-4 mx-1">
                                 <article class="col-auto d-flex justify-content-center">
                                     <!-- Checkbox -->
                                     <article class="form-check">

@@ -429,6 +429,22 @@ $result = $stmt->get_result();
                                         </article>
                                     </article>
                                 ";
+                            } elseif ($row['keterangan'] == 'Selesai') {
+                                echo "
+                                    <h2 class='mb-4'>Dokumen</h2>
+                                    <article class='row g-3'>
+                                        <article class='col-sm-8 d-flex gap-2'>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Cetak Ijazah</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_transkrip&id=" . $row['id_pengajuan'] . "'>Cetak Transkrip</a>
+                                            <a class='button-2 text-wrap preload-link' href='../proses/view_photo.php?type=bukti_pembayaran&id=" . $row['id_pengajuan'] . "'>Cetak Bukti Pembayaran</a><br>
+                                        </article>
+                                        <article class='col-sm'>
+                                            <article class='d-grid'>
+                                                <a class='button-6 text-wrap preload-link' href='list_pengajuan_disahkan.php>Kembali</a>
+                                            </article>
+                                        </article>
+                                    </article>
+                                ";
                             } else {
                                 echo "
                                     <h2 class='mb-4'>Dokumen</h2>

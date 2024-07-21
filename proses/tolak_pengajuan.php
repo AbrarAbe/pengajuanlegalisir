@@ -20,7 +20,7 @@ if (mysqli_query($conn, $query)) {
         header("Location: ../pages/detail_pengajuan.php?id=$id_pengajuan");
     }
 } else {
-    $_SESSION['warning_message'] = "Pengajuan gagal ditolak.";
+    $_SESSION['danger_message'] = "Pengajuan gagal ditolak.";
     if ($_SESSION['role'] == 'staf') {
         header("Location: ../pages/list_pengajuan_staf.php");
     }

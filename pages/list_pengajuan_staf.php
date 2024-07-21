@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $query);
 							Transkrip</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<li>
-						<a href="beranda_staf.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
+						<a href="beranda_staf.php" class="nav-link"><span class="fa fa-home mr-4"></span>Dashboard</a>
 					</li>
 					<li class="active">
 						<a href="list_pengajuan_staf.php" class="nav-link"><span class="fa fa-id-card mr-4"></span>List
@@ -57,7 +57,7 @@ $result = mysqli_query($conn, $query);
 								class="fa fa-file-lines ml-1 mr-4"></span> Legalisir</a>
 					</li>
 					<li>
-						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
+						<a id="theme-toggle" class="nav-link"><span id="theme-icon"
 								class="fa fa-sun ml-1 mr-4"></span>Ganti Tema</a>
 					</li>
 					<li>
@@ -121,13 +121,11 @@ $result = mysqli_query($conn, $query);
 									}
 									; ?>
 								</td>
-								<td>
-									<article>
-										<a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>" id="detail"
-											class="button-4 preload-link px-2">Lihat
-											Detail
-										</a>
-									</article>
+								<td class="text-center">
+									<a href="detail_pengajuan.php?id=<?php echo $row['id_pengajuan']; ?>" id="detail"
+										class="button-4 preload-link px-2 py-2 text-nowrap">Lihat
+										Detail
+									</a>
 								</td>
 							</tr>
 						<?php } ?>

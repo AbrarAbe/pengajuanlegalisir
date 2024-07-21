@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $role = filter_var($_POST['role'], FILTER_SANITIZE_STRING);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
+    $status = 'nonaktif'; // Set status to 'nonaktif'
 
     $sql = "SELECT * FROM user WHERE email = ?";
     if ($stmt = $conn->prepare($sql)) {

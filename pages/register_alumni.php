@@ -62,7 +62,7 @@ $footerFile = '../components/footer_default.html';
             <section class="row d-flex justify-content-center align-items-center">
                 <article class="col-lg-6 mb-2 mb-lg-0 my-3">
                     <header>
-                        <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                        <h1 class="mb-3 font-weight-semi-bold" style="color: hsl(218, 81%, 95%)">
                             Pesan Legalisir ijazah <br /> anda <span style="color: hsl(218, 81%, 75%)">dari rumah</span>
                         </h1>
                     </header>
@@ -127,7 +127,7 @@ $footerFile = '../components/footer_default.html';
                                     Must be 8-20 characters long.
                                 </article>
                                 <!-- Checkbox -->
-                                <article class="form-check d-flex mb-4">
+                                <article class="form-check d-flex mb-4 mx-1">
                                     <input class="form-check-input me-2" type="checkbox" value="" id="checkbox"
                                         unchecked required />
                                     <label class="form-check-label form-label-white d-flex" for="checkbox">

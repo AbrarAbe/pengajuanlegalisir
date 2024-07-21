@@ -13,8 +13,8 @@ $query = "UPDATE pengajuan SET id_status = 5 WHERE id_pengajuan = '$id_pengajuan
 
 if (mysqli_query($conn, $query)) {
         $_SESSION['alert_message'] = "Berhasil memperbarui status";
-        header("Location: ../pages/list_pengajuan_disahkan.php");
+        header("Location: ../pages/detail_pengajuan.php?id=$id_pengajuan");
 } else {
         $_SESSION['warning_message'] = "Gagal memperbarui status";
-        header("Location: ../pages/list_pengajuan_disahkan.php");
+        header("Location: ../pages/detail_pengajuan.php?id=$id_pengajuan");
 }

@@ -58,20 +58,26 @@ $footerFile = 'components/footer_default.html';
         <!-- Section Block -->
         <section class="container gx-lg-5 d-flex justify-content-center align-items-center">
             <article class="container mb-lg-0">
-			<?php @include ($alertFile); ?>
+                <?php @include ($alertFile); ?>
                 <header>
-                    <h1 class="mb-3 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                    <h1 class="mb-3 font-weight-semi-bold" style="color: hsl(218, 81%, 95%)">
                         Pesan Legalisir ijazah anda <span style="color: hsl(218, 43%, 45%);">dari rumah</span>
                     </h1>
                 </header>
-                <p>
+                <p class="mb-4">
                     Aplikasi Legalisir Ijazah dan Transkrip Akademik adalah fasilitas website
                     yang disediakan untuk keperluan legalisir di Universitas Muhammadiyah Bengkulu.<br>
                     Dapatkan legalisir anda kapanpun dan dimanapun <span style="color: hsl(218, 49%, 35%)">tanpa keluar
-                        rumah!</span><br>
-                    <br />Tertarik untuk mencoba? Yuk segera <a href="pages/register_alumni.php"
-                        style="text-decoration: none;">daftar</a>!
+                        rumah!</span>
                 </p>
+                <div class="row g-2">
+                    <div class="col-auto">
+                    <a href="pages/register_alumni.php" class="button-28 preload-link">Mulai</a>
+                    </div>
+                    <div class="col-auto">
+                        <a href="https://ft.umb.ac.id" class="button-28 preload-link">Selengkapnya</a>
+                    </div>
+                </div>
             </article>
         </section>
         <!--<section class="col g-3 d-flex align-items-center justify-content-center px-5 gap-3">

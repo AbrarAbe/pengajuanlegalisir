@@ -5,6 +5,30 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
 	exit;
 }
 
+include '../config.php';
+
+// Query untuk menghitung pengguna aktif berdasarkan tanggal pendaftaran
+$query_pengguna_aktif = "SELECT COUNT(*) as total_pengguna_aktif FROM user WHERE status = 'aktif'";
+
+// Query untuk menghitung statistik pengguna berdasarkan role
+$query_pengguna = "SELECT COUNT(*) as total_pengguna FROM user WHERE role = 'alumni'";
+
+
+// Query untuk menghitung pengguna baru berdasarkan tanggal pendaftaran
+$query_pengguna_baru = "SELECT COUNT(*) as total_pengguna_baru FROM user WHERE DATE(created_at) = CURDATE()";
+
+$result_pengguna_aktif = $conn->query($query_pengguna_aktif);
+$result_pengguna = $conn->query($query_pengguna);
+$result_pengguna_baru = $conn->query($query_pengguna_baru);
+
+$total_pengguna_aktif = $result_pengguna_aktif->fetch_assoc()['total_pengguna_aktif'];
+$total_pengguna = $result_pengguna->fetch_assoc()['total_pengguna'];
+$total_pengguna_baru = $result_pengguna_baru->fetch_assoc()['total_pengguna_baru'];
+
+// Query untuk mengambil notifikasi terbaru
+$query_notifikasi = "SELECT * FROM notifikasi ORDER BY created_at DESC LIMIT 10";
+$result_notifikasi = $conn->query($query_notifikasi);
+
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
@@ -50,8 +74,8 @@ $themeFile = '../components/theme.html';
 								class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
 					</li>
 					<li>
-						<a id="theme-toggle" href="" class="nav-link"><span id="theme-icon"
-								class="fa fa-sun mr-4"></span>Ganti Tema</a>
+						<a id="theme-toggle" class="nav-link"><span id="theme-icon" class="fa fa-sun mr-4"></span>Ganti
+							Tema</a>
 					</li>
 					<li>
 						<a href="../proses/logout.php" class="nav-link preload-link"><span
@@ -70,6 +94,34 @@ $themeFile = '../components/theme.html';
 			<article class="container px-5 mb-lg-0 py-5 justify-content-center">
 				<h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
 			</article>
+			<section class="row mt-4 g-3">
+				<!-- Notifikasi Terbaru -->
+				<article class="col-md-8">
+					<article class="card">
+						<article class="card-header">Notifikasi Terbaru</article>
+						<article class="card-body">
+							<ul>
+								<?php while ($notifikasi = $result_notifikasi->fetch_assoc()) { ?>
+									<li><?php echo $notifikasi['pesan'] . " pada " . $notifikasi['created_at']; ?></li>
+								<?php } ?>
+							</ul>
+						</article>
+					</article>
+				</article>
+				<!-- Statistik Pengguna -->
+				<aside class="col-md-4">
+					<article class="card">
+						<article class="card-header">Statistik Pengguna</article>
+						<article class="card-body">
+							<p>Sedang aktif : <?php echo $total_pengguna_aktif; ?> <i
+									class="fa-solid fa-circle align-middle"
+									style="color: #45C734; font-size:0.8rem; font-align:center"></i></p>
+							<p>Pengguna baru: <?php echo $total_pengguna_baru; ?></p>
+							<p>Jumlah pengguna : <?php echo $total_pengguna; ?></p>
+						</article>
+					</article>
+				</aside>
+			</section>
 		</section>
 	</main>
 </body>
