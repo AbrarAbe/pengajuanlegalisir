@@ -4,7 +4,7 @@ include '../config.php';
 
 if (isset($_POST['submit'])) {
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
     $status = 'nonaktif'; // Set status to 'nonaktif'
 
@@ -34,8 +34,8 @@ if (isset($_POST['submit'])) {
                 header("Location: ../pages/register_alumni.php");
             }
         }
+        $stmt->close();
     }
-    $stmt->close();
 }
 $conn->close();
 
