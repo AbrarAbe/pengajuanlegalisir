@@ -1,15 +1,14 @@
-<?php session_start();
+<?php
+session_start();
 if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
-    header('Location:
-    beranda_alumni.php');
+    header('Location: beranda_alumni.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'staf') {
-    header('Location:
-    beranda_staf.php');
+    header('Location: beranda_staf.php');
 } else if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'dekan') {
-    header('Location:
-    beranda_dekan.php');
+    header('Location: beranda_dekan.php');
     exit;
 }
+
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
@@ -101,8 +100,8 @@ $footerFile = '../components/footer_default.html'; ?>
                                 </article>
                             </article>
                             <!-- 2 column grid layout for inline styling -->
-                            <article class="row mb-4 mx-1">
-                                <article class="col-auto d-flex justify-content-center">
+                            <article class="row mb-4 d-flex justify-content-center">
+                                <article class="col-auto">
                                     <!-- Checkbox -->
                                     <article class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="checkbox"
@@ -111,7 +110,7 @@ $footerFile = '../components/footer_default.html'; ?>
                                             Ingat saya </label>
                                     </article>
                                 </article>
-                                <article class="col-auto ">
+                                <article class="col-auto">
                                     <!-- Simple link -->
                                     <a href="#!" style="text-decoration:none;">Lupa password?</a>
                                 </article>
