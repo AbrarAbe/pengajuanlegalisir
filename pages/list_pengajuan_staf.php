@@ -72,7 +72,7 @@ $result = mysqli_query($conn, $query);
 		</nav>
 		<!-- Page Content  -->
 		<section id="content" class="p-4 p-md-5 pt-5">
-			<h2 class="mb-4">List Pengajuan</h2>
+			<h2 class="mb-5">List Pengajuan</h2>
 			<?php @include ($alertFile); ?>
 			<article class="data_table" style="font-size:0.8rem">
 				<table id="table-sp" class="table display table-hover table-bordered">

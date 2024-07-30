@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Update data di database
-    $query = "UPDATE pengajuan SET ekspedisi = '$ekspedisi', ekspedisi_harga = '$ekspedisi_harga', total_harga = total_harga + '$ekspedisi_harga', id_status = 7 WHERE id_pengajuan = '$id_pengajuan'";
+    $query = "UPDATE pengajuan SET ekspedisi = '$ekspedisi', ekspedisi_harga = '$ekspedisi_harga', total_harga = total_harga + '$ekspedisi_harga', id_status = 1 WHERE id_pengajuan = '$id_pengajuan'";
 
     if (mysqli_query($conn, $query)) {
         $_SESSION['alert_message'] = "Ekspedisi berhasil diperbarui.";

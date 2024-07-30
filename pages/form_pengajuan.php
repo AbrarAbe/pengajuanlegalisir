@@ -50,8 +50,8 @@ $themeFile = '../components/theme.html';
                                 class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
                     </li>
                     <li>
-                        <a id="theme-toggle" class="nav-link"><span id="theme-icon"
-                                class="fa fa-sun mr-4"></span>Ganti Tema</a>
+                        <a id="theme-toggle" class="nav-link"><span id="theme-icon" class="fa fa-sun mr-4"></span>Ganti
+                            Tema</a>
                     </li>
                     <li>
                         <a href="../proses/logout.php" class="nav-link preload-link"><span
@@ -69,6 +69,7 @@ $themeFile = '../components/theme.html';
             <h2 class="mb-4">Form Pengajuan Legalisir</h2>
             <!-- Form -->
             <form action="../proses/proses_submit_pengajuan.php" method="post" enctype="multipart/form-data">
+
                 <!-- NPM -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="npm">NPM :</label>
@@ -101,7 +102,7 @@ $themeFile = '../components/theme.html';
                 <!-- Tahun Lulus -->
                 <article class="form-outline mb-3">
                     <label for="tahun_lulus" class="form-label d-flex" for="tahun_lulus">Tahun Lulus</label>
-                    <input type="text" class="form-control" list="tahunList" id="tahun_lulus" name="tahun_lulus"
+                    <input type="number" class="form-control" list="tahunList" id="tahun_lulus" name="tahun_lulus"
                         placeholder="Ex 20241" required>
                     <datalist id="tahunList">
                         <option value="20251">
@@ -114,11 +115,17 @@ $themeFile = '../components/theme.html';
                     </datalist>
                 </article>
 
-                <!-- Email -->
+                <!-- Email 
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="email">Email :</label>
                     <input type="email" class="form-control" id="email" name="email" required
                         placeholder="Ex user@gmail.com">
+                </article> -->
+
+                <!-- Nomor Telepon -->
+                <article class="form-outline mb-3">
+                    <label class="form-label d-flex" for="phone">Nomor Telp / WhatsApp:</label>
+                    <input type="tel" class="form-control" id="phone" name="nomor_telepon" required>
                 </article>
 
                 <!-- Ijazah -->
@@ -143,15 +150,19 @@ $themeFile = '../components/theme.html';
                         prodi 📦</label>
                     <input type="radio" class="btn-check" name="metode_pengambilan" id="kirim" autocomplete="off"
                         value="kirim ke alamat" onchange="metodePengiriman()">
-                    <label class="btn" for="kirim">Kirim ke alamat ✈️</label>
+                    <label class="btn" for="kirim">COD ✈️</label>
                 </article>
+
+                <!--<article id="hint" class="form-outline mb-3" style="display:none">
+                    <label class="form-label d-flex text-danger">*ongkos kirim ditanggung alumni</label>
+                </article>-->
 
                 <!-- Jumlah Legalisir Ijazah -->
                 <input type="hidden" id="ekspedisi_harga_input" name="ekspedisi_harga" value="0">
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="jumlah_legalisir_ijazah">Jumlah
                         Legalisir
-                        Ijazah (Rp3000 per lembar) :</label>
+                        Ijazah (Rp5000 per lembar) :</label>
                     <input type="number" class="form-control" id="jumlah_legalisir_ijazah"
                         name="jumlah_legalisir_ijazah" min="1" required oninput="checkNegative(this); updateTotal()">
                 </article>
@@ -159,7 +170,7 @@ $themeFile = '../components/theme.html';
                 <!-- Jumlah Legalisir Transkrip -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="jumlah_legalisir_transkrip">Jumlah
-                        Legalisir Transkrip (Rp3000 per lembar) :</label>
+                        Legalisir Transkrip (Rp5000 per lembar) :</label>
                     <input type="number" class="form-control" id="jumlah_legalisir_transkrip"
                         name="jumlah_legalisir_transkrip" min="1" required oninput="checkNegative(this); updateTotal()">
                 </article>

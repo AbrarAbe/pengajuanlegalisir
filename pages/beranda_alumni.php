@@ -1,11 +1,11 @@
 <?php
 session_start();
+include '../config.php';
+
 if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
 	header("Location: login.php");
 	exit;
 }
-
-include '../config.php';
 
 // Query untuk menghitung pengguna aktif berdasarkan tanggal pendaftaran
 $query_pengguna_aktif = "SELECT COUNT(*) as total_pengguna_aktif FROM user WHERE status = 'aktif'";
@@ -25,9 +25,39 @@ $total_pengguna_aktif = $result_pengguna_aktif->fetch_assoc()['total_pengguna_ak
 $total_pengguna = $result_pengguna->fetch_assoc()['total_pengguna'];
 $total_pengguna_baru = $result_pengguna_baru->fetch_assoc()['total_pengguna_baru'];
 
-// Query untuk mengambil notifikasi terbaru
-$query_notifikasi = "SELECT * FROM notifikasi ORDER BY created_at DESC LIMIT 10";
-$result_notifikasi = $conn->query($query_notifikasi);
+// Query untuk mendapatkan notifikasi yang terkait dengan pengguna yang sedang login
+$query_notifikasi = "
+    SELECT n.pesan, n.created_at 
+    FROM notifikasi n
+    JOIN pengajuan p ON n.id_pengajuan = p.id_pengajuan
+    WHERE p.id_user = ? 
+    ORDER BY n.created_at DESC 
+    LIMIT 5
+";
+$total_notifikasi = "
+    SELECT n.pesan, n.created_at 
+    FROM notifikasi n
+    JOIN pengajuan p ON n.id_pengajuan = p.id_pengajuan
+    WHERE p.id_user = ? 
+    ORDER BY n.created_at DESC
+";
+$id_user = $_SESSION['id_user'];
+if ($stmt = $conn->prepare($query_notifikasi)) {
+	$stmt->bind_param("i", $id_user);
+	$stmt->execute();
+	$result_notifikasi = $stmt->get_result();
+	$stmt->close();
+} else {
+	echo "Error: " . $conn->error;
+}
+if ($stmt = $conn->prepare($total_notifikasi)) {
+	$stmt->bind_param("i", $id_user);
+	$stmt->execute();
+	$modal_notifikasi = $stmt->get_result();
+	$stmt->close();
+} else {
+	echo "Error: " . $conn->error;
+}
 
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
@@ -43,7 +73,7 @@ $themeFile = '../components/theme.html';
 	<?php @include ($headFile); ?>
 	<?php @include ($scriptsFile); ?>
 	<?php @include ($themeFile); ?>
-	<title>Beranda</title>
+	<title>Informasi</title>
 </head>
 
 <body>
@@ -98,7 +128,13 @@ $themeFile = '../components/theme.html';
 				<!-- Notifikasi Terbaru -->
 				<article class="col-md-8">
 					<article class="card">
-						<article class="card-header">Notifikasi Terbaru</article>
+						<article class="card-header d-flex justify-content-between align-items-center">
+							<span>Informasi Pengajuan Anda</span>
+							<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+								data-bs-target="#allNotificationsModal">
+								Lihat Semua
+							</button>
+						</article>
 						<article class="card-body">
 							<ul>
 								<?php while ($notifikasi = $result_notifikasi->fetch_assoc()) { ?>
@@ -123,6 +159,28 @@ $themeFile = '../components/theme.html';
 				</aside>
 			</section>
 		</section>
+		<!-- Modal untuk menampilkan semua notifikasi -->
+		<article class="modal fade" id="allNotificationsModal" tabindex="-1"
+			aria-labelledby="allNotificationsModalLabel" aria-hidden="true">
+			<article class="modal-dialog modal-lg modal-dialog-scrollable">
+				<article class="modal-content">
+					<article class="modal-header">
+						<h5 class="modal-title" id="allNotificationsModalLabel">Informasi Pengajuan</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</article>
+					<article class="modal-body">
+						<ul>
+							<?php while ($notifikasi = $modal_notifikasi->fetch_assoc()) { ?>
+								<li><?php echo $notifikasi['pesan'] . " pada " . $notifikasi['created_at']; ?></li>
+							<?php } ?>
+						</ul>
+					</article>
+					<article class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+					</article>
+				</article>
+			</article>
+		</article>
 	</main>
 </body>
 

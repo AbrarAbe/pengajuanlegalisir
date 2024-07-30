@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = filter_var($_POST['nama'], FILTER_SANITIZE_STRING);
     $prodi = filter_var($_POST['prodi'], FILTER_SANITIZE_STRING);
     $tahun_lulus = filter_var($_POST['tahun_lulus'], FILTER_SANITIZE_NUMBER_INT);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $nomor_telepon = filter_var($_POST['nomor_telepon'], FILTER_SANITIZE_STRING);
     $alamat_pengiriman = filter_var($_POST['alamat'], FILTER_SANITIZE_STRING);
     $metode_pengambilan = filter_var($_POST['metode_pengambilan'], FILTER_SANITIZE_STRING);
     $jumlah_legalisir_ijazah = filter_var($_POST['jumlah_legalisir_ijazah'], FILTER_SANITIZE_NUMBER_INT);
@@ -42,16 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_status = 6; // Penentuan Ekspedisi
     }
 
-    $query = "INSERT INTO pengajuan (id_user, npm, nama, prodi, tahun_lulus, email, scan_ijazah, scan_transkrip, metode_pengambilan, alamat_pengiriman, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, total_harga, bukti_pembayaran, id_status) 
+    $query = "INSERT INTO pengajuan (id_user, npm, nama, prodi, tahun_lulus, nomor_telepon, scan_ijazah, scan_transkrip, metode_pengambilan, alamat_pengiriman, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, total_harga, bukti_pembayaran, id_status) 
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssissssiiissi", $id_user, $npm, $nama, $prodi, $tahun_lulus, $email, $scan_ijazah, $scan_transkrip, $metode_pengambilan, $alamat_pengiriman, $jumlah_legalisir_ijazah, $jumlah_legalisir_transkrip, $total_harga, $bukti_pembayaran, $id_status);
+    $stmt->bind_param("isssisssssiissi", $id_user, $npm, $nama, $prodi, $tahun_lulus, $nomor_telepon, $scan_ijazah, $scan_transkrip, $metode_pengambilan, $alamat_pengiriman, $jumlah_legalisir_ijazah, $jumlah_legalisir_transkrip, $total_harga, $bukti_pembayaran, $id_status);
 
     if ($stmt->execute()) {
+        // Mendapatkan id_pengajuan yang baru saja dimasukkan
+        $id_pengajuan = $conn->insert_id;
+
         // Menambahkan notifikasi
         $pesan = "Pengajuan masuk atas nama <span class=text-primary>$nama</span> ";
-        tambahNotifikasi($pesan);
+        tambahNotifikasi($pesan, $id_pengajuan);
 
         $_SESSION['info_message'] = "Pengajuan berhasil dikirim.";
         header("Location: ../pages/status_pengajuan.php");
@@ -63,13 +66,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 }
-
-function tambahNotifikasi($pesan)
-{
+function tambahNotifikasi($pesan, $id_pengajuan) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO notifikasi (pesan) VALUES (?)");
-    $stmt->bind_param("s", $pesan);
+    $stmt = $conn->prepare("INSERT INTO notifikasi (pesan, id_pengajuan) VALUES (?, ?)");
+    $stmt->bind_param("si", $pesan, $id_pengajuan);
     $stmt->execute();
     $stmt->close();
 }
-?>

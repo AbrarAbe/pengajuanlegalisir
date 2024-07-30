@@ -19,6 +19,38 @@
 
 })(jQuery);
 
+document.addEventListener("DOMContentLoaded", function() {
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+            fetch('https://ipinfo.io?token=7b70fe5064d574')
+            .then(response => response.json())
+            .then(data => callback(data.country))
+            .catch(() => callback("id"));
+        },
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/utils.js", // for formatting/validation etc.
+        autoPlaceholder: "polite"
+    });
+});
+
+document.querySelector("#phone").addEventListener("blur", function() {
+    var iti = window.intlTelInputGlobals.getInstance(this);
+    if (iti.isValidNumber()) {
+        var number = iti.getNumber(); // Dapatkan nomor dalam format internasional
+        console.log("Nomor valid:", number);
+    } else {
+        console.log("Nomor tidak valid");
+    }
+});
+
+window.intlTelInput(input, {
+    initialCountry: "id", // Default Indonesia
+    preferredCountries: ['us', 'gb', 'id'], // Negara yang sering digunakan
+    separateDialCode: true, // Pisahkan kode negara dari nomor telepon
+    // Opsi lainnya...
+});
+
 /* // Form harga total
 function updateTotal() {
     const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
@@ -52,8 +84,8 @@ function updateTotal() {
     const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
     const legalisirTranskrip = parseInt(document.getElementById('jumlah_legalisir_transkrip').value) || 0;
 
-    const hargaIjazah = 3000; // Harga per legalisir ijazah
-    const hargaTranskrip = 3000; // Harga per legalisir transkrip
+    const hargaIjazah = 5000; // Harga per legalisir ijazah
+    const hargaTranskrip = 5000; // Harga per legalisir transkrip
 
     var totalHarga = (legalisirIjazah * hargaIjazah) + (legalisirTranskrip * hargaTranskrip); // Harga per legalisir, misalnya Rp. 10.000
 
@@ -70,22 +102,25 @@ function checkNegative(input) {
 
 // Button script
 function metodePengiriman() {
-    var metodeAmbil = document.getElementById('kirim').checked;
+    var metodeCOD = document.getElementById('kirim').checked;
     var nomorRekening = document.getElementById('nomorRekening');
     var buktiPembayaran = document.getElementById('buktiPembayaran');
     var alamatPengiriman = document.getElementById('alamatPengiriman');
     var warningPengiriman = document.getElementById('warningPengiriman');
+    var hint = document.getElementById('hint');
 
-    if (metodeAmbil) {
+    if (metodeCOD) {
         nomorRekening.style.display = 'none';
         buktiPembayaran.style.display = 'none';
         alamatPengiriman.style.display = 'block';
         warningPengiriman.style.display = 'block';
+        hint.style.display = 'block';
     } else {
         nomorRekening.style.display = 'block';
         buktiPembayaran.style.display = 'block';
         alamatPengiriman.style.display = 'none';
         warningPengiriman.style.display = 'none';
+        hint.style.display = 'none';
     }
 }
 

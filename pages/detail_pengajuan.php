@@ -34,7 +34,13 @@ if (isset($_SESSION['role'])) {
 
 include '../config.php';
 $id_pengajuan = $_GET['id'];
-$query = "SELECT p.*, s.keterangan FROM pengajuan p JOIN status s ON p.id_status = s.id_status WHERE p.id_pengajuan = ?";
+$query = "
+    SELECT p.*, s.keterangan, u.email
+    FROM pengajuan p
+    JOIN status s ON p.id_status = s.id_status
+    JOIN user u ON p.id_user = u.id_user
+    WHERE p.id_pengajuan = ?
+";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $id_pengajuan);
 $stmt->execute();
@@ -90,6 +96,10 @@ $result = $stmt->get_result();
                                     <td>$row[email]</td>
                                 </tr>
                                 <tr>
+                                    <th>Nomor Telp / WA</th>
+                                    <td>$row[nomor_telepon]</td>
+                                </tr>
+                                <tr>
                                     <th>Metode Pengambilan</th>
                                     <td>$row[metode_pengambilan]</td>
                                 </tr>
@@ -114,7 +124,7 @@ $result = $stmt->get_result();
                     } else {
                         if ($row['keterangan'] == 'Penentuan Ekspedisi') {
                             echo "
-                        <article class='mb-4' style='font-size:0.8rem'>
+                        <article class='mb-5' style='font-size:0.8rem'>
                             <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
                                     <th width='25%'>Nomor Pokok Mahasiswa</th>
@@ -135,6 +145,10 @@ $result = $stmt->get_result();
                                 <tr>
                                     <th>Email</th>
                                     <td>$row[email]</td>
+                                </tr>
+                                <tr>
+                                    <th>Nomor Telp / WA</th>
+                                    <td>$row[nomor_telepon]</td>
                                 </tr>
                                 <tr>
                                     <th>Jumlah Legalisir Ijazah</th>
@@ -382,7 +396,8 @@ $result = $stmt->get_result();
                                 ";
                             } elseif ($row['keterangan'] == 'Menunggu Validasi') {
                                 echo "
-                                    <h2 class='mb-4'>Dokumen</h2>
+                                    <h2 class='mb-2'>Dokumen</h2>
+                                    <label class='mb-4 text-danger'>harap periksa dokumen sebelum melakukan validasi</label>
                                     <article class='row g-3'>
                                         <article class='col-sm-8 d-flex gap-2'>
                                             <a class='button-2 text-wrap preload-link' href='../proses/view_document.php?type=scan_ijazah&id=" . $row['id_pengajuan'] . "'>Lihat Ijazah</a>

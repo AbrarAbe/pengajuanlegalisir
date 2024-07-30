@@ -41,7 +41,9 @@ $total_pengguna = $result_pengguna->fetch_assoc()['total_pengguna'];
 $total_pengguna_baru = $result_pengguna_baru->fetch_assoc()['total_pengguna_baru'];
 
 // Query untuk mengambil notifikasi terbaru
-$query_notifikasi = "SELECT * FROM notifikasi ORDER BY created_at DESC LIMIT 10";
+$query_notifikasi = "SELECT * FROM notifikasi ORDER BY created_at DESC LIMIT 5";
+$total_notifikasi = "SELECT * FROM notifikasi ORDER BY created_at DESC";
+$modal_notifikasi = $conn->query($total_notifikasi);
 $result_notifikasi = $conn->query($query_notifikasi);
 
 $headFile = '../components/head.html';
@@ -144,7 +146,13 @@ $themeFile = '../components/theme.html';
                 <!-- Notifikasi Terbaru -->
                 <article class="col-md-8">
                     <article class="card">
-                        <article class="card-header">Notifikasi Terbaru</article>
+                        <article class="card-header d-flex justify-content-between align-items-center">
+                            <span>Log Aktivitas</span>
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#allNotificationsModal">
+                                Lihat Semua
+                            </button>
+                        </article>
                         <article class="card-body">
                             <ul>
                                 <?php while ($notifikasi = $result_notifikasi->fetch_assoc()) { ?>
@@ -169,6 +177,31 @@ $themeFile = '../components/theme.html';
                 </aside>
             </section>
         </section>
+        <!-- Modal untuk menampilkan semua notifikasi -->
+        <article class="modal fade" id="allNotificationsModal" tabindex="-1"
+            aria-labelledby="allNotificationsModalLabel" aria-hidden="true">
+            <article class="modal-dialog modal-lg modal-dialog-scrollable">
+                <article class="modal-content">
+                    <article class="modal-header">
+                        <h5 class="modal-title" id="allNotificationsModalLabel">Log Aktivitas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </article>
+                    <article class="modal-body">
+                        <ul>
+                            <?php
+                            // Reset result set pointer dan ambil notifikasi lagi untuk modal
+                            $modal_notifikasi->data_seek(0);
+                            while ($notifikasi = $modal_notifikasi->fetch_assoc()) { ?>
+                                <li><?php echo $notifikasi['pesan'] . " pada " . $notifikasi['created_at']; ?></li>
+                            <?php } ?>
+                        </ul>
+                    </article>
+                    <article class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </article>
+                </article>
+            </article>
+        </article>
     </main>
 </body>
 
