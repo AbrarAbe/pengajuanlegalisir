@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $total_harga = filter_var($_POST['total_harga'], FILTER_SANITIZE_STRING);
     $bukti_pembayaran = null;
 
-    $max_file_size = 2 * 1024 * 1024; // 2MB
+    $max_file_size = 4 * 1024 * 1024; // 4MB
 
     // Function to handle file upload and return the file content
     function handleFileUpload($file, $max_file_size) {
@@ -36,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Tetapkan id_status berdasarkan metode pengambilan
-    if ($metode_pengambilan === 'ambil di prodi') {
+    if ($metode_pengambilan === 'Ambil di Fakultas') {
         $id_status = 1; // Menunggu Validasi
-    } else if ($metode_pengambilan === 'kirim ke alamat') {
+    } else if ($metode_pengambilan === 'COD/Bayar di Tempat') {
         $id_status = 6; // Penentuan Ekspedisi
     }
 

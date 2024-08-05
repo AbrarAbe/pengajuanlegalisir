@@ -137,7 +137,7 @@ $themeFile = '../components/theme.html';
 
                 <!-- Transkrip -->
                 <article class="form-outline mb-4">
-                    <label class="form-label d-flex" for="transkrip">Upload
+                    <label class="form-label d-flex" for="transkrip">Upload Scan
                         Transkrip (PDF) :</label>
                     <input type="file" class="form-control" id="transkrip" name="transkrip" accept=".pdf">
                 </article>
@@ -145,11 +145,11 @@ $themeFile = '../components/theme.html';
                 <!-- Metode Pengambilan -->
                 <article class="form-outline mb-2 d-flex gap-2">
                     <input type="radio" class="btn-check" name="metode_pengambilan" id="ambil" autocomplete="off"
-                        checked value="ambil di prodi" onchange="metodePengiriman()">
+                        checked value="Ambil di Fakultas" onchange="metodePengiriman()">
                     <label class="btn" for="ambil">Ambil di
-                        prodi 📦</label>
+                        Fakultas 📦</label>
                     <input type="radio" class="btn-check" name="metode_pengambilan" id="kirim" autocomplete="off"
-                        value="kirim ke alamat" onchange="metodePengiriman()">
+                        value="COD/Bayar di Tempat" onchange="metodePengiriman()">
                     <label class="btn" for="kirim">COD ✈️</label>
                 </article>
 
@@ -197,7 +197,7 @@ $themeFile = '../components/theme.html';
                 <!-- Bukti Pembayaran -->
                 <article id="buktiPembayaran" class="form-outline mb-5" style="display:block">
                     <label class="form-label d-flex" for="bukti_pembayaran">Upload
-                        Bukti Pembayaran (PDF/JPG/PNG) :</label>
+                        Bukti Pembayaran (JPG/JPEG/PNG) :</label>
                     <input type="file" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran"
                         accept=".jpg, .jpeg, .png">
                 </article>

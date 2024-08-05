@@ -165,7 +165,7 @@ $themeFile = '../components/theme.html';
 			<article class="modal-dialog modal-lg modal-dialog-scrollable">
 				<article class="modal-content">
 					<article class="modal-header">
-						<h5 class="modal-title" id="allNotificationsModalLabel">Informasi Pengajuan</h5>
+						<h5 class="modal-title" id="allNotificationsModalLabel">Riwayat Pengajuan</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</article>
 					<article class="modal-body">
