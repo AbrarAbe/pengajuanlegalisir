@@ -19,36 +19,36 @@
 
 })(jQuery);
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var input = document.querySelector("#phone");
     window.intlTelInput(input, {
         initialCountry: "auto",
-        geoIpLookup: function(callback) {
+        geoIpLookup: function (callback) {
             fetch('https://ipinfo.io?token=7b70fe5064d574')
-            .then(response => response.json())
-            .then(data => callback(data.country))
-            .catch(() => callback("id"));
+                .then(response => response.json())
+                .then(data => callback(data.country))
+                .catch(() => callback("id"));
         },
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/utils.js", // for formatting/validation etc.
         autoPlaceholder: "polite"
     });
-});
 
-document.querySelector("#phone").addEventListener("blur", function() {
-    var iti = window.intlTelInputGlobals.getInstance(this);
-    if (iti.isValidNumber()) {
-        var number = iti.getNumber(); // Dapatkan nomor dalam format internasional
-        console.log("Nomor valid:", number);
-    } else {
-        console.log("Nomor tidak valid");
-    }
-});
+    document.querySelector("#phone").addEventListener("blur", function () {
+        var iti = window.intlTelInputGlobals.getInstance(this);
+        if (iti.isValidNumber()) {
+            var number = iti.getNumber(); // Dapatkan nomor dalam format internasional
+            console.log("Nomor valid:", number);
+        } else {
+            console.log("Nomor tidak valid");
+        }
+    });
 
-window.intlTelInput(input, {
-    initialCountry: "id", // Default Indonesia
-    preferredCountries: ['us', 'gb', 'id'], // Negara yang sering digunakan
-    separateDialCode: true, // Pisahkan kode negara dari nomor telepon
-    // Opsi lainnya...
+    window.intlTelInput(input, {
+        initialCountry: "id", // Default Indonesia
+        preferredCountries: ['us', 'gb', 'id'], // Negara yang sering digunakan
+        separateDialCode: true, // Pisahkan kode negara dari nomor telepon
+        // Opsi lainnya...
+    });
 });
 
 /* // Form harga total
