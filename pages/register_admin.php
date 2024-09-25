@@ -136,7 +136,7 @@ $footerFile = '../components/footer_default.html';
                                 </article>
                                 <article id="passwordHelpBlock" class="col-auto form-text mb-3 d-flex"
                                     style="color:whitesmoke;">
-                                    Must be 8-20 characters long.
+                                    Minimal 8-20 karakter.
                                 </article>
                                 <!-- Checkbox -->
                                 <article class="form-check d-flex mb-4 mx-1">

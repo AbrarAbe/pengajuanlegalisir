@@ -19,7 +19,7 @@ $themeFile = '../components/theme.html';
     <?php @include ($headFile); ?>
     <?php @include ($scriptsFile); ?>
     <?php @include ($themeFile); ?>
-    <title>Beranda</title>
+    <title>Form Pengajuan</title>
 </head>
 
 <body>

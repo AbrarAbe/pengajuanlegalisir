@@ -51,9 +51,9 @@ $result = $stmt->get_result();
 <html lang="en">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($scriptsFile); ?>
-    <?php @include ($themeFile); ?>
+    <?php @include($headFile); ?>
+    <?php @include($scriptsFile); ?>
+    <?php @include($themeFile); ?>
     <title>Detail Pengajuan</title>
 </head>
 
@@ -63,11 +63,11 @@ $result = $stmt->get_result();
             <article class="loader"></article>
         </section>
         <!-- Navbar -->
-        <?php @include ($navbarFile); ?>
+        <?php @include($navbarFile); ?>
         <!-- Page Content  -->
         <section id="content" class="p-4 p-md-5 pt-5">
             <h2 class="mb-4">Detail Pengajuan</h2>
-            <?php @include ($alertFile); ?>
+            <?php @include($alertFile); ?>
             </header>
             <section>
                 <?php if ($row = mysqli_fetch_assoc($result)) {
@@ -76,7 +76,11 @@ $result = $stmt->get_result();
                         <article class='mb-5' style='font-size:0.8rem'>
                             <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
-                                    <th width='25%'>Nomor Pokok Mahasiswa</th>
+                                    <th width='25%'>ID Pengajuan</th>
+                                    <td>$row[id_pengajuan]</td>
+                                </tr>
+                                <tr>
+                                    <th>Nomor Pokok Mahasiswa</th>
                                     <td>$row[npm]</td>
                                 </tr>
                                 <tr>
@@ -127,7 +131,11 @@ $result = $stmt->get_result();
                         <article class='mb-5' style='font-size:0.8rem'>
                             <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
-                                    <th width='25%'>Nomor Pokok Mahasiswa</th>
+                                    <th width='25%'>ID Pengajuan</th>
+                                    <td>$row[id_pengajuan]</td>
+                                </tr>
+                                <tr>
+                                    <th>Nomor Pokok Mahasiswa</th>
                                     <td>$row[npm]</td>
                                 </tr>
                                 <tr>
@@ -189,7 +197,11 @@ $result = $stmt->get_result();
                         <article class='mb-4' style='font-size:0.8rem'>
                             <table class='table dt[-head|-body] text-start table-striped table-bordered'>
                                 <tr>
-                                    <th width='25%'>Nomor Pokok Mahasiswa</th>
+                                    <th width='25%'>ID Pengajuan</th>
+                                    <td>$row[id_pengajuan]</td>
+                                </tr>
+                                <tr>
+                                    <th>Nomor Pokok Mahasiswa</th>
                                     <td>$row[npm]</td>
                                 </tr>
                                 <tr>
@@ -246,7 +258,7 @@ $result = $stmt->get_result();
                     }
                     switch ($_SESSION['role']) {
                         case 'alumni':
-                            if ($row['metode_pengambilan'] == 'COD/Bayar di Tempat'){
+                            if ($row['metode_pengambilan'] == 'COD/Bayar di Tempat') {
                                 echo "
                                     <h2 class='mb-4'>Dokumen</h2>
                                     <article class='row g-3 mb-4'>
@@ -276,11 +288,12 @@ $result = $stmt->get_result();
                                             </article>
                                         </article>
                                     </article>
-                                ";}
+                                ";
+                            }
                             break;
 
                         case 'staf':
-                            if ($row['metode_pengambilan'] == 'COD/Bayar di Tempat'){
+                            if ($row['metode_pengambilan'] == 'COD/Bayar di Tempat') {
                                 if ($row['keterangan'] == 'Penentuan Ekspedisi') {
                                     echo "
                                         <h2 class='mb-4'>Dokumen</h2>
@@ -529,7 +542,7 @@ $result = $stmt->get_result();
                             break;
 
                         case 'dekan':
-                            if ($row['metode_pengambilan'] == 'COD/Bayar di Tempat'){
+                            if ($row['metode_pengambilan'] == 'COD/Bayar di Tempat') {
                                 if ($row['keterangan'] == 'Divalidasi') {
                                     echo "
                                         <h2 class='mb-4'>Dokumen</h2>

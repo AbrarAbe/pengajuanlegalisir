@@ -16,24 +16,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $total_harga = filter_var($_POST['total_harga'], FILTER_SANITIZE_STRING);
     $bukti_pembayaran = null;
 
-    $max_file_size = 4 * 1024 * 1024; // 4MB
+    // Ukuran maksimum 4MB dalam byte (4MB = 4 * 1024 * 1024)
+    $max_size = 4 * 1024 * 1024;
 
-    // Function to handle file upload and return the file content
-    function handleFileUpload($file, $max_file_size) {
-        if ($file['size'] > $max_file_size) {
-            $_SESSION['error_message'] = "File terlalu besar. Maksimal ukuran file adalah 2MB.";
-            header("Location: ../pages/form_pengajuan.php");
-            exit();
-        }
-        return addslashes(file_get_contents($file['tmp_name']));
+    // Validasi ukuran file ijazah
+    if ($_FILES['ijazah']['size'] > $max_size) {
+        $_SESSION['error_message'] = "Ukuran file ijazah melebihi 4MB.";
+        header("Location: ../pages/form_pengajuan.php");
+        exit;
     }
 
-    // Handle file uploads
-    $scan_ijazah = handleFileUpload($_FILES['ijazah'], $max_file_size);
-    $scan_transkrip = handleFileUpload($_FILES['transkrip'], $max_file_size);
-    if (isset($_FILES['bukti_pembayaran']) && $_FILES['bukti_pembayaran']['error'] == UPLOAD_ERR_OK) {
-        $bukti_pembayaran = handleFileUpload($_FILES['bukti_pembayaran'], $max_file_size);
+    // Validasi ukuran file transkrip
+    if ($_FILES['transkrip']['size'] > $max_size) {
+        $_SESSION['error_message'] = "Ukuran file transkrip melebihi 4MB.";
+        header("Location: ../pages/form_pengajuan.php");
+        exit;
     }
+
+    // Proses file ijazah dan transkrip jika ukuran valid
+    $scan_ijazah = addslashes(file_get_contents($_FILES['ijazah']['tmp_name']));
+    $scan_transkrip = addslashes(file_get_contents($_FILES['transkrip']['tmp_name']));
 
     // Tetapkan id_status berdasarkan metode pengambilan
     if ($metode_pengambilan === 'Ambil di Fakultas') {
@@ -42,30 +44,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_status = 6; // Penentuan Ekspedisi
     }
 
+    // Hanya handle file upload jika file diupload
+    if (isset($_FILES['bukti_pembayaran']) && $_FILES['bukti_pembayaran']['error'] == UPLOAD_ERR_OK) {
+        // Validasi ukuran file bukti pembayaran jika diperlukan
+        $bukti_pembayaran = addslashes(file_get_contents($_FILES['bukti_pembayaran']['tmp_name']));
+    }
+
     $query = "INSERT INTO pengajuan (id_user, npm, nama, prodi, tahun_lulus, nomor_telepon, scan_ijazah, scan_transkrip, metode_pengambilan, alamat_pengiriman, jumlah_legalisir_ijazah, jumlah_legalisir_transkrip, total_harga, bukti_pembayaran, id_status) 
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+              VALUES ('$id_user', '$npm', '$nama', '$prodi', '$tahun_lulus', '$nomor_telepon', '$scan_ijazah', '$scan_transkrip', '$metode_pengambilan', '$alamat_pengiriman', '$jumlah_legalisir_ijazah', '$jumlah_legalisir_transkrip', '$total_harga', '$bukti_pembayaran', '$id_status')";
 
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssisssssiissi", $id_user, $npm, $nama, $prodi, $tahun_lulus, $nomor_telepon, $scan_ijazah, $scan_transkrip, $metode_pengambilan, $alamat_pengiriman, $jumlah_legalisir_ijazah, $jumlah_legalisir_transkrip, $total_harga, $bukti_pembayaran, $id_status);
+    if (mysqli_query($conn, $query)) {
 
-    if ($stmt->execute()) {
-        // Mendapatkan id_pengajuan yang baru saja dimasukkan
-        $id_pengajuan = $conn->insert_id;
+        // Mendapatkan id_pengajuan terakhir
+        $id_pengajuan = mysqli_insert_id($conn);
 
         // Menambahkan notifikasi
-        $pesan = "Pengajuan masuk atas nama <span class=text-primary>$nama</span> ";
+        $pesan = "Pengajuan masuk atas nama <span class='text-primary'>$nama</span> ";
         tambahNotifikasi($pesan, $id_pengajuan);
 
         $_SESSION['info_message'] = "Pengajuan berhasil dikirim.";
         header("Location: ../pages/status_pengajuan.php");
+        exit;
     } else {
-        $_SESSION['error_message'] = "Pengajuan gagal dikirim.";
+        $_SESSION['error_message'] = "Pengajuan gagal dikirim: " . mysqli_error($conn);
         header("Location: ../pages/form_pengajuan.php");
+        exit;
     }
 
-    $stmt->close();
-    $conn->close();
+    mysqli_close($conn);
 }
+
+// Fungsi untuk menambah notifikasi
 function tambahNotifikasi($pesan, $id_pengajuan) {
     global $conn;
     $stmt = $conn->prepare("INSERT INTO notifikasi (pesan, id_pengajuan) VALUES (?, ?)");
@@ -73,3 +82,4 @@ function tambahNotifikasi($pesan, $id_pengajuan) {
     $stmt->execute();
     $stmt->close();
 }
+?>
