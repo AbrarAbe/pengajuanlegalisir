@@ -103,8 +103,10 @@ $footerFile = '../components/footer_default.html';
                                 <!-- Checkbox -->
                                 <article class="col-auto">
                                     <article class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox"
-                                            unchecked />
+                                        <form method="POST" action="../proses/ingat_saya.php">
+                                            <input class="form-check-input" type="checkbox" id="remember_me" name="remember_me"
+                                                unchecked />
+                                        </form>
                                         <label class="form-check-label " for="checkbox" style="color:whitesmoke;">
                                             Ingat saya </label>
                                     </article>
