@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pesan = "Pengajuan masuk atas nama <span class='text-primary'>$nama</span> ";
         tambahNotifikasi($pesan, $id_pengajuan);
 
-        $_SESSION['info_message'] = "Pengajuan berhasil dikirim.";
+        $_SESSION['alert_message'] = "Pengajuan berhasil dikirim.";
         header("Location: ../pages/status_pengajuan.php");
         exit;
     } else {
@@ -82,4 +82,3 @@ function tambahNotifikasi($pesan, $id_pengajuan) {
     $stmt->execute();
     $stmt->close();
 }
-?>

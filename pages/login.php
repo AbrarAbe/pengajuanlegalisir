@@ -12,14 +12,15 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'alumni') {
 $headFile = '../components/head.html';
 $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
-$footerFile = '../components/footer_default.html'; ?>
+$footerFile = '../components/footer_default.html';
+?>
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($scriptsFile); ?>
+    <?php @include($headFile); ?>
+    <?php @include($scriptsFile); ?>
     <title>Login</title>
 </head>
 
@@ -46,19 +47,17 @@ $footerFile = '../components/footer_default.html'; ?>
                         <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
                     </li>
                     <li class="active">
-                        <a href="login.php" class="nav-link preload-link"><span
-                                class="fa fa-right-to-bracket mr-4"></span>
+                        <a href="login.php" class="nav-link"><span class="fa fa-right-to-bracket mr-4"></span>
                             Masuk</a>
                     </li>
                     <li>
-                        <a href="register_alumni.php" class="nav-link"><span
+                        <a href="register_alumni.php" class="nav-link preload-link"><span
                                 class="fa fa-user-plus mr-4"></span>Daftar</a>
                     </li>
                 </ul>
-                <?php @include ($footerFile); ?>
+                <?php @include($footerFile); ?>
             </article>
         </nav>
-
 
         <!-- Section Block -->
         <section class="container d-flex justify-content-center align-items-center px-5 py-5">
@@ -83,13 +82,14 @@ $footerFile = '../components/footer_default.html'; ?>
                                     <span class="input-group-text input-glass" id="iconuser"><i
                                             class="nf nf-oct-person_fill"></i></span>
                                     <input type="text" id="username" name="username" class="form-control input-glass"
-                                        autofocus />
+                                        autofocus <?php if (isset($_SESSION['email'])) {
+                                            echo 'value="' . $_SESSION['email'] . '"';
+                                        } ?> />
                                 </article>
                             </article>
                             <!-- Password input -->
                             <article class="form-outline mb-4">
-                                <label class="form-label form-label-white d-flex" for="password">Password
-                                    :</label>
+                                <label class="form-label form-label-white d-flex" for="password">Password :</label>
                                 <article class="input-group">
                                     <input type="password" id="password" name="password"
                                         class="form-control input-glass" aria-describedby="passwordHelpBlock" required>
@@ -99,26 +99,28 @@ $footerFile = '../components/footer_default.html'; ?>
                                     </a>
                                 </article>
                             </article>
-                            <!-- 2 column grid layout for inline styling -->
                             <article class="row mb-4 d-flex justify-content-center">
+                                <!-- Checkbox -->
                                 <article class="col-auto">
-                                    <!-- Checkbox -->
                                     <article class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="checkbox"
-                                            checked />
+                                            unchecked />
                                         <label class="form-check-label " for="checkbox" style="color:whitesmoke;">
                                             Ingat saya </label>
                                     </article>
                                 </article>
+
+                                <!-- Lupa password -->
                                 <article class="col-auto">
-                                    <!-- Simple link -->
-                                    <a href="#!" style="text-decoration:none;">Lupa password?</a>
+                                    <a href="" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+                                        data-bs-target="#resetPasswordModal" style="text-decoration:none;">Lupa
+                                        password?</a>
                                 </article>
                             </article>
                             <!-- Submit button -->
                             <article class="d-grid gap-2">
                                 <button type="submit" name="submit" id="submitBtn"
-                                    class="preload-submit button-3 mb-3">Masuk</button>
+                                    class="preload-submit button-3 text-uppercase mb-3">Masuk</button>
                             </article>
                         </form>
                         <!-- Redirect -->
@@ -128,9 +130,79 @@ $footerFile = '../components/footer_default.html'; ?>
                                 disini</a>
                         </article>
                     </aside>
-                    <?php @include ($alertFile); ?>
+                    <?php @include($alertFile); ?>
                 </article>
             </section>
+            <!-- Reset Password Modal -->
+            <div class="modal fade" id="resetPasswordModal" aria-labelledby="resetPasswordModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-glass-dark px-1 mx-5">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="resetPasswordModalLabel">Lupa Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-block" id="firstStepModal">
+                            <p>Silakan pilih metode reset password:</p>
+                            <a type="button" class="button-3 d-grid text-uppercase mb-2 mt-5"
+                                id="openSecondStepModal">Reset melalui
+                                email</a>
+                            <a href="#" type="button" href="#" class="button-3 text-uppercase text-white d-grid"
+                                id="hubungiAdmin" style="background-color:grey">Hubungi Admin</a>
+                        </div>
+                        <div class="modal-body d-none" id="secondStepModal">
+                            <form method="POST">
+                                <article class="form-outline mb-4">
+                                    <label class="form-label form-label-white d-flex" for="username">Masukkan alamat
+                                        email
+                                        anda :</label>
+                                    <article class="input-group">
+                                        <span class="input-group-text input-glass" id="iconemail"><i
+                                                class="nf nf-oct-email">@</i></span>
+                                        <input type="text" id="emailReset" name="emailReset"
+                                            class="form-control input-glass" autofocus />
+                                    </article>
+                                </article>
+                                <a href="#" type="submit" name="submitResetViaEmail"
+                                    class="button-3 text-uppercase text-white d-grid mb-2 mt-5 text-white"
+                                    id="openThirdStepModal">Kirim kode verifikasi</a>
+                            </form>
+                            <?php
+
+                            //@TODO : proses send otp ke email
+                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                if (isset($_POST["submitResetViaEmail"])) {
+                                    $emailReset = filter_var($_POST['emailReset'], FILTER_SANITIZE_EMAIL);
+                                    $_SESSION["email"] = $emailReset; // Simpan ke sesi
+                                    // ... (Kode untuk mengirim kode verifikasi) ...
+                                }
+                            }
+                            ?>
+                            <a type="button" class="button-3 text-uppercase d-grid" id="backToFirstModal"
+                                style="background-color:grey">Kembali</a>
+                        </div>
+                        <div class="modal-body d-none" id="thirdStepModal">
+                            <article class="form-outline mb-4">
+                                <label class="form-label form-label-white d-flex" for="username">Silahkan cek kode OTP
+                                    yang dikirim ke email
+                                    <?php if (isset($_SESSION['email'])) {
+                                        echo $_SESSION['email'];
+                                    } {
+                                        unset($_SESSION['email']);
+                                    } ?>
+                                    : </label>
+                                <article class="input-group">
+                                    <input type="text" id="otp" name="otp" class="form-control input-glass"
+                                        autofocus />
+                                </article>
+                            </article>
+                            <a href="#" type="button"
+                                class="button-3 text-uppercase text-white d-grid mb-2 mt-5 preload-link text-white"
+                                id="sumbmitOTP" data-bs-dismiss="modal" aria-label="Close">Kirim kode verifikasi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 </body>

@@ -19,8 +19,8 @@ $footerFile = '../components/footer_default.html';
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($scriptsFile); ?>
+    <?php @include($headFile); ?>
+    <?php @include($scriptsFile); ?>
     <title>Registrasi Admin</title>
 </head>
 
@@ -57,7 +57,7 @@ $footerFile = '../components/footer_default.html';
                             Admin</a>
                     </li>
                 </ul>
-                <?php @include ($footerFile); ?>
+                <?php @include($footerFile); ?>
             </article>
         </nav>
 
@@ -103,62 +103,63 @@ $footerFile = '../components/footer_default.html';
                                 <!-- Email input -->
                                 <article class="form-outline mb-3">
                                     <label class="form-label form-label-white letter-spacing d-flex"
-                                        for="username">Email
-                                        :</label>
+                                        for="username">Email :</label>
                                     <article class="input-group">
-                                        <span class="input-group-text input-glass" id="iconemail">@</span>
-                                        <input type="email" id="email" name="email" class="form-control input-glass"
-                                            required />
+                                        <article class="input-group">
+                                            <span class="input-group-text input-glass" id="iconmail"><i
+                                                    class="nf nf-oct-email">@</i></span>
+                                            <input type="email" id="email" name="email" class="form-control input-glass"
+                                                required />
+                                        </article>
                                     </article>
-                                </article>
-                                <!-- Role input -->
-                                <article class="form-outline mb-2 d-flex gap-2">
-                                    <input type="radio" class="btn-check" name="role" id="option1" autocomplete="off"
-                                        checked value="staf">
-                                    <label class="btn" for="option1" style="font-size:0.8rem">Staf</label>
-                                    <input type="radio" class="btn-check" name="role" id="option2" autocomplete="off"
-                                        value="dekan">
-                                    <label class="btn" for="option2" style="font-size:0.8rem">Dekan/Wakil</label>
-                                </article>
-                                <!-- Password input -->
-                                <article class="form-outline mb-2">
-                                    <label class="form-label letter-spacing d-flex" for="password">Password
-                                        :</label>
-                                    <article class="input-group">
-                                        <input type="password" id="password" name="password"
-                                            class="form-control input-glass" aria-describedby="passwordHelpBlock"
-                                            pattern=".{8,}" required>
-                                        <a class="input-group-text input-glass" style="text-decoration:none"
-                                            onclick="showPass()">
-                                            <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
-                                        </a>
+                                    <!-- Role input -->
+                                    <article class="form-outline mb-2 d-flex gap-2">
+                                        <input type="radio" class="btn-check" name="role" id="option1"
+                                            autocomplete="off" checked value="staf">
+                                        <label class="btn" for="option1" style="font-size:0.8rem">Staf</label>
+                                        <input type="radio" class="btn-check" name="role" id="option2"
+                                            autocomplete="off" value="dekan">
+                                        <label class="btn" for="option2" style="font-size:0.8rem">Dekan/Wakil</label>
                                     </article>
-                                </article>
-                                <article id="passwordHelpBlock" class="col-auto form-text mb-3 d-flex"
-                                    style="color:whitesmoke;">
-                                    Minimal 8-20 karakter.
-                                </article>
-                                <!-- Checkbox -->
-                                <article class="form-check d-flex mb-4 mx-1">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="checkbox"
-                                        unchecked required />
-                                    <label class="form-check-label form-label-white d-flex" for="checkbox">
-                                        Dengan mendaftar anda menyetujui syarat dan ketentuan yang berlaku
-                                    </label>
-                                </article>
-                                <!-- Submit button -->
-                                <article class="d-grid gap-2">
-                                    <button id="submit" type="submit" name="submit" id="submitBtn"
-                                        class="preload-submit button-3 mb-3">Daftar</button>
-                                </article>
-                                <!-- Redirect -->
-                                <article id="redirect" class="form-outline mb-2 d-flex justify-content-center">
-                                    <label class="form-label d-flex mr-1 " for="alamat">Sudah Punya Akun ?</label>
-                                    <a href="login.php" style="text-decoration:none;">Login
-                                        disini</a>
-                                </article>
+                                    <!-- Password input -->
+                                    <article class="form-outline mb-2">
+                                        <label class="form-label letter-spacing d-flex" for="password">Password
+                                            :</label>
+                                        <article class="input-group">
+                                            <input type="password" id="password" name="password"
+                                                class="form-control input-glass" aria-describedby="passwordHelpBlock"
+                                                pattern=".{8,}" required>
+                                            <a class="input-group-text input-glass" style="text-decoration:none"
+                                                onclick="showPass()">
+                                                <i id="toggleIcon" class="nf nf-fa-eye_slash"></i>
+                                            </a>
+                                        </article>
+                                    </article>
+                                    <article id="passwordHelpBlock" class="col-auto form-text mb-3 d-flex"
+                                        style="color:whitesmoke;">
+                                        Minimal 8-20 karakter.
+                                    </article>
+                                    <!-- Checkbox -->
+                                    <article class="form-check d-flex mb-4 mx-1">
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="checkbox"
+                                            unchecked required />
+                                        <label class="form-check-label form-label-white d-flex" for="checkbox">
+                                            Dengan mendaftar anda menyetujui syarat dan ketentuan yang berlaku
+                                        </label>
+                                    </article>
+                                    <!-- Submit button -->
+                                    <article class="d-grid gap-2">
+                                        <button id="submit" type="submit" name="submit" id="submitBtn"
+                                            class="preload-submit button-3 text-uppercase mb-3">Daftar</button>
+                                    </article>
+                                    <!-- Redirect -->
+                                    <article id="redirect" class="form-outline mb-2 d-flex justify-content-center">
+                                        <label class="form-label d-flex mr-1 " for="alamat">Sudah Punya Akun ?</label>
+                                        <a href="login.php" style="text-decoration:none;">Login
+                                            disini</a>
+                                    </article>
                             </form>
-                            <?php @include ($alertFile); ?>
+                            <?php @include($alertFile); ?>
                         </article>
                     </article>
                 </aside>

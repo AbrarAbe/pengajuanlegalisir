@@ -64,15 +64,16 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
+$logoutModalFile = "../components/logout_modal.html"; 
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-	<?php @include ($headFile); ?>
-	<?php @include ($scriptsFile); ?>
-	<?php @include ($themeFile); ?>
+	<?php @include($headFile); ?>
+	<?php @include($scriptsFile); ?>
+	<?php @include($themeFile); ?>
 	<title>Informasi</title>
 </head>
 
@@ -108,19 +109,19 @@ $themeFile = '../components/theme.html';
 							Tema</a>
 					</li>
 					<li>
-						<a href="../proses/logout.php" class="nav-link preload-link"><span
-								class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
+						<a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+							data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
 					</li>
 				</ul>
 				<!-- Footer -->
-				<?php @include ($footerFile); ?>
+				<?php @include($footerFile); ?>
 				<!-- Footer -->
 			</article>
 		</nav>
 		<!-- Page Content  -->
 		<section id="content" class="p-4 p-md-5 pt-5">
 			<h2 class="mb-4">Beranda</h2>
-			<?php @include ($alertFile); ?>
+			<?php @include($alertFile); ?>
 			<article class="container px-5 mb-lg-0 py-5 justify-content-center">
 				<h1 class="text-center">Selamat datang, <?php echo $_SESSION['username']; ?>!</h1>
 			</article>
@@ -163,7 +164,7 @@ $themeFile = '../components/theme.html';
 		<article class="modal fade" id="allNotificationsModal" tabindex="-1"
 			aria-labelledby="allNotificationsModalLabel" aria-hidden="true">
 			<article class="modal-dialog modal-lg modal-dialog-scrollable">
-				<article class="modal-content">
+				<article class="modal-content bg-glass-light">
 					<article class="modal-header">
 						<h5 class="modal-title" id="allNotificationsModalLabel">Riwayat Pengajuan</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -181,6 +182,7 @@ $themeFile = '../components/theme.html';
 				</article>
 			</article>
 		</article>
+		<?php @include($logoutModalFile); ?>
 	</main>
 </body>
 

@@ -43,7 +43,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  scroll-behavior: smooth;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -12114,4 +12114,16 @@ a[data-toggle="collapse"] {
 
 .banner {
   text-align: center;
+}
+
+.bg-glass-dark {
+  background-color: hsla(0, 0%, 0%, 0.281) !important;
+  backdrop-filter: saturate(100%) blur(10px);
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #dddddd73 0 -3px 0 inset;
+}
+
+.bg-glass-light {
+  background-color: hsla(0, 0%, 100%, 0.781) !important;
+  backdrop-filter: saturate(100%) blur(10px);
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #dddddd73 0 -3px 0 inset;
 }

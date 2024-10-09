@@ -12,6 +12,7 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
+$logoutModalFile = '../components/logout_modal.html';
 // path ke file navbar berdasarkan role
 if (isset($_SESSION['role'])) {
     switch ($_SESSION['role']) {
@@ -632,6 +633,7 @@ $result = $stmt->get_result();
                 ?>
             </section>
         </section>
+		<?php @include($logoutModalFile); ?>
     </main>
 </body>
 

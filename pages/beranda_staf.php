@@ -51,15 +51,16 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
+$logoutModalFile = '../components/logout_modal.html';
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($scriptsFile); ?>
-    <?php @include ($themeFile); ?>
+    <?php @include($headFile); ?>
+    <?php @include($scriptsFile); ?>
+    <?php @include($themeFile); ?>
     <title>Beranda</title>
 </head>
 
@@ -95,19 +96,19 @@ $themeFile = '../components/theme.html';
                                 class="fa fa-sun ml-1 mr-4"></span>Ganti Tema</a>
                     </li>
                     <li>
-                        <a href="../proses/logout.php" class="nav-link preload-link"><span
-                                class="fa fa-right-from-bracket ml-1 mr-4"></span>Keluar</a>
+                        <a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
                     </li>
                 </ul>
                 <!-- Footer -->
-                <?php @include ($footerFile); ?>
+                <?php @include($footerFile); ?>
                 <!-- Footer -->
             </article>
         </nav>
         <!-- Page Content  -->
         <section id="content" class="p-4 p-md-5 pt-5">
             <h2 class="mb-5">Dashboard Admin</h2>
-            <?php @include ($alertFile); ?>
+            <?php @include($alertFile); ?>
             <section class="row">
                 <article class="col-md-3">
                     <article class="card text-white bg-primary mb-3">
@@ -202,6 +203,30 @@ $themeFile = '../components/theme.html';
                 </article>
             </article>
         </article>
+        <div class="modal fade" id="logoutModal" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-light px-1 mx-5">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="resetPasswordModalLabel">Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-block" id="firstStepModal">
+                        <p>Anda yakin ingin keluar ?</p>
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <a href="../proses/logout.php" type="button"
+                                    class="button-3 d-grid text-white preload-link" style="background-color:grey"
+                                    data-bs-dismiss="modal" aria-label="Close">Keluar</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a type="button" class="button-3 d-grid text-white" data-bs-dismiss="modal"
+                                    aria-label="Close">Tidak</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 

@@ -10,15 +10,16 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
+$logoutModalFile = '../components/logout_modal.html';
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($scriptsFile); ?>
-    <?php @include ($themeFile); ?>
+    <?php @include($headFile); ?>
+    <?php @include($scriptsFile); ?>
+    <?php @include($themeFile); ?>
     <title>Form Pengajuan</title>
 </head>
 
@@ -54,19 +55,19 @@ $themeFile = '../components/theme.html';
                             Tema</a>
                     </li>
                     <li>
-                        <a href="../proses/logout.php" class="nav-link preload-link"><span
-                                class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
+                        <a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
                     </li>
                 </ul>
                 <!-- Footer -->
-                <?php @include ($footerFile); ?>
+                <?php @include($footerFile); ?>
                 <!-- Footer -->
             </article>
         </nav>
         <!-- Page Content  -->
         <section id="content" class="p-4 p-md-5 pt-5">
-            <?php @include ($alertFile); ?>
             <h2 class="mb-4">Form Pengajuan Legalisir</h2>
+            <?php @include($alertFile); ?>
             <!-- Form -->
             <form action="../proses/proses_submit_pengajuan.php" method="post" enctype="multipart/form-data">
 
@@ -223,6 +224,7 @@ $themeFile = '../components/theme.html';
                 </article>
             </form>
         </section>
+		<?php @include($logoutModalFile); ?>
     </main>
 </body>
 

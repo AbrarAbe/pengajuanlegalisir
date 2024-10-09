@@ -10,6 +10,7 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
+$logoutModalFile = '../components/logout_modal.html';
 
 include '../config.php';
 $query = "SELECT p.*, s.keterangan 
@@ -23,9 +24,9 @@ $result = mysqli_query($conn, $query);
 <html lang="en">
 
 <head>
-	<?php @include ($headFile); ?>
-	<?php @include ($scriptsFile); ?>
-	<?php @include ($themeFile); ?>
+	<?php @include($headFile); ?>
+	<?php @include($scriptsFile); ?>
+	<?php @include($themeFile); ?>
 	<title>List Pengajuan</title>
 </head>
 
@@ -57,23 +58,23 @@ $result = mysqli_query($conn, $query);
 								class="fa fa-file-lines ml-1 mr-4"></span> Legalisir</a>
 					</li>
 					<li>
-						<a id="theme-toggle" class="nav-link"><span id="theme-icon"
-								class="fa fa-sun ml-1 mr-4"></span> Ganti Tema</a>
+						<a id="theme-toggle" class="nav-link"><span id="theme-icon" class="fa fa-sun ml-1 mr-4"></span>
+							Ganti Tema</a>
 					</li>
 					<li>
-						<a href="../proses/logout.php" class="nav-link preload-link"><span
-								class="fa fa-right-from-bracket ml-1 mr-4"></span>Keluar</a>
+						<a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+							data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
 					</li>
 				</ul>
 				<!-- Footer -->
-				<?php @include ($footerFile); ?>
+				<?php @include($footerFile); ?>
 				<!-- Footer -->
 			</article>
 		</nav>
 		<!-- Page Content  -->
 		<section id="content" class="p-4 p-md-5 pt-5">
 			<h2 class="mb-5">Legalisir</h2>
-			<?php @include ($alertFile); ?>
+			<?php @include($alertFile); ?>
 			<article class="data_table" style="font-size:0.8rem">
 				<table id="table-sp" class="table display table-hover table-bordered">
 					<thead class="table-primary">
@@ -129,6 +130,7 @@ $result = mysqli_query($conn, $query);
 				</table>
 			</article>
 		</section>
+		<?php @include($logoutModalFile); ?>
 	</main>
 </body>
 

@@ -11,7 +11,6 @@ if ($row = mysqli_fetch_assoc($result)) {
     echo "<a href='print_document.php?type=ijazah&id=" . $row['id_pengajuan'] . "' target='_blank'>Cetak Ijazah</a><br>";
     echo "<a href='print_document.php?type=transkrip&id=" . $row['id_pengajuan'] . "' target='_blank'>Cetak Transkrip</a><br>";
     echo "<a href='print_document.php?type=pembayaran&id=" . $row['id_pengajuan'] . "' target='_blank'>Cetak Bukti Pembayaran</a><br>";
-
     echo "<form action='update_status.php' method='post'>";
     echo "<input type='hidden' name='id_pengajuan' value='" . $row['id_pengajuan'] . "'>";
     echo "<label for='status'>Ubah Status pengajuan:</label>";
@@ -26,4 +25,3 @@ if ($row = mysqli_fetch_assoc($result)) {
 }
 
 mysqli_close($conn);
-?>

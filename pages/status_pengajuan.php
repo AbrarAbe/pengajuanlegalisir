@@ -10,6 +10,7 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
+$logoutModalFile = '../components/logout_modal.html';
 
 include '../config.php';
 $id_user = $_SESSION['id_user'];
@@ -60,9 +61,9 @@ $result = mysqli_query($conn, $query);
                                 class="fa fa-sun mr-4"></span>Ganti Tema</a>
                     </li>
                     <li>
-                        <a href="../proses/logout.php" class="nav-link preload-link"><span
-                                class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
-                    </li>
+						<a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+							data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
+					</li>
                 </ul>
                 <!-- Footer -->
                 <?php @include ($footerFile); ?>
@@ -129,6 +130,7 @@ $result = mysqli_query($conn, $query);
                 </table>
             </article>
         </section>
+		<?php @include($logoutModalFile); ?>
     </main>
 </body>
 

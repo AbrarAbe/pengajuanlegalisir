@@ -19,8 +19,8 @@ $footerFile = '../components/footer_default.html';
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <?php @include ($headFile); ?>
-    <?php @include ($scriptsFile); ?>
+    <?php @include($headFile); ?>
+    <?php @include($scriptsFile); ?>
     <title>Registrasi</title>
 </head>
 
@@ -53,7 +53,7 @@ $footerFile = '../components/footer_default.html';
                                 class="fa fa-user-plus mr-4"></span>Daftar</a>
                     </li>
                 </ul>
-                <?php @include ($footerFile); ?>
+                <?php @include($footerFile); ?>
             </article>
         </nav>
 
@@ -102,7 +102,8 @@ $footerFile = '../components/footer_default.html';
                                         for="username">Email
                                         :</label>
                                     <article class="input-group">
-                                        <span class="input-group-text input-glass" id="iconemail">@</span>
+                                        <span class="input-group-text input-glass" id="iconmail"><i
+                                                class="nf nf-oct-email">@</i></span>
                                         <input type="email" id="email" name="email" class="form-control input-glass"
                                             required />
                                     </article>
@@ -137,7 +138,7 @@ $footerFile = '../components/footer_default.html';
                                 <!-- Submit button -->
                                 <article class="d-grid gap-2">
                                     <button type="submit" name="submit" id="submitBtn"
-                                        class="preload-submit button-3 mb-3">Daftar</button>
+                                        class="preload-submit button-3 text-uppercase mb-3">Daftar</button>
                                 </article>
                                 <!-- Redirect -->
                                 <article id="redirect" class="form-outline mb-2 d-flex justify-content-center">
@@ -146,7 +147,7 @@ $footerFile = '../components/footer_default.html';
                                         disini</a>
                                 </article>
                             </form>
-                            <?php @include ($alertFile); ?>
+                            <?php @include($alertFile); ?>
                         </article>
                     </article>
                 </aside>
