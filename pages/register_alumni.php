@@ -37,19 +37,19 @@ $footerFile = '../components/footer_default.html';
                 </button>
             </article>
             <article class="container d-grid p-4">
-                <h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                <h1><a href="../index.php" class="logo nav-link cursor-pointer mb-1">E-Legalisir <span>Legalisir Ijazah dan
                             Transkrip</span></a></h1>
                 <ul class="list-unstyled components mb-4">
                     <li>
-                        <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
+                        <a href="../index.php" class="nav-link cursor-pointer"><span class="fa fa-home mr-4"></span>Beranda</a>
                     </li>
                     <li>
-                        <a href="login.php" class="nav-link preload-link"><span
+                        <a href="login.php" class="nav-link cursor-pointer preload-link"><span
                                 class="fa fa-right-to-bracket mr-4"></span>
                             Masuk</a>
                     </li>
                     <li class="active">
-                        <a href="register_alumni.php" class="nav-link"><span
+                        <a href="register_alumni.php" class="nav-link cursor-pointer"><span
                                 class="fa fa-user-plus mr-4"></span>Daftar</a>
                     </li>
                 </ul>

@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt->close();
     } else {
-        $_SESSION['warning_message'] = "Input tidak valid.";
+        $_SESSION['warning_message'] = "Input tidak boleh kosong.";
         header("Location: ../pages/login.php");
     }
 }

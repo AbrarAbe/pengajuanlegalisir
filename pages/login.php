@@ -40,18 +40,18 @@ $footerFile = '../components/footer_default.html';
                 </button>
             </article>
             <article class="container d-grid p-4">
-                <h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                <h1><a href="../index.php" class="logo nav-link cursor-pointer mb-1">E-Legalisir <span>Legalisir Ijazah dan
                             Transkrip</span></a></h1>
                 <ul class="list-unstyled components mb-4">
                     <li>
-                        <a href="../index.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
+                        <a href="../index.php" class="nav-link cursor-pointer"><span class="fa fa-home mr-4"></span>Beranda</a>
                     </li>
                     <li class="active">
-                        <a href="login.php" class="nav-link"><span class="fa fa-right-to-bracket mr-4"></span>
+                        <a href="login.php" class="nav-link cursor-pointer"><span class="fa fa-right-to-bracket mr-4"></span>
                             Masuk</a>
                     </li>
                     <li>
-                        <a href="register_alumni.php" class="nav-link preload-link"><span
+                        <a href="register_alumni.php" class="nav-link cursor-pointer preload-link"><span
                                 class="fa fa-user-plus mr-4"></span>Daftar</a>
                     </li>
                 </ul>
@@ -104,8 +104,8 @@ $footerFile = '../components/footer_default.html';
                                 <article class="col-auto">
                                     <article class="form-check">
                                         <form method="POST" action="../proses/ingat_saya.php">
-                                            <input class="form-check-input" type="checkbox" id="remember_me" name="remember_me"
-                                                unchecked />
+                                            <input class="form-check-input" type="checkbox" id="remember_me"
+                                                name="remember_me" unchecked />
                                         </form>
                                         <label class="form-check-label " for="checkbox" style="color:whitesmoke;">
                                             Ingat saya </label>
@@ -155,9 +155,8 @@ $footerFile = '../components/footer_default.html';
                         <div class="modal-body d-none" id="secondStepModal">
                             <form method="POST">
                                 <article class="form-outline mb-4">
-                                    <label class="form-label form-label-white d-flex" for="username">Masukkan alamat
-                                        email
-                                        anda :</label>
+                                    <label class="form-label form-label-white d-flex" for="username">
+                                        Masukkan alamat email anda :</label>
                                     <article class="input-group">
                                         <span class="input-group-text input-glass" id="iconemail"><i
                                                 class="nf nf-oct-email">@</i></span>
@@ -191,16 +190,28 @@ $footerFile = '../components/footer_default.html';
                                         echo $_SESSION['email'];
                                     } {
                                         unset($_SESSION['email']);
-                                    } ?>
-                                    : </label>
-                                <article class="input-group">
-                                    <input type="text" id="otp" name="otp" class="form-control input-glass"
-                                        autofocus />
-                                </article>
+                                    } ?> : </label>
+                                <label class="form-label form-label-white d-flex" for="username">Masukkan alamat email
+                                    Anda: </label>
+                                <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                                    <input class="m-2 text-center form-control rounded" type="text" id="first"
+                                        maxlength="1" />
+                                    <input class="m-2 text-center form-control rounded" type="text" id="second"
+                                        maxlength="1" />
+                                    <input class="m-2 text-center form-control rounded" type="text" id="third"
+                                        maxlength="1" />
+                                    <input class="m-2 text-center form-control rounded" type="text" id="fourth"
+                                        maxlength="1" />
+                                    <input class="m-2 text-center form-control rounded" type="text" id="fifth"
+                                        maxlength="1" />
+                                    <input class="m-2 text-center form-control rounded" type="text" id="sixth"
+                                        maxlength="1" />
+                                </div>
+                            </article>
                             </article>
                             <a href="#" type="button"
                                 class="button-3 text-uppercase text-white d-grid mb-2 mt-5 preload-link text-white"
-                                id="sumbmitOTP" data-bs-dismiss="modal" aria-label="Close">Kirim kode verifikasi</a>
+                                id="sumbmitOTP" data-bs-dismiss="modal" aria-label="Close">Verifikasi</a>
                         </div>
                     </div>
                 </div>

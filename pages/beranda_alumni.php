@@ -1,19 +1,16 @@
 <?php
 session_start();
-include '../config.php';
-
 if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'alumni') {
 	header("Location: login.php");
 	exit;
 }
 
+include '../config.php';
+
 // Query untuk menghitung pengguna aktif berdasarkan tanggal pendaftaran
 $query_pengguna_aktif = "SELECT COUNT(*) as total_pengguna_aktif FROM user WHERE status = 'aktif'";
-
 // Query untuk menghitung statistik pengguna berdasarkan role
 $query_pengguna = "SELECT COUNT(*) as total_pengguna FROM user WHERE role = 'alumni'";
-
-
 // Query untuk menghitung pengguna baru berdasarkan tanggal pendaftaran
 $query_pengguna_baru = "SELECT COUNT(*) as total_pengguna_baru FROM user WHERE DATE(created_at) = CURDATE()";
 
@@ -64,7 +61,7 @@ $alertFile = '../components/alert.html';
 $scriptsFile = '../components/scripts.html';
 $footerFile = '../components/footer.html';
 $themeFile = '../components/theme.html';
-$logoutModalFile = "../components/logout_modal.html"; 
+$logoutModalFile = "../components/logout_modal.html";
 ?>
 
 <!doctype html>
@@ -90,26 +87,26 @@ $logoutModalFile = "../components/logout_modal.html";
 				</button>
 			</article>
 			<article class="container d-grid p-4 position-fixed" style="max-width: 270px">
-				<h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+				<h1><a href="../index.php" class="logo nav-link cursor-pointer mb-1">E-Legalisir <span>Legalisir Ijazah dan
 							Transkrip</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<li class="active">
-						<a href="beranda_alumni.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
+						<a href="beranda_alumni.php" class="nav-link cursor-pointer"><span class="fa fa-home mr-4"></span>Beranda</a>
 					</li>
 					<li>
-						<a href="form_pengajuan.php" class="nav-link preload-link"><span
+						<a href="form_pengajuan.php" class="nav-link cursor-pointer preload-link"><span
 								class="fa fa-id-card mr-4"></span>Form Pengajuan</a>
 					</li>
 					<li>
-						<a href="status_pengajuan.php" class="nav-link preload-link"><span
+						<a href="status_pengajuan.php" class="nav-link cursor-pointer preload-link"><span
 								class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
 					</li>
 					<li>
-						<a id="theme-toggle" class="nav-link"><span id="theme-icon" class="fa fa-sun mr-4"></span>Ganti
+						<a href="#" id="theme-toggle" class="nav-link cursor-pointer"><span id="theme-icon" class="fa fa-sun mr-4"></span>Ganti
 							Tema</a>
 					</li>
 					<li>
-						<a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+						<a href="" class="nav-link cursor-pointer" onclick="openModal()" id="openModal" data-bs-toggle="modal"
 							data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
 					</li>
 				</ul>
@@ -164,7 +161,7 @@ $logoutModalFile = "../components/logout_modal.html";
 		<article class="modal fade" id="allNotificationsModal" tabindex="-1"
 			aria-labelledby="allNotificationsModalLabel" aria-hidden="true">
 			<article class="modal-dialog modal-lg modal-dialog-scrollable">
-				<article class="modal-content bg-glass-light">
+				<article class="modal-content bg-light px-1 mx-4" id="notifModalBg">
 					<article class="modal-header">
 						<h5 class="modal-title" id="allNotificationsModalLabel">Riwayat Pengajuan</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -177,7 +174,7 @@ $logoutModalFile = "../components/logout_modal.html";
 						</ul>
 					</article>
 					<article class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+						<button type="button" class="button-3 d-grid" data-bs-dismiss="modal">Tutup</button>
 					</article>
 				</article>
 			</article>

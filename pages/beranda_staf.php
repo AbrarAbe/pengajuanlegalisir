@@ -77,26 +77,26 @@ $logoutModalFile = '../components/logout_modal.html';
                 </button>
             </article>
             <article class="container d-grid p-4 position-fixed" style="max-width: 270px">
-                <h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                <h1><a href="../index.php" class="logo nav-link cursor-pointer mb-1">E-Legalisir <span>Legalisir Ijazah dan
                             Transkrip</span></a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="beranda_staf.php" class="nav-link"><span class="fa fa-home mr-4"></span>Dashboard</a>
+                        <a href="beranda_staf.php" class="nav-link cursor-pointer"><span class="fa fa-home mr-4"></span>Dashboard</a>
                     </li>
                     <li>
-                        <a href="list_pengajuan_staf.php" class="nav-link preload-link"><span
+                        <a href="list_pengajuan_staf.php" class="nav-link cursor-pointer preload-link"><span
                                 class="fa fa-id-card mr-4"></span>List Pengajuan</a>
                     </li>
                     <li>
-                        <a href="list_pengajuan_disahkan.php" class="nav-link preload-link"><span
+                        <a href="list_pengajuan_disahkan.php" class="nav-link cursor-pointer preload-link"><span
                                 class="fa fa-file-lines ml-1 mr-4"></span> Legalisir</a>
                     </li>
                     <li>
-                        <a id="theme-toggle" class="nav-link"><span id="theme-icon"
+                        <a href="#" id="theme-toggle" class="nav-link cursor-pointer"><span id="theme-icon"
                                 class="fa fa-sun ml-1 mr-4"></span>Ganti Tema</a>
                     </li>
                     <li>
-                        <a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
+                        <a href="" class="nav-link cursor-pointer" onclick="openModal()" id="openModal" data-bs-toggle="modal"
                             data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
                     </li>
                 </ul>
@@ -203,30 +203,7 @@ $logoutModalFile = '../components/logout_modal.html';
                 </article>
             </article>
         </article>
-        <div class="modal fade" id="logoutModal" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-light px-1 mx-5">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="resetPasswordModalLabel">Logout</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-block" id="firstStepModal">
-                        <p>Anda yakin ingin keluar ?</p>
-                        <div class="row g-3 mt-3">
-                            <div class="col-md-6">
-                                <a href="../proses/logout.php" type="button"
-                                    class="button-3 d-grid text-white preload-link" style="background-color:grey"
-                                    data-bs-dismiss="modal" aria-label="Close">Keluar</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a type="button" class="button-3 d-grid text-white" data-bs-dismiss="modal"
-                                    aria-label="Close">Tidak</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<?php @include($logoutModalFile); ?>
     </main>
 </body>
 
