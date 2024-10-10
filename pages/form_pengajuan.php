@@ -36,27 +36,32 @@ $logoutModalFile = '../components/logout_modal.html';
                 </button>
             </article>
             <article class="container d-grid p-4 position-fixed" style="max-width: 270px">
-                <h1><a href="../index.php" class="logo nav-link mb-1">E-Legalisir <span>Legalisir Ijazah dan
+                <h1><a href="../index.php" class="logo nav-link cursor-pointer mb-1">E-Legalisir <span>Legalisir Ijazah
+                            dan
                             Transkrip</span></a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                        <a href="beranda_alumni.php" class="nav-link"><span class="fa fa-home mr-4"></span>Beranda</a>
+                        <a href="beranda_alumni.php" class="nav-link cursor-pointer"><span
+                                class="fa fa-home mr-4"></span>Beranda</a>
                     </li>
                     <li class="active">
-                        <a href="form_pengajuan.php" class="nav-link"><span class="fa fa-id-card mr-4"></span>Form
+                        <a href="form_pengajuan.php" class="nav-link cursor-pointer"><span
+                                class="fa fa-id-card mr-4"></span>Form
                             Pengajuan</a>
                     </li>
                     <li>
-                        <a href="status_pengajuan.php" class="nav-link preload-link"><span
+                        <a href="status_pengajuan.php" class="nav-link cursor-pointer preload-link"><span
                                 class="fa fa-chart-simple mr-4"></span> Status Pengajuan</a>
                     </li>
                     <li>
-                        <a id="theme-toggle" class="nav-link"><span id="theme-icon" class="fa fa-sun mr-4"></span>Ganti
+                        <a href="#" id="theme-toggle" class="nav-link cursor-pointer"><span id="theme-icon"
+                                class="fa fa-sun mr-4"></span>Ganti
                             Tema</a>
                     </li>
                     <li>
-                        <a href="" class="nav-link" onclick="openModal()" id="openModal" data-bs-toggle="modal"
-                            data-bs-target="#logoutModal"><span class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
+                        <a href="" class="nav-link cursor-pointer" onclick="openModal()" id="openModal"
+                            data-bs-toggle="modal" data-bs-target="#logoutModal"><span
+                                class="fa fa-right-from-bracket mr-4"></span>Keluar</a>
                     </li>
                 </ul>
                 <!-- Footer -->
@@ -74,8 +79,8 @@ $logoutModalFile = '../components/logout_modal.html';
                 <!-- NPM -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="npm">NPM :</label>
-                    <input type="text" class="form-control" id="npm" name="npm" required
-                        placeholder="Nomor Pokok Mahasiswa" autofocus>
+                    <input type="tel" pattern="^[0-9]{10,10}$" class="form-control" id="npm" name="npm"
+                        required placeholder="Nomor Pokok Mahasiswa" autofocus>
                 </article>
 
                 <!-- Nama -->
@@ -103,7 +108,7 @@ $logoutModalFile = '../components/logout_modal.html';
                 <!-- Tahun Lulus -->
                 <article class="form-outline mb-3">
                     <label for="tahun_lulus" class="form-label d-flex" for="tahun_lulus">Tahun Lulus</label>
-                    <input type="number" class="form-control" list="tahunList" id="tahun_lulus" name="tahun_lulus"
+                    <input type="tel" pattern="^[0-9]{5,5}$" class="form-control" list="tahunList" id="tahun_lulus" name="tahun_lulus"
                         placeholder="Ex 20241" required>
                     <datalist id="tahunList">
                         <option value="20251">
@@ -126,7 +131,7 @@ $logoutModalFile = '../components/logout_modal.html';
                 <!-- Nomor Telepon -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="phone">Nomor Telp / WhatsApp:</label>
-                    <input type="tel" class="form-control" id="phone" name="nomor_telepon" required>
+                    <input type="tel" pattern="^[0-9]{10,15}$" class="form-control" id="phone" name="nomor_telepon" required>
                 </article>
 
                 <!-- Ijazah -->
@@ -161,18 +166,17 @@ $logoutModalFile = '../components/logout_modal.html';
                 <!-- Jumlah Legalisir Ijazah -->
                 <input type="hidden" id="ekspedisi_harga_input" name="ekspedisi_harga" value="0">
                 <article class="form-outline mb-3">
-                    <label class="form-label d-flex" for="jumlah_legalisir_ijazah">Jumlah
-                        Legalisir
-                        Ijazah (Rp5000 per lembar) :</label>
-                    <input type="number" class="form-control" id="jumlah_legalisir_ijazah"
+                    <label class="form-label d-flex" for="jumlah_legalisir_ijazah">Jumlah Legalisir Ijazah Rp.5000 per
+                        lembar (sudah termasuk biaya penggandaan) :</label>
+                    <input type="tel" pattern="^[0-9]{1,5}$" class="form-control" id="jumlah_legalisir_ijazah"
                         name="jumlah_legalisir_ijazah" min="1" required oninput="checkNegative(this); updateTotal()">
                 </article>
 
                 <!-- Jumlah Legalisir Transkrip -->
                 <article class="form-outline mb-3">
                     <label class="form-label d-flex" for="jumlah_legalisir_transkrip">Jumlah
-                        Legalisir Transkrip (Rp5000 per lembar) :</label>
-                    <input type="number" class="form-control" id="jumlah_legalisir_transkrip"
+                        Legalisir Transkrip Rp.5000 per lembar (sudah termasuk biaya penggandaan) :</label>
+                    <input type="tel" pattern="^[0-9]{1,5}$" class="form-control" id="jumlah_legalisir_transkrip"
                         name="jumlah_legalisir_transkrip" min="1" required oninput="checkNegative(this); updateTotal()">
                 </article>
 
@@ -224,7 +228,7 @@ $logoutModalFile = '../components/logout_modal.html';
                 </article>
             </form>
         </section>
-		<?php @include($logoutModalFile); ?>
+        <?php @include($logoutModalFile); ?>
     </main>
 </body>
 
