@@ -17,71 +17,73 @@ document.addEventListener('DOMContentLoaded', function () {
         applyTableTheme(theme);
     }
     function applyTableTheme(theme) {
-        const tableElementS = document.getElementById('table-sp');
-        const tableElementSP = document.getElementById('table-s');
-        const sidebarBg = document.getElementById('sidebar');
-        const sidebarBt = document.getElementById('sidebarCollapse');
-        const themeIcon = document.getElementById('theme-icon');
-
-        // Ganti warna tabel
-        if (tableElementS) {
-            const tableHead = tableElementS.querySelector('thead');
-            if (theme === 'light') {
-                tableElementS.classList.remove('table-striped');
-                tableElementS.classList.add('table-hover');
-                tableHead.classList.add('table-primary');
-                tableHead.classList.remove('table-secondary');
-            } else {
-                tableElementS.classList.add('table-striped');
-                tableElementS.classList.remove('table-hover');
-                tableHead.classList.add('table-secondary');
-                tableHead.classList.remove('table-dark');
-            }
-        }
-        if (tableElementSP) {
-            const tableHead = tableElementSP.querySelector('thead');
-            if (theme === 'light') {
-                tableElementSP.classList.remove('table-striped');
-                tableElementSP.classList.add('table-hover');
-                tableHead.classList.add('table-primary');
-                tableHead.classList.remove('thead-secondary');
-
-            } else {
-                tableElementSP.classList.add('table-striped');
-                tableElementSP.classList.remove('table-hover');
-                tableHead.classList.add('table-secondary');
-                tableHead.classList.remove('thead-dark');
-            }
-        }
-
-        // Ganti backgroud sidebar
-        if (theme === 'light') {
-            sidebarBg.classList.add('nav-bg-light');
-            sidebarBg.classList.remove('nav-bg-dark');
-
+      const tableElementS = document.getElementById("table-sp");
+      const tableElementSP = document.getElementById("table-s");
+      const sidebarBg = document.getElementById("sidebar");
+      const sidebarBt = document.getElementById("sidebarCollapse");
+      const themeIcon = document.getElementById("theme-icon");
+      const logoutModalBg = document.getElementById("logoutModalBg",);
+      const notifModalBg = document.getElementById("notifModalBg",);
+  
+      // Fungsi untuk toggle class
+      const toggleClass = (element, addClass, removeClass) => {
+        element.classList.add(addClass);
+        element.classList.remove(removeClass);
+      };
+  
+      // Table theme
+      if (tableElementS) {
+        const tableHead = tableElementS.querySelector("thead");
+        if (theme === "light") {
+          toggleClass(tableElementS, "table-hover", "table-striped");
+          toggleClass(tableHead, "table-primary", "table-secondary");
         } else {
-            sidebarBg.classList.add('nav-bg-dark');
-            sidebarBg.classList.remove('nav-bg-light');
+          toggleClass(tableElementS, "table-striped", "table-hover");
+          toggleClass(tableHead, "table-secondary", "table-dark");
         }
-
-        // Ganti tombol sidebar
-        if (theme === 'light') {
-            sidebarBt.classList.add('btn-light');
-            sidebarBt.classList.remove('btn-dark');
-
+      }
+      if (tableElementSP) {
+        const tableHead = tableElementSP.querySelector("thead");
+        if (theme === "light") {
+          toggleClass(tableElementSP, "table-hover", "table-striped");
+          toggleClass(tableHead, "table-primary", "thead-secondary");
         } else {
-            sidebarBt.classList.add('btn-dark');
-            sidebarBt.classList.remove('btn-light');
+          toggleClass(tableElementSP, "table-striped", "table-hover");
+          toggleClass(tableHead, "table-secondary", "thead-dark");
         }
-
-        // Ganti icon tema
-        if (theme === 'light') {
-            themeIcon.classList.add('fa-sun');
-            themeIcon.classList.remove('fa-moon');
-
-        } else {
-            themeIcon.classList.add('fa-moon');
-            themeIcon.classList.remove('fa-sun');
-        }
+      }
+  
+      // Sidebar theme
+      toggleClass(
+        sidebarBg,
+        theme === "light" ? "nav-bg-light" : "nav-bg-dark",
+        theme === "light" ? "nav-bg-dark" : "nav-bg-light"
+      );
+      toggleClass(
+        sidebarBt,
+        theme === "light" ? "btn-light" : "btn-dark",
+        theme === "light" ? "btn-dark" : "btn-light"
+      );
+  
+      // Theme icon
+      toggleClass(
+        themeIcon,
+        theme === "light" ? "fa-sun" : "fa-moon",
+        theme === "light" ? "fa-moon" : "fa-sun"
+      );
+  
+      // Logout modal
+      toggleClass(
+        logoutModalBg,
+        theme === "light" ? "bg-light" : "bg-dark",
+        theme === "light" ? "bg-dark" : "bg-light"
+      );
+  
+      // Notif modal
+      toggleClass(
+        notifModalBg,
+        theme === "light" ? "bg-light" : "bg-dark",
+        theme === "light" ? "bg-dark" : "bg-light"
+      );
     }
 });

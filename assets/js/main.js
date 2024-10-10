@@ -2,36 +2,40 @@
 (function ($) {
   "use strict";
 
-  var fullHeight = function () {
+  // Full height section
+  const fullHeight = () => {
     $(".js-fullheight").css("height", $(window).height());
-    $(window).resize(function () {
+    $(window).resize(() => {
       $(".js-fullheight").css("height", $(window).height());
     });
   };
   fullHeight();
 
-  $("#sidebarCollapse").on("click", function () {
+  // Sidebar toggle
+  $("#sidebarCollapse").on("click", () => {
     $("#sidebar").toggleClass("active");
   });
 })(jQuery);
 
-document.addEventListener("DOMContentLoaded", function () {
-  var input = document.querySelector("#phone");
+document.addEventListener("DOMContentLoaded", () => {
+  // Phone number input with intlTelInput
+  const input = document.querySelector("#phone");
   window.intlTelInput(input, {
     initialCountry: "auto",
-    geoIpLookup: function (callback) {
+    geoIpLookup: (callback) => {
       fetch("https://ipinfo.io?token=7b70fe5064d574")
         .then((response) => response.json())
         .then((data) => callback(data.country))
         .catch(() => callback("id"));
     },
     utilsScript:
-      "https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/utils.js", // for formatting/validation etc.
+      "https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/utils.js",
     autoPlaceholder: "polite",
   });
 
-  document.querySelector("#phone").addEventListener("blur", function () {
-    var iti = window.intlTelInputGlobals.getInstance(this);
+  // Phone number validation on blur
+  input.addEventListener("blur", () => {
+    const iti = window.intlTelInputGlobals.getInstance(input);
     if (iti.isValidNumber()) {
       var number = iti.getNumber(); // Dapatkan nomor dalam format internasional
       console.log("Nomor valid:", number);
@@ -40,40 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Set default country and preferred countries
   window.intlTelInput(input, {
-    initialCountry: "id", // Default Indonesia
-    preferredCountries: ["us", "gb", "id"], // Negara yang sering digunakan
-    separateDialCode: true, // Pisahkan kode negara dari nomor telepon
-    // Opsi lainnya...
+    initialCountry: "id",
+    preferredCountries: ["us", "gb", "id"],
+    separateDialCode: true,
   });
-});
-
-/* // Form harga total
-function updateTotal() {
-    const legalisirIjazah = parseInt(document.getElementById('jumlah_legalisir_ijazah').value) || 0;
-    const legalisirTranskrip = parseInt(document.getElementById('jumlah_legalisir_transkrip').value) || 0;
-    const ekspedisi = document.querySelector('input[name="ekspedisi"]:checked');
-    var ekspedisiHarga = 0;
-
-    const hargaIjazah = 3000; // Harga per legalisir ijazah
-    const hargaTranskrip = 3000; // Harga per legalisir transkrip
-
-    if (ekspedisi) {
-        ekspedisiHarga = parseInt(ekspedisi.getAttribute('data-harga'));
-    }
-
-    var totalHarga = (legalisirIjazah * hargaIjazah) + (legalisirTranskrip * hargaTranskrip); // Harga per legalisir, misalnya Rp. 10.000
-    if (!document.getElementById('ambil').checked) {
-        totalHarga += ekspedisiHarga;
-    }
-
-    document.getElementById('total_harga').innerText = totalHarga.toLocaleString('id-ID');
-    document.getElementById('total_harga_input').value = totalHarga;
-    document.getElementById('ekspedisi_harga_input').value = ekspedisiHarga;
-}*/
-
-document.addEventListener("DOMContentLoaded", function () {
-  metodePengiriman();
 });
 
 // Form harga total
@@ -82,13 +58,10 @@ function updateTotal() {
     parseInt(document.getElementById("jumlah_legalisir_ijazah").value) || 0;
   const legalisirTranskrip =
     parseInt(document.getElementById("jumlah_legalisir_transkrip").value) || 0;
-
-  const hargaIjazah = 5000; // Harga per legalisir ijazah
-  const hargaTranskrip = 5000; // Harga per legalisir transkrip
-
-  var totalHarga =
-    legalisirIjazah * hargaIjazah + legalisirTranskrip * hargaTranskrip; // Harga per legalisir, misalnya Rp. 10.000
-
+  const hargaIjazah = 5000;
+  const hargaTranskrip = 5000;
+  const totalHarga =
+    legalisirIjazah * hargaIjazah + legalisirTranskrip * hargaTranskrip;
   document.getElementById("total_harga").innerText =
     totalHarga.toLocaleString("id-ID");
   document.getElementById("total_harga_input").value = totalHarga;
@@ -103,12 +76,12 @@ function checkNegative(input) {
 
 // Button script
 function metodePengiriman() {
-  var metodeCOD = document.getElementById("kirim").checked;
-  var nomorRekening = document.getElementById("nomorRekening");
-  var buktiPembayaran = document.getElementById("buktiPembayaran");
-  var alamatPengiriman = document.getElementById("alamatPengiriman");
-  var warningPengiriman = document.getElementById("warningPengiriman");
-  var hint = document.getElementById("hint");
+  const metodeCOD = document.getElementById("kirim").checked;
+  const nomorRekening = document.getElementById("nomorRekening");
+  const buktiPembayaran = document.getElementById("buktiPembayaran");
+  const alamatPengiriman = document.getElementById("alamatPengiriman");
+  const warningPengiriman = document.getElementById("warningPengiriman");
+  const hint = document.getElementById("hint");
 
   if (metodeCOD) {
     nomorRekening.style.display = "none";
@@ -127,21 +100,14 @@ function metodePengiriman() {
 
 // Button show password
 function showPass() {
-  // Toggle the type attribute using getAttribute() and setAttribute()
   const password = document.getElementById("password");
   const type =
     password.getAttribute("type") === "password" ? "text" : "password";
   password.setAttribute("type", type);
 
-  // Toggle the eye slash icon
   const toggleIcon = document.getElementById("toggleIcon");
-  if (type === "password") {
-    toggleIcon.classList.remove("nf-fa-eye");
-    toggleIcon.classList.add("nf-fa-eye_slash");
-  } else {
-    toggleIcon.classList.remove("nf-fa-eye_slash");
-    toggleIcon.classList.add("nf-fa-eye");
-  }
+  toggleIcon.classList.toggle("nf-fa-eye");
+  toggleIcon.classList.toggle("nf-fa-eye_slash");
 }
 
 // Delete
@@ -159,188 +125,29 @@ function confirmLogout() {
   }
 }
 
-function openModal() {
-  const firstStepModal = document.getElementById("firstStepModal");
-  const secondStepModal = document.getElementById("secondStepModal");
-  const thirdStepModal = document.getElementById("thirdStepModal");
-
-  const openSecondStepModal = document.getElementById("openSecondStepModal");
-  openSecondStepModal.addEventListener("click", () => {
-    firstStepModal.classList.remove("d-block");
-    firstStepModal.classList.add("d-none");
-    secondStepModal.classList.remove("d-none");
-    secondStepModal.classList.add("d-block");
-    thirdStepModal.classList.remove("d-block");
-    thirdStepModal.classList.add("d-none");
-  });
-
-  const openThirdStepModal = document.getElementById("openThirdStepModal");
-  openThirdStepModal.addEventListener("click", () => {
-    firstStepModal.classList.remove("d-block");
-    firstStepModal.classList.add("d-none");
-    secondStepModal.classList.remove("d-block");
-    secondStepModal.classList.add("d-none");
-    thirdStepModal.classList.remove("d-none");
-    thirdStepModal.classList.add("d-block");
-  });
-
-  const backToFirstModal = document.querySelectorAll(
-    "#backToFirstModal, #openModal"
-  );
-  backToFirstModal.forEach((element) => {
-    element.addEventListener("click", () => {
-      firstStepModal.classList.remove("d-none");
-      firstStepModal.classList.add("d-block");
-      secondStepModal.classList.remove("d-block");
-      secondStepModal.classList.add("d-none");
-      thirdStepModal.classList.remove("d-block");
-      thirdStepModal.classList.add("d-none");
-    });
-  });
-
-  const backToSecondModal = document.getElementById("backToSecondModal");
-  backToSecondModal.addEventListener("click", () => {
-    firstStepModal.classList.remove("d-block");
-    firstStepModal.classList.add("d-none");
-    secondStepModal.classList.remove("d-none");
-    secondStepModal.classList.add("d-block");
-    thirdStepModal.classList.remove("d-block");
-    thirdStepModal.classList.add("d-none");
-  });
-}
-
-// Script datatable
-
-// Table pagination
-new DataTable("#table-p", {
-  autoWidth: false,
-  stateSave: true,
-  responsive: true,
-  colReorder: true,
-  layout: {
-    topStart: {
-      buttons: ["copy", "excel", "pdf", "print"],
-    },
-  },
-});
-
-// Table scroll
-$(document).ready(function () {
-  var table = $("#table-s").DataTable({
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    scrollCollapse: true,
-    scrollY: "50vh",
-  });
-});
-
-$(document).ready(function () {
-  var table = $("#table-s2").DataTable({
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    scrollCollapse: true,
-    scrollY: "50vh",
-  });
-});
-
-$(document).ready(function () {
-  var table = $("#table-s3").DataTable({
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    scrollCollapse: true,
-    scrollY: "50vh",
-  });
-});
-
-$(document).ready(function () {
-  var table = $("#table-s4").DataTable({
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    scrollCollapse: true,
-    scrollY: "50vh",
-  });
-});
-
-$(document).ready(function () {
-  var table = $("#table-s5").DataTable({
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    scrollCollapse: true,
-    scrollY: "50vh",
-    dom: '<"top"f>rt<"bottom"Blip>',
-    buttons: ["copy", "excel", "pdf", "print"],
-  });
-});
-
-// Table scroll + pagination
-$(document).ready(function () {
-  var table = $("#table-sp").DataTable({
-    lengthChange: true,
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    layout: {
-      topStart: {
-        buttons: ["copy", "excel", "pdf", "print"],
-      },
-    },
-  });
-});
-
-// Table scroll print
-$(document).ready(function () {
-  var table = $("#table-a").DataTable({
-    autoWidth: false,
-    stateSave: true,
-    responsive: true,
-    colReorder: true,
-    paging: false,
-    scrollCollapse: true,
-    scrollY: "50vh",
-    dom: '<"top"f>rt<"bottom"Blip>',
-    buttons: ["copy", "excel", "pdf", "print"],
-  });
-});
-
-$(function () {
-  $("#example1")
-    .DataTable({
-      responsive: true,
-      lengthChange: false,
-      autoWidth: false,
-      buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-    })
-    .buttons()
-    .container()
-    .appendTo("#example1_wrapper .col-md-6:eq(0)");
-  $("#example2").DataTable({
-    stateSave: true,
-    paging: false,
-    lengthChange: false,
-    searching: true,
-    ordering: true,
-    info: true,
-    autoWidth: false,
-    responsive: true,
-    scrollCollapse: true,
-    scrollY: "50vh",
-    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-  });
+document.addEventListener("DOMContentLoaded", function (event) {
+  function OTPInput() {
+    const inputs = document.querySelectorAll("#otp > *[id]");
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener("keydown", function (event) {
+        if (event.key === "Backspace") {
+          inputs[i].value = "";
+          if (i !== 0) inputs[i - 1].focus();
+        } else {
+          if (i === inputs.length - 1 && inputs[i].value !== "") {
+            return true;
+          } else if (event.keyCode > 47 && event.keyCode < 58) {
+            inputs[i].value = event.key;
+            if (i !== inputs.length - 1) inputs[i + 1].focus();
+            event.preventDefault();
+          } else if (event.keyCode > 64 && event.keyCode < 91) {
+            inputs[i].value = String.fromCharCode(event.keyCode);
+            if (i !== inputs.length - 1) inputs[i + 1].focus();
+            event.preventDefault();
+          }
+        }
+      });
+    }
+  }
+  OTPInput();
 });

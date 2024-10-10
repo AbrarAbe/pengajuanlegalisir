@@ -1,40 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Ambil semua elemen dengan kelas "preload-link"
-    var links = document.querySelectorAll('.preload-link');
-    var submitBtn = document.getElementById('submitBtn');
-    var preloaderLink = document.getElementById('preloaderLink');
-    var preloaderSubmit = document.getElementById('preloaderSubmit');
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.preload-link');
+  const submitBtn = document.getElementById('submitBtn');
+  const preloaderLink = document.getElementById('preloaderLink');
+  const preloaderSubmit = document.getElementById('preloaderSubmit');
 
-    // Tambahkan event listener untuk setiap link
-    links.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            // Tampilkan preloader link
-            preloaderLink.classList.add('show-preloader');
+  const showPreloader = (element) => {
+    element.classList.add('show-preloader');
+    setTimeout(() => {
+      element.classList.remove('show-preloader');
+    }, 1000); 
+  };
 
-            // Jalankan animasi preloader secara asinkron
-            setTimeout(function () {
-                // Sembunyikan preloader setelah animasi selesai
-                preloaderLink.classList.remove('show-preloader');// Sembunyikan preloader setelah selesai
-                // Lanjutkan ke halaman tujuan
+  links.forEach(link => {
+    link.addEventListener('click', (event) => {
+      showPreloader(preloaderLink);
+      setTimeout(() => {
                 window.location.href = link.href;
-            }, 1000); // Delay 3 detik (3000ms)
-
-            // Hentikan aksi default link untuk mencegah navigasi langsung
+      }, 1000); 
             event.preventDefault();
         });
     });
 
-    // Event listener untuk tombol submit
-    submitBtn.addEventListener('click', function (event) {
-        // Delay untuk simulasi proses submit
+  submitBtn.addEventListener('click', () => {
         preloaderSubmit.style.display = 'flex';
-        setTimeout(function () {
-            preloaderSubmit.style.display = 'none'; // Sembunyikan preloader setelah selesai
-            // Lanjutkan dengan submit form
+    setTimeout(() => {
+      preloaderSubmit.style.display = 'none';
             document.getElementById('loginForm').submit();
-        }, 1000); // Delay 3 detik (3000ms)
-
-        // Hentikan aksi default submit untuk mencegah submit langsung
-        //event.preventDefault();
+    }, 1000);
     });
 });
